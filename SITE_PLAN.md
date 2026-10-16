@@ -134,7 +134,8 @@ tax-deductible until then.
   (15 Cheshvan – 8 Teves), 9–11 a.m., 8 sessions.
 - Speakers: Mrs. Fayge Grossman ("Climbing the Ladder of Kirvas Elokim") and
   Mrs. Rivka Segal (Shirei Hama'alos, an in-depth study).
-- Location: Sorek 30/2 (white door on the left). Wheelchair accessible.
+- Location: Sorek 30/2, Ramat Beit Shemesh Aleph (white door on the left).
+  Wheelchair accessible.
 - 400 shekel for the program or 60 shekel per day; early-bird 5% off by Oct 25.
 - Coffee and light refreshments; includes a Chanukah chagiga.
 - Registration and contact details as listed on the flyer.
@@ -143,5 +144,6 @@ tax-deductible until then.
 
 - The **original logo file** (ideally SVG or a transparent PNG). The flyer is a
   single flat image, so the logo can't be cleanly cut out of it.
-- City for the Sorek 30/2 address (for the map link).
-- Whether the site should list the flyer's dedication (L'Ilui Nishmas).
+## 12. Other decisions
+
+- The L'Ilui Nishmas dedication goes at the bottom of every page, in the footer.
