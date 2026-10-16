@@ -26,15 +26,15 @@ blueprint we'll build from.
 | Page | Purpose | Notes |
 |---|---|---|
 | **Home** | First impression | Logo, one-line mission, next upcoming class/event, buttons: "See classes", "Support us" |
-| **About** | Who we are | Mission, the story of how it started, founder & teachers |
+| **About** | Who we are | Mission, the story of how it started, founder & teachers (text only, no photos) |
 | **Classes** | The weekly shiurim | Day, time, topic, teacher, location or online link |
 | **Events & Trips** | What's coming up | Date, place, cost, sign-up link; later an archive of past events |
 | **Support Us** | Donations | Starts as "coming soon / contact us", becomes a real donate page later |
-| **Contact** | Get in touch | Contact form, email, WhatsApp link (very common in Israel) |
+| **Contact** | Get in touch | Contact form, email, phone, WhatsApp link |
 | **Privacy Policy** | Legal | Needed once we collect form submissions or donations |
-| **Footer (every page)** | Basics | Name, contact, social links, later the amuta registration number |
+| **Footer (every page)** | Basics | Name, email, phone, WhatsApp, later the amuta registration number |
 
-Possible later additions: photo gallery, recorded lessons (audio/video),
+Possible later additions: online classes, recorded lessons (audio/video),
 newsletter sign-up, Hebrew version.
 
 ## 4. Technical approach
@@ -103,11 +103,19 @@ tax-deductible until then.
 5. **Donations** — per section 6.
 6. **Launch** — custom domain, final checks on phone and desktop.
 
-## 8. Open questions
+## 8. Decisions
 
-- Photo policy: will the site show photos of the women (teachers, participants),
-  or only the logo, places, and decorative images?
-- Are classes in person, online, or both? Where?
-- Should recorded lessons be on the site (e.g. via YouTube or Spotify)?
-- What contact channels: email, phone, WhatsApp, Instagram/Facebook?
-- Logo file (to be attached) — ideally SVG or a high-resolution PNG.
+- **No photos of people.** The site is modest by design. Visuals come from the
+  logo, colors, typography, simple illustrations/patterns, and photos of places
+  (e.g. trip destinations) with no people in them.
+- **Classes are in person.** Online classes may be added later — the Classes
+  page will be structured so an "Online" option is easy to add.
+- **Recorded lessons** exist but are not on the site for now. Possible later
+  addition.
+- **Contact channels:** email, phone, and WhatsApp. No social media for now.
+
+## 9. Still open
+
+- Logo file (to be attached) — ideally SVG or a high-resolution PNG. Site colors
+  will be taken from it.
+- Class location(s) and schedule details (can be placeholders until known).
