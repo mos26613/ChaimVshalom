@@ -144,6 +144,7 @@ tax-deductible until then.
 
 - The **original logo file** (ideally SVG or a transparent PNG). The flyer is a
   single flat image, so the logo can't be cleanly cut out of it.
+
 ## 12. Other decisions
 
 - The L'Ilui Nishmas dedication goes at the bottom of every page, in the footer.
