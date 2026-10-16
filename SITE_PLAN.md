@@ -1,4 +1,4 @@
-# Chaim VeShalom — Website Plan
+# Chaim V'Shalom — Website Plan
 
 A planning document for the organization's website. No code yet — this is the
 blueprint we'll build from.
@@ -114,8 +114,34 @@ tax-deductible until then.
   addition.
 - **Contact channels:** email, phone, and WhatsApp. No social media for now.
 
-## 9. Still open
+## 9. Branding (from the first flyer)
 
-- Logo file (to be attached) — ideally SVG or a high-resolution PNG. Site colors
-  will be taken from it.
-- Class location(s) and schedule details (can be placeholders until known).
+- **Full name:** Chaim V'Shalom — Women's Learning Center.
+- **Logo:** an open book under a pink arch with a small leaf sprig, the name in
+  a classic serif typeface, "WOMEN'S LEARNING CENTER" in serif capitals below.
+- **Colors** (sampled from the logo, approximate until we get the original file):
+  - Deep navy (name and headings): around `#0f1f50`
+  - Rose pink (arch, accents): around `#e8808f`
+  - Soft gold and sage green (book pages, leaves): secondary accents
+  - Warm cream / blush (background)
+- **Overall feel:** soft, warm and elegant, with pastel florals. The site should
+  match it but stay calmer than a flyer: mostly cream and white space, navy text,
+  pink and gold used sparingly, with light floral touches.
+
+## 10. First program (content for Classes / Events)
+
+- Inaugural learning program, Tuesdays, Oct 27 – Dec 15, 2026
+  (15 Cheshvan – 8 Teves), 9–11 a.m., 8 sessions.
+- Speakers: Mrs. Fayge Grossman ("Climbing the Ladder of Kirvas Elokim") and
+  Mrs. Rivka Segal (Shirei Hama'alos, an in-depth study).
+- Location: Sorek 30/2 (white door on the left). Wheelchair accessible.
+- 400 shekel for the program or 60 shekel per day; early-bird 5% off by Oct 25.
+- Coffee and light refreshments; includes a Chanukah chagiga.
+- Registration and contact details as listed on the flyer.
+
+## 11. Still open
+
+- The **original logo file** (ideally SVG or a transparent PNG). The flyer is a
+  single flat image, so the logo can't be cleanly cut out of it.
+- City for the Sorek 30/2 address (for the map link).
+- Whether the site should list the flyer's dedication (L'Ilui Nishmas).
