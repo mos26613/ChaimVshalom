@@ -119,14 +119,27 @@ tax-deductible until then.
 - **Full name:** Chaim V'Shalom — Women's Learning Center.
 - **Logo:** an open book under a pink arch with a small leaf sprig, the name in
   a classic serif typeface, "WOMEN'S LEARNING CENTER" in serif capitals below.
-- **Colors** (sampled from the logo, approximate until we get the original file):
-  - Deep navy (name and headings): around `#0f1f50`
-  - Rose pink (arch, accents): around `#e8808f`
-  - Soft gold and sage green (book pages, leaves): secondary accents
-  - Warm cream / blush (background)
-- **Overall feel:** soft, warm and elegant, with pastel florals. The site should
-  match it but stay calmer than a flyer: mostly cream and white space, navy text,
-  pink and gold used sparingly, with light floral touches.
+- **Logo emblem file:** `images/logo-emblem.png` (512×512, no text, watercolor
+  style, off-white background `#faf8f2`, not transparent). The name and
+  "Women's Learning Center" will be real text next to/under it.
+- **Theme: soft pastels** (a specific request from the organization).
+  Colors sampled from the logo emblem:
+
+  | Role | Color | Hex (approx.) |
+  |---|---|---|
+  | Page background | Warm off-white (same as the logo's background) | `#faf8f2` |
+  | Pastel accent | Blush pink (watercolor wash) | `#fad4d2` |
+  | Pastel accent | Dusty rose (center leaf) | `#e9b5af` |
+  | Pastel accent | Lavender (watercolor wash) | `#d8d4e3` |
+  | Pastel accent | Sage green (left leaf) | `#bac9c1` |
+  | Pastel accent | Soft gold (page edges) | `#f4d3ad` |
+  | Text and headings | Deep navy (book cover / flyer name) | `#0f1f50` |
+
+- **Readability rule:** pastels are used for backgrounds, cards, borders and
+  decorations — never for text. All text stays dark navy (or near-black) so it
+  is easy to read, including for older visitors and on phones in sunlight.
+- **Overall feel:** soft, warm and elegant. Mostly off-white and white space,
+  pastel bands and cards to separate sections, serif headings like the flyer.
 
 ## 10. First program (content for Classes / Events)
 
@@ -142,8 +155,10 @@ tax-deductible until then.
 
 ## 11. Still open
 
-- The **original logo file** (ideally SVG or a transparent PNG). The flyer is a
-  single flat image, so the logo can't be cleanly cut out of it.
+- Nice to have: a **larger version of the logo emblem** (at least 1024 px wide,
+  or SVG), ideally with a transparent background. The current file works for the
+  header, but the drawing itself is only about 440×220 px, so it would look soft
+  if shown large (e.g. in a big banner on the home page).
 
 ## 12. Other decisions
 
