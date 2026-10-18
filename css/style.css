@@ -23,6 +23,7 @@
 
   --max-width: 60rem;          /* widest the content gets on big screens */
   --radius: 0.75rem;
+  --shadow: 0 0.5rem 1.5rem rgba(15, 31, 80, 0.15);  /* soft navy shadow for floating boxes */
 }
 
 /* ---------- Basic reset ---------- */
@@ -185,14 +186,47 @@ button:focus-visible {
   text-decoration-thickness: 3px;
 }
 
-/* When JavaScript is running, the phone menu starts closed and opens with the button.
+/* When JavaScript is running, the phone menu starts closed. The "Menu" button opens
+   it as a small floating box on top of the page, so the page itself doesn't move.
    Without JavaScript, the "js" class is never added, so the menu simply stays visible. */
+.site-header .container {
+  position: relative;          /* the floating menu box is placed relative to this */
+}
+
 .js .site-nav {
   display: none;
 }
 
 .js .site-nav.is-open {
   display: block;
+  position: absolute;
+  top: 100%;                   /* just below the header */
+  right: 1rem;
+  z-index: 20;                 /* above the page content */
+  width: 15rem;
+  max-width: calc(100% - 2rem);
+  background: var(--color-surface);
+  border: 1px solid var(--color-gold);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 0.4rem;
+}
+
+.js .site-nav.is-open ul {
+  padding: 0;
+}
+
+.js .site-nav.is-open a {
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.5rem;
+}
+
+.js .site-nav.is-open li:first-child a {
+  border-top: 0;
+}
+
+.js .site-nav.is-open a:hover {
+  background: var(--color-blush);
 }
 
 /* Without JavaScript the button would do nothing, so hide it */
@@ -383,12 +417,22 @@ main {
     display: none;
   }
 
+  /* Show the menu as a normal row, undoing the phone's floating box */
   .js .site-nav,
+  .js .site-nav.is-open,
   .site-nav {
     display: block;
+    position: static;
+    width: auto;
+    max-width: none;
+    background: none;
+    border: 0;
+    box-shadow: none;
+    padding: 0;
   }
 
-  .site-nav ul {
+  .site-nav ul,
+  .js .site-nav.is-open ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -396,7 +440,8 @@ main {
     padding: 0.5rem 0 0.75rem;
   }
 
-  .site-nav a {
+  .site-nav a,
+  .js .site-nav.is-open a {
     border-top: 0;
     padding: 0.35rem 0.25rem;
   }
