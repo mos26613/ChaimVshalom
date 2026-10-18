@@ -69,3 +69,16 @@ Because the pages are assembled by Jekyll, opening a page file directly in a
 browser shows it without its header and footer. To see the real site, push the
 changes and open the live GitHub Pages address (it updates within a minute or
 two), or run Jekyll locally (`bundle exec jekyll serve`, requires Ruby).
+
+## Asking Claude from GitHub
+
+Write `@claude` followed by a request in a new issue (title or description), an
+issue comment, or a pull request comment, e.g.
+`@claude change the welcome sentence on the home page to "..."`.
+Claude replies in the same thread and proposes changes as a pull request.
+
+- Set up by `.github/workflows/claude.yml`. It needs a repository secret named
+  `CLAUDE_CODE_OAUTH_TOKEN` (created with `claude setup-token`, added under
+  Settings → Secrets and variables → Actions).
+- Claude starts fresh each time and follows the rules in `CLAUDE.md`.
+- Only people with write access to the repository can trigger it.
