@@ -1,6 +1,6 @@
 # CLAUDE.md — project rules for Claude
 
-Website for **Chaim V'Shalom — Women's Learning Center**, a new organization in
+Website for **Chaim V'Shalom Women's Learning Center**, a new organization in
 Ramat Beit Shemesh, Israel, that gives Torah classes to religious women. It is
 run entirely by women. Full plan and decisions: `SITE_PLAN.md`. File guide:
 `README.md`.
@@ -16,6 +16,9 @@ The maintainer is a computer science student who is new to web development.
 
 ## Content rules (must follow)
 
+- **The name is always all five words: "Chaim V'Shalom Women's Learning Center"**,
+  written together in the same font and style (never split into a name plus a
+  smaller tagline, never shortened to "Chaim V'Shalom" on the site).
 - **No photos or images of people**, not even silhouettes. Visuals come from the
   logo, colors, typography, decorations, and photos of places without people.
 - **Soft pastel theme** (a specific request from the organization). Pastels are

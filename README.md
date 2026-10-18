@@ -1,4 +1,4 @@
-# Chaim V'Shalom — Women's Learning Center website
+# Chaim V'Shalom Women's Learning Center website
 
 A simple website made of plain HTML, CSS and a little JavaScript, published with
 GitHub Pages.
@@ -34,7 +34,7 @@ description: "About Chaim V'Shalom Women's Learning Center."
 ```
 
 - `layout: default` — wrap this page in `_layouts/default.html`.
-- `title` — shown in the browser tab (as "About | Chaim V'Shalom").
+- `title` — shown in the browser tab (as "About | Chaim V'Shalom Women's Learning Center").
 - `description` — the summary search engines and WhatsApp link previews show.
 
 ## Common tasks

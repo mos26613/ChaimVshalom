@@ -117,12 +117,13 @@ tax-deductible until then.
 
 ## 9. Branding (from the first flyer)
 
-- **Full name:** Chaim V'Shalom — Women's Learning Center.
+- **Full name:** Chaim V'Shalom Women's Learning Center. All five words are the
+  name and always appear together, in the same font and style.
 - **Logo:** an open book under a pink arch with a small leaf sprig, the name in
   a classic serif typeface, "WOMEN'S LEARNING CENTER" in serif capitals below.
 - **Logo emblem file:** `images/logo-emblem.png` (512×512, no text, watercolor
   style, off-white background `#faf8f2`, not transparent). The name and
-  "Women's Learning Center" will be real text next to/under it.
+  the full name will be real text next to/under it.
 - **Theme: soft pastels** (a specific request from the organization).
   Colors sampled from the logo emblem:
 

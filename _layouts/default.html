@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {%- comment -%}
     Every page sets its own "title" and "description" at the top of its file.
-    The home page gets the full name; other pages get "Page | Chaim V'Shalom".
+    The home page shows the name; other pages show "Page | name".
+    The name is always written in full: Chaim V'Shalom Women's Learning Center.
   {%- endcomment %}
   {% if page.path == "index.html" -%}
-  <title>Chaim V'Shalom — Women's Learning Center</title>
+  <title>Chaim V'Shalom Women's Learning Center</title>
   {%- else -%}
-  <title>{{ page.title | escape }} | Chaim V'Shalom</title>
+  <title>{{ page.title | escape }} | Chaim V'Shalom Women's Learning Center</title>
   {%- endif %}
   <meta name="description" content="{{ page.description | escape }}">
   <link rel="icon" href="images/logo-emblem.png">
