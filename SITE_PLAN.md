@@ -150,6 +150,9 @@ tax-deductible until then.
 - Speakers: Mrs. Fayge Grossman ("Climbing the Ladder of Kirvas Elokim") and
   Mrs. Rivka Segal (Shirei Hama'alos, an in-depth study).
 - Location: Sorek 30/2, Ramat Beit Shemesh Aleph (white door on the left).
+  This is a **temporary venue** for the classes, not the organization's address,
+  so it appears only with the program (Classes page), not on the Contact page.
+  When the center has its own building, that becomes the real address.
   Wheelchair accessible.
 - 400₪ for the program or 60₪ per day; early-bird 5% off by Oct 25.
 - Coffee and light refreshments; includes a Chanukah chagiga.

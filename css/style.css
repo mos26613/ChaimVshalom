@@ -450,6 +450,11 @@ main {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  /* For a row of three cards (e.g. the Contact page) */
+  .card-grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   .footer-columns {
     grid-template-columns: repeat(3, 1fr);
     text-align: left;
