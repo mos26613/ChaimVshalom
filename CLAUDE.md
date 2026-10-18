@@ -21,6 +21,7 @@ The maintainer is a computer science student who is new to web development.
   smaller tagline, never shortened to "Chaim V'Shalom" on the site).
 - **No photos or images of people**, not even silhouettes. Visuals come from the
   logo, colors, typography, decorations, and photos of places without people.
+  Standard symbols and emojis (e.g. ♿) are fine.
 - **Soft pastel theme** (a specific request from the organization). Pastels are
   for backgrounds, cards, borders and decorations only — **all text stays dark
   navy** for readability. Colors are defined once in `:root` in `css/style.css`;
