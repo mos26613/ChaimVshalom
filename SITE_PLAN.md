@@ -151,7 +151,7 @@ tax-deductible until then.
   Mrs. Rivka Segal (Shirei Hama'alos, an in-depth study).
 - Location: Sorek 30/2, Ramat Beit Shemesh Aleph (white door on the left).
   Wheelchair accessible.
-- 400 ₪ for the program or 60 ₪ per day; early-bird 5% off by Oct 25.
+- 400₪ for the program or 60₪ per day; early-bird 5% off by Oct 25.
 - Coffee and light refreshments; includes a Chanukah chagiga.
 - Registration and contact details as listed on the flyer.
 
