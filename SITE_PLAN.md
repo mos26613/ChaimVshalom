@@ -185,12 +185,16 @@ not public yet.
 ### Waiting on the maintainer / organization
 
 - Confirm the Hebrew spelling of the dedication names in the footer.
-- Confirm Batsheva Singer agrees to her name and phone number on the public site.
 - Real text for the placeholders (grey italics): home welcome sentence, mission,
   story, teacher descriptions, events/trips, why support matters.
 - Nice to have: a **larger version of the logo emblem** (at least 1024 px wide,
   or SVG), ideally with a transparent background. The drawing in the current
   file is only about 440×220 px, so it would look soft if shown large.
+
+### Done
+
+- Batsheva Singer reviewed the site, including her name and phone number on the
+  Contact page, and had no objection.
 
 ### Reminders
 
