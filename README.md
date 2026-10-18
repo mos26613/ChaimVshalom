@@ -26,7 +26,7 @@ block at the top:
 ```
 ---
 layout: default
-title: "About"
+title: "About Us"
 description: "About Chaim V'Shalom Women's Learning Center."
 ---
       <h1>About Us</h1>
@@ -34,7 +34,7 @@ description: "About Chaim V'Shalom Women's Learning Center."
 ```
 
 - `layout: default` — wrap this page in `_layouts/default.html`.
-- `title` — shown in the browser tab (as "About | Chaim V'Shalom Women's Learning Center").
+- `title` — shown in the browser tab (as "About Us | Chaim V'Shalom Women's Learning Center").
 - `description` — the summary search engines and WhatsApp link previews show.
 
 ## Common tasks

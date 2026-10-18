@@ -2,7 +2,7 @@
 # To add a page to the menu, add two lines here: its name and its file.
 - name: Home
   url: index.html
-- name: About
+- name: About Us
   url: about.html
 - name: Classes
   url: classes.html
@@ -10,5 +10,5 @@
   url: events.html
 - name: Support Us
   url: support.html
-- name: Contact
+- name: Contact Us
   url: contact.html
