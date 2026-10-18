@@ -153,7 +153,7 @@ tax-deductible until then.
   This is a **temporary venue** for the classes, not the organization's address,
   so it appears only with the program (Classes page), not on the Contact page.
   When the center has its own building, that becomes the real address.
-  Map position (used by the directions links): 31.7152755, 34.9878998.
+  Map position (used by the directions links): 31.7152846, 34.9878998.
   Displayed as "Sorek" (how it's known locally), not "Nahal Sorek".
   Wheelchair accessible.
 - 400₪ for the program or 60₪ per day; early-bird 5% off by Oct 25.
