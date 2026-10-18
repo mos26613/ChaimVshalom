@@ -161,12 +161,47 @@ tax-deductible until then.
 - Coffee and light refreshments; includes a Chanukah chagiga.
 - Registration and contact details as listed on the flyer.
 
-## 11. Still open
+## 11. Status and next steps
 
+The maintainer approves every change before it is considered done. The site is
+not public yet.
+
+### On hold (don't start without the maintainer's go-ahead)
+
+- **`@claude` from GitHub:** the workflow file and `CLAUDE.md` exist, but the
+  token/secret setup and test are paused. Working in a Claude session is enough
+  for now.
+- **`main` branch:** the site still publishes from
+  `claude/nonprofit-website-planning-21uvpw`. Switching to `main` (so changes go
+  live only after a merge) waits until the site goes public. Note: a new Claude
+  session may work on a different branch, which would not publish until merged
+  or moved to this branch.
+- **Shabbos closing:** waiting for the rav's answers (whether needed, whose
+  times, closing/reopening times, Yom Tov). See the earlier proposal: a saved
+  yearly list of Beit Shemesh times checked by a small script.
+- **Online donations:** waiting for amuta registration and a bank account
+  (section 6).
+
+### Waiting on the maintainer / organization
+
+- Confirm the Hebrew spelling of the dedication names in the footer.
+- Confirm Batsheva Singer agrees to her name and phone number on the public site.
+- Real text for the placeholders (grey italics): home welcome sentence, mission,
+  story, teacher descriptions, events/trips, why support matters.
 - Nice to have: a **larger version of the logo emblem** (at least 1024 px wide,
-  or SVG), ideally with a transparent background. The current file works for the
-  header, but the drawing itself is only about 440×220 px, so it would look soft
-  if shown large (e.g. in a big banner on the home page).
+  or SVG), ideally with a transparent background. The drawing in the current
+  file is only about 440×220 px, so it would look soft if shown large.
+
+### Reminders
+
+- After **December 15, 2026** the home page banner ("Now running: our first
+  learning program") and the Classes page will be out of date — update them.
+
+### Before going public
+
+- Custom domain (e.g. `chaimveshalom.org`).
+- Switch publishing to `main` (see above).
+- Final check of every page on phone and computer.
 
 ## 12. Other decisions
 
