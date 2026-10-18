@@ -1,0 +1,9 @@
+# Site settings for Jekyll (the tool GitHub Pages uses to build the site).
+# After changing this file, the live site rebuilds automatically on push.
+
+title: "Chaim V'Shalom"
+
+# Files that are part of the project but should not be published on the website.
+exclude:
+  - README.md
+  - SITE_PLAN.md

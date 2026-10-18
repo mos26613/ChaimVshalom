@@ -39,8 +39,9 @@ newsletter sign-up, Hebrew version.
 
 ## 4. Technical approach
 
-- **Plain HTML + CSS + a little JavaScript.** No React, no Node.js, no build step.
-  Every file can be opened and read directly.
+- **Plain HTML + CSS + a little JavaScript.** No React, no Node.js.
+- **Shared header and footer** via Jekyll, which GitHub Pages runs automatically
+  on every push (`_includes/header.html`, `_includes/footer.html`). See README.
 - **Mobile-first, responsive design.** The layout is designed for a phone screen
   first, then expands for larger screens. Includes a collapsible "hamburger"
   menu on phones.

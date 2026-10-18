@@ -1,0 +1,14 @@
+# The main menu, shown in the header of every page.
+# To add a page to the menu, add two lines here: its name and its file.
+- name: Home
+  url: index.html
+- name: About
+  url: about.html
+- name: Classes
+  url: classes.html
+- name: Events & Trips
+  url: events.html
+- name: Support Us
+  url: support.html
+- name: Contact
+  url: contact.html

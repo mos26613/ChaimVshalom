@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {%- comment -%}
+    Every page sets its own "title" and "description" at the top of its file.
+    The home page gets the full name; other pages get "Page | Chaim V'Shalom".
+  {%- endcomment %}
+  {% if page.path == "index.html" -%}
+  <title>Chaim V'Shalom — Women's Learning Center</title>
+  {%- else -%}
+  <title>{{ page.title | escape }} | Chaim V'Shalom</title>
+  {%- endif %}
+  <meta name="description" content="{{ page.description | escape }}">
+  <link rel="icon" href="images/logo-emblem.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+{% include header.html %}
+
+  <!-- ===== Page content ===== -->
+  <main id="main">
+    <div class="container">
+{{ content }}
+    </div>
+  </main>
+
+{% include footer.html %}
+</body>
+</html>
