@@ -313,10 +313,13 @@ main {
 }
 
 /* ---------- Footer ---------- */
+/* On phones and tablets the footer sections are stacked, so they are centered
+   to use the full width. Wider screens switch to three columns (see below). */
 .site-footer {
   background: var(--color-lavender);
   padding: 2rem 0 1.5rem;
   font-size: 0.95rem;
+  text-align: center;
 }
 
 .footer-columns {
@@ -404,5 +407,6 @@ main {
 
   .footer-columns {
     grid-template-columns: repeat(3, 1fr);
+    text-align: left;
   }
 }
