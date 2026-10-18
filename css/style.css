@@ -1,0 +1,392 @@
+/* ==========================================================================
+   Chaim V'Shalom — shared stylesheet
+   Mobile-first: the base styles are for phones; the @media block near the
+   bottom adjusts the layout for wider screens (tablets and desktops).
+   ========================================================================== */
+
+/* ---------- Colors and fonts (change them here, and the whole site follows) ---------- */
+:root {
+  --color-bg: #faf8f2;         /* warm off-white, same as the logo background */
+  --color-surface: #ffffff;    /* cards */
+  --color-text: #1b2440;       /* body text: dark navy */
+  --color-heading: #0f1f50;    /* headings: deep navy */
+  --color-muted: #4a5470;      /* secondary text */
+
+  --color-blush: #fad4d2;      /* pastel accents, from the logo */
+  --color-rose: #e9b5af;
+  --color-lavender: #e7e3f0;
+  --color-sage: #dde7e1;
+  --color-gold: #f4d3ad;
+
+  --font-heading: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  --max-width: 60rem;          /* widest the content gets on big screens */
+  --radius: 0.75rem;
+}
+
+/* ---------- Basic reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  color: var(--color-heading);
+  line-height: 1.25;
+  margin: 0 0 0.75rem;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.2rem; }
+
+p { margin: 0 0 1rem; }
+
+a {
+  color: var(--color-heading);
+  text-underline-offset: 0.15em;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--color-rose);
+  outline-offset: 2px;
+}
+
+/* Centers content and keeps a comfortable side margin on phones */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Hidden visually but still read by screen readers */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  background: var(--color-heading);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  z-index: 10;
+}
+
+.skip-link:focus {
+  top: 0.5rem;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-gold);
+}
+
+.bsd {
+  text-align: right;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  padding-top: 0.25rem;
+}
+
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.75rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--color-heading);
+}
+
+/* The logo image has empty space around the drawing; this crops to the drawing */
+.brand img {
+  width: 4.5rem;
+  height: 2.5rem;
+  object-fit: cover;
+  object-position: center;
+}
+
+.brand-name {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.brand-tagline {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* "Menu" button — only shown on phones */
+.menu-toggle {
+  font: inherit;
+  font-size: 0.95rem;
+  background: var(--color-blush);
+  color: var(--color-heading);
+  border: 1px solid var(--color-rose);
+  border-radius: var(--radius);
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+}
+
+/* Navigation links. On phones they appear as a vertical list under the header. */
+.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0.75rem;
+}
+
+.site-nav a {
+  display: block;
+  padding: 0.6rem 0.25rem;
+  text-decoration: none;
+  border-top: 1px solid var(--color-lavender);
+}
+
+.site-nav a[aria-current="page"] {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--color-rose);
+  text-decoration-thickness: 3px;
+}
+
+/* When JavaScript is running, the phone menu starts closed and opens with the button.
+   Without JavaScript, the "js" class is never added, so the menu simply stays visible. */
+.js .site-nav {
+  display: none;
+}
+
+.js .site-nav.is-open {
+  display: block;
+}
+
+/* Without JavaScript the button would do nothing, so hide it */
+html:not(.js) .menu-toggle {
+  display: none;
+}
+
+/* ---------- Main content ---------- */
+main {
+  padding: 2rem 0 3rem;
+}
+
+.section {
+  margin-bottom: 2.5rem;
+}
+
+/* A soft pastel band used to highlight a section */
+.band {
+  background: var(--color-blush);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.25rem;
+}
+
+.band--lavender { background: var(--color-lavender); }
+.band--sage { background: var(--color-sage); }
+
+.hero {
+  text-align: center;
+  padding: 1rem 0 2rem;
+}
+
+/* Like the header logo, crop away the empty space around the drawing */
+.hero img {
+  margin: 0 auto 1rem;
+  width: 18rem;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+}
+
+.lead {
+  font-size: 1.2rem;
+  color: var(--color-muted);
+}
+
+/* Cards: stacked on phones, side by side on wider screens */
+.card-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-gold);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+
+.card p:last-child { margin-bottom: 0; }
+
+/* Buttons (used on links) */
+.button {
+  display: inline-block;
+  background: var(--color-heading);
+  color: #fff;
+  text-decoration: none;
+  padding: 0.7rem 1.3rem;
+  border-radius: 2rem;
+  margin: 0.25rem;
+}
+
+.button--soft {
+  background: var(--color-blush);
+  color: var(--color-heading);
+  border: 1px solid var(--color-rose);
+}
+
+.button:hover { opacity: 0.9; }
+
+/* Simple label/value list (used for class details) */
+.details {
+  margin: 0;
+}
+
+.details dt {
+  font-weight: 700;
+  color: var(--color-heading);
+}
+
+.details dd {
+  margin: 0 0 0.75rem;
+}
+
+/* Text that still needs to be written — easy to spot while building */
+.placeholder {
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--color-lavender);
+  padding: 2rem 0 1.5rem;
+  font-size: 0.95rem;
+}
+
+.footer-columns {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.site-footer h2 {
+  font-size: 1.1rem;
+}
+
+.site-footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-footer li {
+  margin-bottom: 0.35rem;
+}
+
+.dedication {
+  text-align: center;
+  border-top: 1px solid var(--color-gold);
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+}
+
+.dedication p {
+  margin-bottom: 0.25rem;
+}
+
+.dedication-title {
+  font-family: var(--font-heading);
+  font-style: italic;
+  color: var(--color-heading);
+}
+
+.copyright {
+  text-align: center;
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  margin-top: 1rem;
+}
+
+/* ==========================================================================
+   Wider screens (tablets and desktops): 768px and up
+   ========================================================================== */
+@media (min-width: 48rem) {
+  h1 { font-size: 2.5rem; }
+
+  .header-bar {
+    padding-bottom: 0;
+  }
+
+  /* On wide screens the menu is always visible, and the button is hidden */
+  .menu-toggle,
+  html:not(.js) .menu-toggle {
+    display: none;
+  }
+
+  .js .site-nav,
+  .site-nav {
+    display: block;
+  }
+
+  .site-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem 1.25rem;
+    padding: 0.5rem 0 0.75rem;
+  }
+
+  .site-nav a {
+    border-top: 0;
+    padding: 0.35rem 0.25rem;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-columns {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
