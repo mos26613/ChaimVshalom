@@ -46,12 +46,15 @@ document.addEventListener("DOMContentLoaded", function () {
   var sections = Array.prototype.slice.call(document.querySelectorAll("main section"));
   var waiting = false;
 
-  // Show every section that is on screen or already scrolled past, so nothing
-  // stays hidden even if the visitor jumps straight to the bottom of the page.
+  // Show a section once its top is 85% of the way down the screen (so the
+  // visitor actually sees it fade in), plus every section already scrolled
+  // past. At the very bottom of the page, show whatever is left, so nothing
+  // stays hidden even if the visitor jumps straight to the end.
   function revealUpToScreen() {
     waiting = false;
+    var atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
     sections = sections.filter(function (section) {
-      if (section.getBoundingClientRect().top < window.innerHeight) {
+      if (atBottom || section.getBoundingClientRect().top < window.innerHeight * 0.85) {
         section.classList.add("is-visible");
         return false;            // done with this one
       }

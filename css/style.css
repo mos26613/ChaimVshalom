@@ -432,7 +432,7 @@ main h1::after {
 @media screen and (prefers-reduced-motion: no-preference) {
   .js .reveal {
     opacity: 0;
-    transform: translateY(14px);
+    transform: translateY(20px);
     transition: opacity 0.6s ease, transform 0.6s ease;
   }
   .js .reveal.is-visible {
@@ -479,12 +479,15 @@ main h1::after {
 }
 
 /* On phones and tablets (except very narrow phones), the name goes on top and
-   Contact and Pages sit side by side underneath, centered, so the footer stays
-   short. Each column is only as wide as its contents. */
+   Contact and Pages sit side by side underneath, so the footer stays short.
+   The two columns are always the same width ("1fr 1fr" inside a box that is
+   only as wide as its contents, centered), so they mirror each other
+   around the middle of the screen. */
 @media (min-width: 22.5rem) {
   .footer-columns {
-    grid-template-columns: auto auto;
-    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    width: fit-content;
+    margin: 0 auto;
   }
 
   .footer-columns > :first-child {
@@ -597,7 +600,8 @@ main h1::after {
 
   .footer-columns {
     grid-template-columns: repeat(3, 1fr);
-    justify-content: normal;
+    width: auto;
+    margin: 0;
     text-align: left;
   }
 
