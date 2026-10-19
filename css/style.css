@@ -347,6 +347,27 @@ main {
   margin: 0 0 0.75rem;
 }
 
+/* A small emoji before each detail label (When, Time, Where, Price) */
+.details-icon {
+  margin-right: 0.4rem;
+}
+
+/* An emoji in a pastel circle at the top of a card */
+.card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: 0.75rem;
+  border-radius: 50%;
+  background: var(--color-blush);
+  font-size: 1.35rem;
+}
+
+.card-icon--lavender { background: var(--color-lavender); }
+.card-icon--sage { background: var(--color-sage); }
+
 /* Short extra notes (e.g. "Wheelchair accessible"), one per line in an elegant italic */
 .highlights {
   list-style: none;
