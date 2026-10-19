@@ -61,7 +61,8 @@ description: "About Chaim V'Shalom Women's Learning Center."
 | `privacy.html` | Privacy Policy |
 | `css/style.css` | All the styling. Mobile first: the `@media (min-width: 48rem)` section adjusts for wider screens. |
 | `js/main.js` | The "Menu" button on phones |
-| `images/logo-emblem.png` | The logo emblem |
+| `images/logo.png` | The official round logo, shown centered in the header |
+| `images/logo-emblem.png` | The book emblem, used as the small browser-tab icon |
 
 ## Previewing
 

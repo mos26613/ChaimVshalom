@@ -121,7 +121,12 @@ tax-deductible until then.
   name and always appear together, in the same font and style.
 - **Logo:** an open book under a pink arch with a small leaf sprig, the name in
   a classic serif typeface, "WOMEN'S LEARNING CENTER" in serif capitals below.
-- **Logo emblem file:** `images/logo-emblem.png` (512×512, no text, watercolor
+- **Official logo:** `images/logo.png` — the round logo with the book and the full
+  name inside (from the administrator; source PDF is 1254×1254 px). Shown
+  centered in the header on every page (8rem wide on phones, 10rem on larger
+  screens), with the area outside the circle transparent.
+- **Logo emblem file:** `images/logo-emblem.png`, now used only as the
+  browser-tab icon (512×512, no text, watercolor
   style, off-white background `#faf8f2`, not transparent). The name and
   the full name will be real text next to/under it.
 - **Theme: soft pastels** (a specific request from the organization).

@@ -120,37 +120,28 @@ button:focus-visible {
   padding-top: 0.25rem;
 }
 
+/* The round logo sits in the middle of the header. On phones the Menu button
+   is placed in the top-right corner, so it doesn't push the logo off-center. */
 .header-bar {
+  position: relative;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  justify-content: center;
   padding-bottom: 0.75rem;
 }
 
 .brand {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
-  color: var(--color-heading);
+  display: block;
 }
 
-/* The logo image has empty space around the drawing; this crops to the drawing */
-.brand img {
-  flex-shrink: 0;
-  width: 4.5rem;
-  height: 2.5rem;
-  object-fit: cover;
-  object-position: center;
+.brand-logo {
+  width: 8rem;
+  height: auto;
 }
 
-/* The full name is one unit: all five words share the same font and style */
-.brand-name {
-  font-family: var(--font-heading);
-  font-size: 1.05rem;
-  font-weight: 700;
-  line-height: 1.2;
+.header-bar .menu-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 /* "Menu" button — only shown on phones */
@@ -256,14 +247,6 @@ main {
 .hero {
   text-align: center;
   padding: 1rem 0 2rem;
-}
-
-/* Like the header logo, crop away the empty space around the drawing */
-.hero img {
-  margin: 0 auto 1rem;
-  width: 18rem;
-  aspect-ratio: 2 / 1;
-  object-fit: cover;
 }
 
 /* Cards: stacked on phones, side by side on wider screens */
@@ -405,7 +388,7 @@ main {
 @media (min-width: 48rem) {
   h1 { font-size: 2.5rem; }
 
-  .brand-name { font-size: 1.35rem; }
+  .brand-logo { width: 10rem; }
 
   .header-bar {
     padding-bottom: 0;
