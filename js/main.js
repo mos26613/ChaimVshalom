@@ -2,6 +2,7 @@
 // 1. The "Menu" button on phones, which opens the menu as a small floating box
 //    on top of the page.
 // 2. A gentle fade-in for page sections as they scroll into view.
+// 3. "Copy" buttons (e.g. copying the email address in the footer).
 
 // Tell the CSS that JavaScript is running, so the phone menu can start closed.
 document.documentElement.classList.add("js");
@@ -146,4 +147,80 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onScroll);
+});
+
+// "Copy" buttons: copy the text in the button's data-copy attribute, then show
+// "Copied!" with a check mark for a moment. If the browser doesn't allow
+// copying, highlight the text so the visitor can copy it themselves.
+document.addEventListener("DOMContentLoaded", function () {
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text);
+    }
+    // Older browsers: copy through a temporary, invisible text box.
+    return new Promise(function (resolve, reject) {
+      var box = document.createElement("textarea");
+      box.value = text;
+      box.setAttribute("readonly", "");
+      box.style.position = "fixed";
+      box.style.opacity = "0";
+      document.body.appendChild(box);
+      box.select();
+      var ok = false;
+      try {
+        ok = document.execCommand("copy");
+      } catch (error) {
+        ok = false;
+      }
+      document.body.removeChild(box);
+      if (ok) {
+        resolve();
+      } else {
+        reject();
+      }
+    });
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll(".copy-button"), function (button) {
+    var icon = button.querySelector(".copy-icon");
+    var label = button.querySelector(".copy-label");
+    var item = button.closest("li");
+    var status = item ? item.querySelector(".copy-status") : null;
+    var timer = null;
+
+    function show(iconText, labelText, statusText, copied) {
+      icon.textContent = iconText;
+      label.textContent = labelText;
+      button.classList.toggle("is-copied", copied);
+      if (status) {
+        status.textContent = statusText;
+      }
+      window.clearTimeout(timer);
+      timer = window.setTimeout(function () {
+        icon.textContent = "📋";
+        label.textContent = "Copy";
+        button.classList.remove("is-copied");
+        if (status) {
+          status.textContent = "";
+        }
+      }, 2000);
+    }
+
+    button.addEventListener("click", function () {
+      var text = button.getAttribute("data-copy");
+      copyText(text).then(function () {
+        show("✅", "Copied!", "Email address copied", true);
+      }, function () {
+        // Couldn't copy: highlight the address so it can be copied by hand.
+        var textEl = button.parentNode.querySelector(".popover-text");
+        if (textEl && window.getSelection) {
+          var range = document.createRange();
+          range.selectNodeContents(textEl);
+          window.getSelection().removeAllRanges();
+          window.getSelection().addRange(range);
+        }
+        show("⌨️", "Press Ctrl+C", "Press Control C to copy the email address", false);
+      });
+    });
+  });
 });
