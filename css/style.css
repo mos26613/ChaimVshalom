@@ -475,11 +475,34 @@ main h1::after {
 
 .footer-columns {
   display: grid;
-  gap: 1.5rem;
+  gap: 1.25rem 2rem;
+}
+
+/* On phones and tablets (except very narrow phones), the name goes on top and
+   Contact and Pages sit side by side underneath, centered, so the footer stays
+   short. Each column is only as wide as its contents. */
+@media (min-width: 22.5rem) {
+  .footer-columns {
+    grid-template-columns: auto auto;
+    justify-content: center;
+  }
+
+  .footer-columns > :first-child {
+    grid-column: 1 / -1;
+  }
+
+  /* Keep each link on one line; the columns size themselves to fit */
+  .footer-columns li {
+    white-space: nowrap;
+  }
 }
 
 .site-footer h2 {
   font-size: 1.1rem;
+}
+
+.footer-columns p {
+  margin-bottom: 0;
 }
 
 .site-footer ul {
@@ -495,7 +518,7 @@ main h1::after {
 .dedication {
   text-align: center;
   border-top: 1px solid var(--color-gold);
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   padding-top: 1.25rem;
 }
 
@@ -574,6 +597,11 @@ main h1::after {
 
   .footer-columns {
     grid-template-columns: repeat(3, 1fr);
+    justify-content: normal;
     text-align: left;
+  }
+
+  .footer-columns > :first-child {
+    grid-column: auto;
   }
 }
