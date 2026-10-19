@@ -426,10 +426,11 @@ main h1::after {
   font-style: normal;
 }
 
-/* Sections fade in gradually as you scroll (js/main.js sets each section's
-   fade as the page scrolls). Sections start faded; when the page opens, the
-   ones on screen glide into place (the transition below). After that the fade
-   follows the scrolling directly ("is-scroll-linked" turns the transition off).
+/* Page content fades in gradually as you scroll (js/main.js sets each item's
+   fade as the page scrolls; items are sections, or headings and cards). Items
+   start faded; when the page opens, the ones on screen glide into place (the
+   transition below). After that the fade follows the scrolling directly
+   ("is-scroll-linked" turns the transition off). Items only fade in, never out.
    Only when JavaScript runs and the visitor hasn't asked their device to reduce
    motion; printing always shows everything. */
 @media screen and (prefers-reduced-motion: no-preference) {

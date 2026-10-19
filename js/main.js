@@ -40,27 +40,48 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Fade page sections in gradually as they scroll into view: the further a
-// section has come up the screen, the clearer it is (and scrolling back up
-// fades it out again). The look is in css/style.css; without this script, or
-// when the visitor's device is set to reduce motion, everything simply shows
-// normally.
+// Fade page content in gradually as it scrolls into view: the further an item
+// has come up the screen, the clearer it is. Each item only ever fades in:
+// scrolling back up never fades it out again. Items are whole sections, or,
+// in sections that contain cards, the section's heading and each card on its
+// own. The look is in css/style.css; without this script, or when the
+// visitor's device is set to reduce motion, everything simply shows normally.
 document.addEventListener("DOMContentLoaded", function () {
   if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     return;
   }
 
-  var sections = Array.prototype.slice.call(document.querySelectorAll("main section"));
-  var waiting = false;
+  var items = [];
+  Array.prototype.forEach.call(document.querySelectorAll("main section"), function (section) {
+    var cards = section.querySelectorAll(".card");
+    if (cards.length === 0) {
+      items.push(section);
+    } else {
+      Array.prototype.forEach.call(section.children, function (child) {
+        if (/^H[1-6]$/.test(child.tagName)) {
+          items.push(child);
+        }
+      });
+      Array.prototype.forEach.call(cards, function (card) {
+        items.push(card);
+      });
+    }
+  });
 
-  // How far a section has faded in, from 0 (hidden) to 1 (fully shown).
-  // It starts when the section's top enters the bottom of the screen and is
-  // complete when its top reaches 70% of the way down. A section near the end
+  var shown = items.map(function () { return 0; });   // how far each item has faded in so far
+  var waiting = false;
+  var pageOpened = false;        // true once the opening glide has finished
+
+  // How far an item should be faded in right now, from 0 (hidden) to 1 (fully
+  // shown). It starts when the item's top enters the bottom of the screen and
+  // is complete when its top reaches 70% of the way down. An item near the end
   // of the page that can never get that high is complete when the page is
   // scrolled all the way down, so nothing is ever left half-faded.
-  function fadeAmount(section) {
+  function fadeAmount(item, i) {
     var screen = window.innerHeight;
-    var top = section.getBoundingClientRect().top;
+    // Where the item really is, leaving out the small downward shift that is
+    // part of the fade (20px when hidden, 0 when fully shown).
+    var top = item.getBoundingClientRect().top - (1 - shown[i]) * 20;
     var scrollLeft = document.documentElement.scrollHeight - screen - window.scrollY;
     var lowestTop = top - Math.max(0, scrollLeft);   // its top once fully scrolled down
     var start = screen;
@@ -76,10 +97,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function update() {
     waiting = false;
-    sections.forEach(function (section) {
-      var amount = fadeAmount(section);
-      section.style.opacity = amount;
-      section.style.transform = "translateY(" + ((1 - amount) * 20) + "px)";
+    items.forEach(function (item, i) {
+      if (shown[i] === null) {
+        return;                  // finished: fully shown for good
+      }
+      var amount = Math.max(shown[i], fadeAmount(item, i));   // never fade back out
+      shown[i] = amount;
+      if (amount === 1 && pageOpened) {
+        // Fully shown: remove the fade settings so the item goes back to its
+        // normal styles (e.g. cards lifting on hover).
+        item.style.opacity = "";
+        item.style.transform = "";
+        item.classList.remove("reveal", "is-scroll-linked");
+        shown[i] = null;
+      } else {
+        item.style.opacity = amount;
+        item.style.transform = "translateY(" + ((1 - amount) * 20) + "px)";
+      }
     });
   }
 
@@ -91,19 +125,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  sections.forEach(function (section) {
-    section.classList.add("reveal");
+  items.forEach(function (item) {
+    item.classList.add("reveal");
   });
 
-  // When the page opens, let the sections on screen glide into place, then
+  // When the page opens, let the items on screen glide into place, then
   // switch to following the scrolling directly.
   window.requestAnimationFrame(function () {
     window.requestAnimationFrame(function () {
       update();
       window.setTimeout(function () {
-        sections.forEach(function (section) {
-          section.classList.add("is-scroll-linked");
+        pageOpened = true;
+        items.forEach(function (item) {
+          item.classList.add("is-scroll-linked");
         });
+        update();
       }, 650);
     });
   });
