@@ -204,11 +204,14 @@ not public yet.
 ### Reminders
 
 - After **December 15, 2026** the home page banner ("Now running: our first
-  learning program") and the Classes page will be out of date — update them.
+  learning program") and the Classes page will be out of date — update them,
+  including the calendar file `files/inaugural-program.ics` (a new program
+  needs a new calendar file).
 
 ### Before going public
 
-- Custom domain (e.g. `chaimveshalom.org`).
+- Custom domain (e.g. `chaimveshalom.org`). Then update `url`/`baseurl` in
+  `_config.yml` (used by the "Share with a friend" link).
 - Switch publishing to `main` (see above).
 - Final check of every page on phone and computer.
 

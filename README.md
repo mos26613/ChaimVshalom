@@ -60,7 +60,8 @@ description: "About Chaim V'Shalom Women's Learning Center."
 | `contact.html` | Contact details (email, phone, WhatsApp, location) |
 | `privacy.html` | Privacy Policy |
 | `css/style.css` | All the styling. Mobile first: the `@media (min-width: 48rem)` section adjusts for wider screens. |
-| `js/main.js` | The "Menu" button on phones |
+| `js/main.js` | The "Menu" button on phones, and the gentle fade-in of sections |
+| `files/inaugural-program.ics` | Calendar file for the "Add to my calendar" button on the Classes page (8 Tuesdays) |
 | `images/logo.png` | The official round logo, shown centered in the header |
 | `images/logo-emblem.png` | The book emblem, used as the small browser-tab icon |
 
