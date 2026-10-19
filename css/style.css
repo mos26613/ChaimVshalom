@@ -426,18 +426,27 @@ main h1::after {
   font-style: normal;
 }
 
-/* Sections fade up gently as they scroll into view (js/main.js adds the
-   "reveal" and "is-visible" classes). Only when JavaScript runs and the visitor
-   hasn't asked their device to reduce motion; printing always shows everything. */
+/* Sections fade in gradually as you scroll (js/main.js sets each section's
+   fade as the page scrolls). Sections start faded; when the page opens, the
+   ones on screen glide into place (the transition below). After that the fade
+   follows the scrolling directly ("is-scroll-linked" turns the transition off).
+   Only when JavaScript runs and the visitor hasn't asked their device to reduce
+   motion; printing always shows everything. */
 @media screen and (prefers-reduced-motion: no-preference) {
   .js .reveal {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease, transform 0.6s ease;
   }
-  .js .reveal.is-visible {
-    opacity: 1;
-    transform: none;
+  .js .reveal.is-scroll-linked {
+    transition: none;
+  }
+}
+
+@media print {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 

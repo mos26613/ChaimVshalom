@@ -40,44 +40,74 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Fade page sections in gently as they scroll into view. The look is in
-// css/style.css; without this script everything simply shows normally.
+// Fade page sections in gradually as they scroll into view: the further a
+// section has come up the screen, the clearer it is (and scrolling back up
+// fades it out again). The look is in css/style.css; without this script, or
+// when the visitor's device is set to reduce motion, everything simply shows
+// normally.
 document.addEventListener("DOMContentLoaded", function () {
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+
   var sections = Array.prototype.slice.call(document.querySelectorAll("main section"));
   var waiting = false;
 
-  // Show a section once its top is 85% of the way down the screen (so the
-  // visitor actually sees it fade in), plus every section already scrolled
-  // past. At the very bottom of the page, show whatever is left, so nothing
-  // stays hidden even if the visitor jumps straight to the end.
-  function revealUpToScreen() {
-    waiting = false;
-    var atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
-    sections = sections.filter(function (section) {
-      if (atBottom || section.getBoundingClientRect().top < window.innerHeight * 0.85) {
-        section.classList.add("is-visible");
-        return false;            // done with this one
-      }
-      return true;               // still below the screen
-    });
-    if (sections.length === 0) {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+  // How far a section has faded in, from 0 (hidden) to 1 (fully shown).
+  // It starts when the section's top enters the bottom of the screen and is
+  // complete when its top reaches 70% of the way down. A section near the end
+  // of the page that can never get that high is complete when the page is
+  // scrolled all the way down, so nothing is ever left half-faded.
+  function fadeAmount(section) {
+    var screen = window.innerHeight;
+    var top = section.getBoundingClientRect().top;
+    var scrollLeft = document.documentElement.scrollHeight - screen - window.scrollY;
+    var lowestTop = top - Math.max(0, scrollLeft);   // its top once fully scrolled down
+    var start = screen;
+    var end = Math.max(screen * 0.7, lowestTop);
+    if (top <= end || end >= start) {
+      return 1;
     }
+    if (top >= start) {
+      return 0;
+    }
+    return (start - top) / (start - end);
   }
 
-  // Check at most once per screen refresh while scrolling.
+  function update() {
+    waiting = false;
+    sections.forEach(function (section) {
+      var amount = fadeAmount(section);
+      section.style.opacity = amount;
+      section.style.transform = "translateY(" + ((1 - amount) * 20) + "px)";
+    });
+  }
+
+  // Update at most once per screen refresh while scrolling.
   function onScroll() {
     if (!waiting) {
       waiting = true;
-      window.requestAnimationFrame(revealUpToScreen);
+      window.requestAnimationFrame(update);
     }
   }
 
   sections.forEach(function (section) {
     section.classList.add("reveal");
   });
+
+  // When the page opens, let the sections on screen glide into place, then
+  // switch to following the scrolling directly.
+  window.requestAnimationFrame(function () {
+    window.requestAnimationFrame(function () {
+      update();
+      window.setTimeout(function () {
+        sections.forEach(function (section) {
+          section.classList.add("is-scroll-linked");
+        });
+      }, 650);
+    });
+  });
+
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onScroll);
-  revealUpToScreen();
 });
