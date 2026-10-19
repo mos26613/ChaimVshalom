@@ -121,7 +121,8 @@ button:focus-visible {
 }
 
 /* The round logo sits in the middle of the header. On phones the Menu button
-   is placed in the top-right corner, so it doesn't push the logo off-center. */
+   sits in the bottom-right corner, just above the header line, so it doesn't
+   push the logo off-center and the menu box opens right under it. */
 .header-bar {
   position: relative;
   display: flex;
@@ -140,8 +141,8 @@ button:focus-visible {
 
 .header-bar .menu-toggle {
   position: absolute;
-  top: 0;
   right: 0;
+  bottom: 0.75rem;             /* same as the header's bottom padding */
 }
 
 /* "Menu" button — only shown on phones */
