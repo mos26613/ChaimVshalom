@@ -518,6 +518,62 @@ main h1::after {
   margin-bottom: 0.35rem;
 }
 
+/* A small box that pops up above a link to show extra details, e.g. the phone
+   number above "Call us" on computers. The details are always in the page
+   (screen readers read them as part of the link); they are only shown as a
+   pop-up when hovering with a mouse or tabbing to the link with the keyboard. */
+.has-tooltip {
+  position: relative;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 0.6rem);
+  left: 50%;
+  z-index: 10;
+  padding: 0.4rem 0.75rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-gold);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  color: var(--color-heading);
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, 4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* The little pointer under the box */
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -0.4rem;
+  border: 0.4rem solid transparent;
+  border-top-color: var(--color-gold);
+}
+
+@media (hover: hover) {
+  .has-tooltip:hover .tooltip {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.has-tooltip:focus-visible .tooltip {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tooltip {
+    transition: none;
+  }
+}
+
 .dedication {
   text-align: center;
   border-top: 1px solid var(--color-gold);
