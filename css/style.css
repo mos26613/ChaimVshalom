@@ -462,6 +462,7 @@ main h1::after {
    to use the full width. Wider screens switch to three columns (see below). */
 .site-footer {
   position: relative;
+  overflow-x: clip;            /* hidden pop-ups never make the page scroll sideways on narrow phones */
   background: var(--color-lavender);
   padding: 2rem 0 1.5rem;
   font-size: 0.95rem;
