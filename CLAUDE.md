@@ -19,8 +19,11 @@ The maintainer is a computer science student who is new to web development.
 - **Branch:** the live site publishes from
   `claude/nonprofit-website-planning-21uvpw` (GitHub Pages, branch deploy, root
   folder). Commit and push there unless the maintainer says otherwise; work on
-  any other branch does not appear on the site. Live address:
-  https://mos26613.github.io/ChaimVshalom/ (repository: mos26613/ChaimVshalom).
+  any other branch does not appear on the site. Live address: the custom
+  domain **https://chaimvshalom.org/** (set by the `CNAME` file, which the
+  maintainer added; never delete or rename it, or the domain stops working).
+  The old address https://mos26613.github.io/ChaimVshalom/ forwards there.
+  Repository: mos26613/ChaimVshalom.
 - **Pull first.** The maintainer sometimes edits files directly on GitHub, so
   start every task with `git pull` and build on their changes.
 - **One change at a time.** For a list of changes: do one, test it fully, commit

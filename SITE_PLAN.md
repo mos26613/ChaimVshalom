@@ -73,7 +73,7 @@ images/             ← logo, photos
 | Contact form | A free form service (e.g. Formspree or Web3Forms) that emails submissions |
 | Event / trip sign-ups | Start simple: a Google Form linked from each event |
 | Donations | An Israeli donation platform (options in section 6) |
-| Domain name | e.g. `chaimveshalom.org` / `.org.il` — roughly $10–20/year |
+| Domain name | **`chaimvshalom.org`** (connected Oct 20, 2026 via the `CNAME` file) |
 | Email | Free at first; Google Workspace for Nonprofits once registered |
 
 ## 6. Donations — phased
@@ -230,8 +230,11 @@ not public yet.
 
 ### Before going public
 
-- Custom domain (e.g. `chaimveshalom.org`). Then update `url`/`baseurl` in
-  `_config.yml` (used by the "Share with a friend" link).
+- ~~Custom domain~~ **Done (Oct 20, 2026):** the site's address is now
+  `chaimvshalom.org` (spelled without an "e" after the "v"). The maintainer
+  added the `CNAME` file; it must stay in the repository.
+- Still to do for the domain: update `url`/`baseurl` in `_config.yml` (used by
+  the "Share with a friend" link) to `https://chaimvshalom.org` and `""`.
 - Switch publishing to `main` (see above).
 - Final check of every page on phone and computer.
 

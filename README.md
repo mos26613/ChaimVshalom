@@ -62,6 +62,7 @@ description: "About Chaim V'Shalom Women's Learning Center."
 | `css/style.css` | All the styling. Mobile first: the `@media (min-width: 48rem)` section adjusts for wider screens. |
 | `js/main.js` | The "Menu" button on phones, the scroll fade-in, and the footer "Copy" button |
 | `tests/` | Automatic checks run after every change (`bash tests/run_all.sh`); not published |
+| `CNAME` | Connects the custom domain `chaimvshalom.org` to the site. Don't delete or rename it. |
 | `files/inaugural-program.ics` | Calendar file for the "Add to my calendar" button on the Classes page (8 Tuesdays) |
 | `images/logo.png` | The official round logo, shown centered in the header |
 | `images/logo-emblem.png` | The book emblem, used as the small browser-tab icon |
