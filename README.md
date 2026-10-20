@@ -57,10 +57,11 @@ description: "About Chaim V'Shalom Women's Learning Center."
 | `classes.html` | Classes (current program details) |
 | `events.html` | Events & Trips |
 | `support.html` | Support Us (donations — "coming soon" for now) |
-| `contact.html` | Contact details (email, phone, WhatsApp, location) |
+| `contact.html` | Contact details (email, phone, WhatsApp) |
 | `privacy.html` | Privacy Policy |
 | `css/style.css` | All the styling. Mobile first: the `@media (min-width: 48rem)` section adjusts for wider screens. |
-| `js/main.js` | The "Menu" button on phones, and the gentle fade-in of sections |
+| `js/main.js` | The "Menu" button on phones, the scroll fade-in, and the footer "Copy" button |
+| `tests/` | Automatic checks run after every change (`bash tests/run_all.sh`); not published |
 | `files/inaugural-program.ics` | Calendar file for the "Add to my calendar" button on the Classes page (8 Tuesdays) |
 | `images/logo.png` | The official round logo, shown centered in the header |
 | `images/logo-emblem.png` | The book emblem, used as the small browser-tab icon |

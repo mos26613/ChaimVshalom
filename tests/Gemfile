@@ -1,0 +1,4 @@
+# The same Jekyll version GitHub Pages uses, for building the site locally in tests.
+source "https://rubygems.org"
+gem "github-pages", group: :jekyll_plugins
+gem "webrick"

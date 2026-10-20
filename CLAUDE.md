@@ -14,6 +14,30 @@ The maintainer is a computer science student who is new to web development.
 - If a request is unclear or needs a decision (content, design, halacha), ask
   rather than guess.
 
+## How we work (learned in earlier sessions)
+
+- **Branch:** the live site publishes from
+  `claude/nonprofit-website-planning-21uvpw` (GitHub Pages, branch deploy, root
+  folder). Commit and push there unless the maintainer says otherwise; work on
+  any other branch does not appear on the site. Live address:
+  https://mos26613.github.io/ChaimVshalom/ (repository: mos26613/ChaimVshalom).
+- **Pull first.** The maintainer sometimes edits files directly on GitHub, so
+  start every task with `git pull` and build on their changes.
+- **One change at a time.** For a list of changes: do one, test it fully, commit
+  and push it, then start the next. Clear commit messages.
+- **Design ideas get a preview first.** When proposing new looks or features,
+  build them in a scratch copy, send before/after screenshots, and only add the
+  approved ones to the real site. Direct requests ("move the button", "rename
+  X") can be done, tested and pushed, then shown.
+- **Test thoroughly** with `bash tests/run_all.sh` (see `tests/README.md`), and
+  add a focused test for anything new (e.g. tooltips, fade-in, copy button).
+  Check phone (~390px), very narrow phones (320px), tablets and computers.
+- **Show, don't just tell:** send screenshots (and short recordings for motion)
+  of the result, and say what to check on the live site.
+- Browsers cache old files: `css/style.css` and `js/main.js` are loaded with a
+  build-time `?v=` tag in `_layouts/default.html`; keep that for any new
+  stylesheet or script.
+
 ## Content rules (must follow)
 
 - **The name is always all five words: "Chaim V'Shalom Women's Learning Center"**,
@@ -61,7 +85,7 @@ The maintainer is a computer science student who is new to web development.
 
 - Re-read your diff: valid HTML, nothing broken on other pages, no new colors or
   fonts outside the variables, no images of people.
-- If you can build the site (`bundle exec jekyll build`), do so and check the
-  output for errors.
+- Run `bash tests/run_all.sh` (builds the site with GitHub Pages' Jekyll,
+  validates the HTML, and runs all browser checks); everything must pass.
 - In your reply, summarize what changed in plain language and what the
   maintainer should check on the live site.

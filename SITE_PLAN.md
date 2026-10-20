@@ -198,6 +198,18 @@ not public yet.
 
 ### Done
 
+- Site skeleton (7 pages), shared header/footer (Jekyll), pastel design, phone
+  menu as a floating box, official round logo centered in the header.
+- Upgrades 1–7: pastel hero and header line, soft shadows and hover/press
+  effects, icons on cards and class details, leaf flourish under titles, wavy
+  footer, scroll fade-in (gradual, cards individually, fades in only once),
+  Classes page buttons (Add to calendar, Register on WhatsApp, Call us, Share
+  with a friend).
+- Footer: short and symmetric on phones (Email us · Call us · WhatsApp | Pages);
+  on computers, hovering "Call us" shows the number and "Email us" shows the
+  address with a Copy button.
+- Directions: Google Maps share link and Waze coordinates for the venue.
+
 - Batsheva Singer reviewed the site, including her name and phone number on the
   Contact page, and had no objection.
 
