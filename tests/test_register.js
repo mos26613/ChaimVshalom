@@ -1,5 +1,5 @@
 // The floating "Register for classes" button: on every page, inside the screen,
-// never covering the last footer line, and one click reaches the Registration section.
+// never covering the footer links, and one click reaches the Registration section.
 const { chromium } = require('playwright');
 (async () => { const b = await chromium.launch(); let bad = 0;
  const pages = ['index', 'about', 'classes', 'events', 'support', 'contact', 'privacy'];
@@ -17,12 +17,13 @@ const { chromium } = require('playwright');
      if (!r.text.includes('Register for classes') || r.href !== 'classes.html#registration' || !r.fixed || !r.inside || r.overflow > 0)
        fail(`${w}px ${pg}: ${JSON.stringify(r)}`);
    }
-   // At the very bottom of the page, the button must not cover the copyright or dedication.
+   // At the very bottom of the page, the button must not cover the footer links
+   // (covering the copyright line is fine, as the maintainer decided).
    await p.goto('http://localhost:8765/about.html', { waitUntil: 'networkidle' });
    await p.evaluate(() => window.scrollTo(0, document.body.scrollHeight)); await p.waitForTimeout(300);
    const covered = await p.evaluate(() => { const a = document.querySelector('.register-float').getBoundingClientRect();
      // measure the text itself (a Range), not the full-width line it sits on
-     return [...document.querySelectorAll('.copyright, .dedication p, .footer-columns a')].filter(el => { const rg = document.createRange(); rg.selectNodeContents(el); const r = rg.getBoundingClientRect();
+     return [...document.querySelectorAll('.footer-columns a')].filter(el => { const rg = document.createRange(); rg.selectNodeContents(el); const r = rg.getBoundingClientRect();
        return r.left < a.right && r.right > a.left && r.top < a.bottom && r.bottom > a.top; }).map(el => el.textContent.trim()); });
    if (covered.length) fail(`${w}px: button covers ${covered.join(', ')}`);
    // One click from the home page shows the Registration section.

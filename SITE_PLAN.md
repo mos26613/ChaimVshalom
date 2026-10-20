@@ -211,8 +211,8 @@ not public yet.
 - Directions: Google Maps share link and Waze coordinates for the venue.
 - Floating "✍️ Register for classes" button in the bottom-right corner of every
   page; one click goes to the Registration section of the Classes page
-  (`classes.html#registration`). The footer has extra space at the bottom so the
-  button never covers its last line.
+  (`classes.html#registration`). It may cover the copyright line at the very
+  bottom of a page; the maintainer decided that's fine (no extra footer space).
 
 - Batsheva Singer reviewed the site and had no objection. Her name was later
   removed from the Contact page at the maintainer's request (the phone number

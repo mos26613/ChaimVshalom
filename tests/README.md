@@ -14,7 +14,7 @@ bash tests/run_all.sh
 | `test_fade.js` | The scroll fade-in: gradual, never fades back out, nothing left hidden at the bottom of any page; reduced motion, no JavaScript and printing show everything |
 | `test_copy.js` | Footer "Email us" pop-up and Copy button (clipboard, "Copied!", keyboard, fallback), "Call us" tooltip |
 | `test_footer.js` | Footer Contact/Pages columns are symmetric and nothing overflows |
-| `test_register.js` | The floating "Register for classes" button: on every page, on screen, never covers the footer's last lines, one click shows the Registration section, keyboard, hidden when printing |
+| `test_register.js` | The floating "Register for classes" button: on every page, on screen, never covers the footer links, one click shows the Registration section, keyboard, hidden when printing |
 | `screenshots.js` | Full-page screenshots of Home, Classes and Contact at phone and computer size |
 
 Requirements: Ruby with Bundler, Node.js with Playwright and a Chromium browser,

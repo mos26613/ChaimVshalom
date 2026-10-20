@@ -743,12 +743,6 @@ html:not(.js) .copy-button {
   scroll-margin-top: 2rem;
 }
 
-/* Extra space at the bottom of the footer, so the button never covers the
-   last line */
-.site-footer {
-  padding-bottom: 5rem;
-}
-
 @media print {
   .register-float { display: none; }
 }
