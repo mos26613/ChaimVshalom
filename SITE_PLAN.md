@@ -171,6 +171,19 @@ tax-deductible until then.
 The maintainer approves every change before it is considered done. The site is
 not public yet.
 
+### To do (planned, not started; wait for the maintainer's go-ahead)
+
+The maintainer will say when to start each item. Design items get a preview
+first (see `CLAUDE.md`).
+
+1. Fill up the header a bit (it feels a little empty).
+2. On large screens, make the header's page links sticky (they stay at the
+   top while scrolling).
+3. When hovering over a page link in the header, underline it in pink.
+4. Fill up the background of the pages a bit more.
+5. Fill in the rest of the texts that still need writing (the grey
+   placeholders). Real content must come from the organization; never invent it.
+
 ### On hold (don't start without the maintainer's go-ahead)
 
 - **`@claude` from GitHub:** the workflow file and `CLAUDE.md` exist, but the
