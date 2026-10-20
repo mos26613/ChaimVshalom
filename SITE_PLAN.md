@@ -210,8 +210,9 @@ not public yet.
   address with a Copy button.
 - Directions: Google Maps share link and Waze coordinates for the venue.
 
-- Batsheva Singer reviewed the site, including her name and phone number on the
-  Contact page, and had no objection.
+- Batsheva Singer reviewed the site and had no objection. Her name was later
+  removed from the Contact page at the maintainer's request (the phone number
+  stays). Her name still appears on the Classes page.
 
 ### Reminders
 
