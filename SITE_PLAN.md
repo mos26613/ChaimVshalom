@@ -212,7 +212,8 @@ not public yet.
 
 - Batsheva Singer reviewed the site and had no objection. Her name was later
   removed from the Contact page at the maintainer's request (the phone number
-  stays). Her name still appears on the Classes page.
+  stays). The Classes page no longer names her either; its Registration text
+  now simply invites questions by phone.
 
 ### Reminders
 
