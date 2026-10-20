@@ -34,6 +34,18 @@ const { chromium } = require('playwright');
    if (!seen) fail(`${w}px: click did not show the Registration section`);
    console.log(String(w).padStart(5), 'px: checked');
    await p.close(); }
+ // The "Sign up here" button on the Classes page opens the Google Form in a new tab.
+ for (const w of [320, 390, 1280]) {
+   const p = await b.newPage({ viewport: { width: w, height: 800 } });
+   await p.goto('http://localhost:8765/classes.html', { waitUntil: 'networkidle' });
+   const r = await p.evaluate(() => { const a = document.querySelector('#registration .button--signup'); if (!a) return null;
+     const box = a.getBoundingClientRect();
+     return { text: a.textContent.trim(), href: a.href, target: a.target, rel: a.rel,
+       inside: box.left >= 0 && box.right <= innerWidth, overflow: document.documentElement.scrollWidth - innerWidth }; });
+   if (!r || r.text !== '📝 Sign up here' || r.href !== 'https://forms.gle/sbRKyN59JcLqJEvbA' || r.target !== '_blank'
+       || !r.rel.includes('noopener') || !r.inside || r.overflow > 0) fail(`${w}px sign-up button: ${JSON.stringify(r)}`);
+   else console.log(String(w).padStart(5), 'px: Sign up button OK');
+   await p.close(); }
  // Keyboard: Tab reaches the button; printing hides it.
  const p = await b.newPage({ viewport: { width: 390, height: 844 } });
  await p.goto('http://localhost:8765/index.html', { waitUntil: 'networkidle' });
