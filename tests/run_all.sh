@@ -27,6 +27,7 @@ node "$REPO/tests/test_menu.js" "$WORK/shots"                 # floating phone m
 node "$REPO/tests/test_fade.js"                               # scroll fade-in
 node "$REPO/tests/test_copy.js" "$WORK/shots"                 # footer Email us pop-up + Copy, Call us tooltip
 node "$REPO/tests/test_footer.js"                             # footer columns symmetric, no overflow
+node "$REPO/tests/test_register.js" "$WORK/shots"             # floating "Register for classes" button
 node "$REPO/tests/screenshots.js" 8765 "$WORK/shots"          # full-page screenshots (phone + computer)
 kill $SERVER
 echo "Screenshots are in $WORK/shots"

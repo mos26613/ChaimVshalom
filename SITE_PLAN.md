@@ -209,6 +209,10 @@ not public yet.
   on computers, hovering "Call us" shows the number and "Email us" shows the
   address with a Copy button.
 - Directions: Google Maps share link and Waze coordinates for the venue.
+- Floating "✍️ Register for classes" button in the bottom-right corner of every
+  page; one click goes to the Registration section of the Classes page
+  (`classes.html#registration`). The footer has extra space at the bottom so the
+  button never covers its last line.
 
 - Batsheva Singer reviewed the site and had no objection. Her name was later
   removed from the Contact page at the maintainer's request (the phone number
@@ -221,6 +225,8 @@ not public yet.
   learning program") and the Classes page will be out of date — update them,
   including the calendar file `files/inaugural-program.ics` (a new program
   needs a new calendar file).
+  Also update or remove the floating "Register for classes" button
+  (`_layouts/default.html`) if there is no program open for registration.
 
 ### Before going public
 
