@@ -46,6 +46,26 @@ const { chromium } = require('playwright');
        || !r.rel.includes('noopener') || !r.inside || r.overflow > 0) fail(`${w}px sign-up button: ${JSON.stringify(r)}`);
    else console.log(String(w).padStart(5), 'px: Sign up button OK');
    await p.close(); }
+ // Classes page layout: Sign up, then the leaf divider, then "Have a question?", and
+ // "Share with a friend" in its own narrow, centered box further down.
+ for (const w of [320, 390, 768, 1280]) {
+   const p = await b.newPage({ viewport: { width: w, height: 800 } });
+   await p.goto('http://localhost:8765/classes.html', { waitUntil: 'networkidle' });
+   const r = await p.evaluate(() => { const reg = document.getElementById('registration');
+     const kids = [...reg.children].map(el => el.matches('hr.leaf-divider') ? 'divider' : el.querySelector('.button--signup') ? 'signup'
+       : /Have a question/.test(el.textContent) ? 'question' : '');
+     const order = kids.filter(Boolean).join(' > ');
+     const box = document.querySelector('.share-box'), bb = box && box.getBoundingClientRect(), hr = reg.querySelector('hr.leaf-divider');
+     return { order, shareInReg: !!reg.querySelector('a[href*="wa.me/?text"]'), shareInBox: !!(box && box.querySelector('a[href*="wa.me/?text"]')),
+       boxAfter: !!box && reg.compareDocumentPosition(box) === Node.DOCUMENT_POSITION_FOLLOWING,
+       boxW: bb && Math.round(bb.width), centered: bb && Math.abs((bb.left + bb.right) / 2 - innerWidth / 2) <= 1,
+       divider: hr && hr.getBoundingClientRect().height > 0 && getComputedStyle(hr).backgroundImage.includes('svg'),
+       overflow: document.documentElement.scrollWidth - innerWidth }; });
+   const okW = r.boxW <= 30 * 16 + 1;
+   if (r.order !== 'signup > divider > question' || r.shareInReg || !r.shareInBox || !r.boxAfter || !okW || !r.centered || !r.divider || r.overflow > 0)
+     fail(`${w}px Classes layout: ${JSON.stringify(r)}`);
+   else console.log(String(w).padStart(5), `px: layout OK (share box ${r.boxW}px wide)`);
+   await p.close(); }
  // Keyboard: Tab reaches the button; printing hides it.
  const p = await b.newPage({ viewport: { width: 390, height: 844 } });
  await p.goto('http://localhost:8765/index.html', { waitUntil: 'networkidle' });

@@ -242,8 +242,10 @@ main {
 /* A small three-leaf flourish (like the leaves in the logo) under each page
    title, between two thin gold lines. It is a tiny drawing (SVG) written right
    here; its colors match the logo's leaves (they can't use the variables above,
-   because the drawing is a separate image). Centered on the home page. */
-main h1::after {
+   because the drawing is a separate image). Centered on the home page.
+   The same flourish is used as a divider line (.leaf-divider) inside pages. */
+main h1::after,
+.leaf-divider {
   content: "";
   display: block;
   width: 11rem;
@@ -256,6 +258,13 @@ main h1::after {
   margin-left: auto;
   margin-right: auto;
   background-position: center;
+}
+
+/* Divider between parts of a section, e.g. "Sign up" and "Have a question?"
+   on the Classes page. Written as <hr class="leaf-divider">. */
+.leaf-divider {
+  border: 0;
+  margin: 1.75rem 0 1.25rem;
 }
 
 .section {
@@ -272,6 +281,18 @@ main h1::after {
 
 .band--lavender { background: var(--color-lavender); }
 .band--sage { background: var(--color-sage); }
+
+/* The small, centered "Share with a friend" box on the Classes page. It stays
+   narrow on large screens instead of stretching across the whole page. */
+.share-box {
+  max-width: 30rem;
+  margin: 3.5rem auto 2.5rem;
+  text-align: center;
+}
+
+.share-box h2 { font-size: 1.25rem; }
+
+.share-box .actions { justify-content: center; }
 
 /* The home page welcome, on a soft watercolor-style pastel background
    (like the wash in the logo) */

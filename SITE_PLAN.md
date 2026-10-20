@@ -209,6 +209,10 @@ not public yet.
   on computers, hovering "Call us" shows the number and "Email us" shows the
   address with a Copy button.
 - Directions: Google Maps share link and Waze coordinates for the venue.
+- Classes page Registration: "📝 Sign up here" button to the Google Form
+  (https://forms.gle/sbRKyN59JcLqJEvbA), a leaf divider, then "Have a
+  question?" with WhatsApp us / Call us; "Share with a friend" sits lower in a
+  small centered sage box ("Know someone who'd enjoy this?").
 - Floating "✍️ Register for classes" button in the bottom-right corner of every
   page; one click goes to the Registration section of the Classes page
   (`classes.html#registration`). It may cover the copyright line at the very
