@@ -4,10 +4,9 @@
 title: "Chaim V'Shalom Women's Learning Center"
 
 # The site's public web address, used for the "Share with a friend" link.
-# When the site gets its own domain (e.g. https://chaimveshalom.org), change
-# url to that address and set baseurl to "".
-url: "https://mos26613.github.io"
-baseurl: "/ChaimVshalom"
+# The site has its own domain (see the CNAME file), so baseurl is empty.
+url: "https://chaimvshalom.org"
+baseurl: ""
 
 # Files that are part of the project but should not be published on the website.
 exclude:

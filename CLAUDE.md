@@ -75,8 +75,8 @@ The maintainer is a computer science student who is new to web development.
   - `_data/navigation.yml` — the menu items
   - Each page (`index.html`, `about.html`, …) has front matter (`layout`,
     `title`, `description`) followed by only its own content.
-- Links are relative (`about.html`, `css/style.css`) because the site is served
-  from a sub-path (`/ChaimVshalom/`). Keep them relative.
+- Links are relative (`about.html`, `css/style.css`). Keep them relative, so
+  the site works at both its own domain and the old GitHub address.
 - **Mobile first:** base CSS is for phones; `@media (min-width: 48rem)` adapts
   for larger screens. Every change must work at phone width (~390px) with no
   sideways scrolling.

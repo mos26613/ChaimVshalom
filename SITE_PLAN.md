@@ -233,8 +233,8 @@ not public yet.
 - ~~Custom domain~~ **Done (Oct 20, 2026):** the site's address is now
   `chaimvshalom.org` (spelled without an "e" after the "v"). The maintainer
   added the `CNAME` file; it must stay in the repository.
-- Still to do for the domain: update `url`/`baseurl` in `_config.yml` (used by
-  the "Share with a friend" link) to `https://chaimvshalom.org` and `""`.
+- `_config.yml` now uses `url: https://chaimvshalom.org` and an empty
+  `baseurl` (used by the "Share with a friend" link).
 - Switch publishing to `main` (see above).
 - Final check of every page on phone and computer.
 
