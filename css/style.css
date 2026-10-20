@@ -285,12 +285,13 @@ main h1::after,
 /* The small, centered "Share with a friend" box on the Classes page. It stays
    narrow on large screens instead of stretching across the whole page. */
 .share-box {
-  max-width: 30rem;
+  max-width: 24rem;
   margin: 3.5rem auto 2.5rem;
+  padding: 1.1rem 1rem;
   text-align: center;
 }
 
-.share-box h2 { font-size: 1.25rem; }
+.share-box h2 { font-size: 1.15rem; margin-bottom: 0.25rem; }
 
 .share-box .actions { justify-content: center; }
 

@@ -210,7 +210,7 @@ not public yet.
   address with a Copy button.
 - Directions: Google Maps share link and Waze coordinates for the venue.
 - Classes page Registration: "📝 Sign up here" button to the Google Form
-  (https://forms.gle/sbRKyN59JcLqJEvbA), a leaf divider, then "Have a
+  (https://forms.gle/sbRKyN59JcLqJEvbA; the maintainer confirmed it works), a leaf divider, then "Have a
   question?" with WhatsApp us / Call us; "Share with a friend" sits lower in a
   small centered sage box ("Know someone who'd enjoy this?").
 - Floating "✍️ Register for classes" button in the bottom-right corner of every

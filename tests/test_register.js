@@ -61,7 +61,7 @@ const { chromium } = require('playwright');
        boxW: bb && Math.round(bb.width), centered: bb && Math.abs((bb.left + bb.right) / 2 - innerWidth / 2) <= 1,
        divider: hr && hr.getBoundingClientRect().height > 0 && getComputedStyle(hr).backgroundImage.includes('svg'),
        overflow: document.documentElement.scrollWidth - innerWidth }; });
-   const okW = r.boxW <= 30 * 16 + 1;
+   const okW = r.boxW <= 24 * 16 + 1;
    if (r.order !== 'signup > divider > question' || r.shareInReg || !r.shareInBox || !r.boxAfter || !okW || !r.centered || !r.divider || r.overflow > 0)
      fail(`${w}px Classes layout: ${JSON.stringify(r)}`);
    else console.log(String(w).padStart(5), `px: layout OK (share box ${r.boxW}px wide)`);
