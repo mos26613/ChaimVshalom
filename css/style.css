@@ -351,6 +351,12 @@ main h1::after,
   box-shadow: 0 0 0 4px var(--color-blush), 0 0 0 6px var(--color-lavender);
 }
 
+/* More room between the "Registration" heading and the Sign up button, so it
+   matches the space around the leaf divider below it */
+.actions.actions--signup {
+  margin-top: 2.25rem;
+}
+
 /* A gentle "press" when a button is tapped or clicked */
 .button:active {
   transform: scale(0.97);
