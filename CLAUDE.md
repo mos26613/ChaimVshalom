@@ -90,7 +90,7 @@ The maintainer is a computer science student who is new to web development.
     `{{ site.data.contact.email }}` etc. instead of typing them out
   - Each page (`index.html`, `about.html`, …) has front matter (`layout`,
     `title`, `description`) followed by only its own content.
-- Drawings (title flourish, background leaves, footer wave) are SVG files in
+- Drawings (title flourish, leaf sprig, background leaves, footer wave) are SVG files in
   `images/`, referenced from the stylesheet. Never put `--` inside an SVG
   comment: it makes the file invalid and the drawing silently disappears
   (`run_all.sh` checks this).

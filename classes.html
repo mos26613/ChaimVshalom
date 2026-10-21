@@ -46,6 +46,9 @@ description: "Torah classes for women at Chaim V'Shalom Women's Learning Center 
         </div>
       </section>
 
+      <!-- Registration and the share box: side by side (with a vertical leaf
+           divider) on larger screens, one under the other on phones -->
+      <div class="registration-row">
       <section class="section" id="registration">
         <h2>Registration</h2>
         <p class="actions actions--signup">
@@ -59,9 +62,12 @@ description: "Torah classes for women at Chaim V'Shalom Women's Learning Center 
         </p>
       </section>
 
-      <section class="section band band--sage share-box">
+      <div class="divider-vertical" aria-hidden="true"></div>
+
+      <section class="section band share-box">
         <h2>Know someone who'd enjoy this?</h2>
         <p class="actions">
           <a class="button button--soft" href="https://wa.me/?text={{ "Join me at the Chaim V'Shalom Women's Learning Center program: " | append: site.url | append: site.baseurl | append: "/classes.html" | url_encode | replace: "+", "%20" }}" target="_blank" rel="noopener"><span aria-hidden="true">💌</span> Share with a friend</a>
         </p>
       </section>
+      </div>

@@ -24,6 +24,7 @@
   --color-lavender: #e7e3f0;
   --color-sage: #dde7e1;
   --color-gold: #f4d3ad;
+  --color-gold-line: #e5c08f;  /* the thin gold lines of the leaf dividers (same as in images/flourish.svg) */
 
   --font-heading: "Playfair Display", Georgia, "Times New Roman", serif;
   --font-body: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
@@ -389,14 +390,23 @@ main h1::after,
   margin: 3.5rem auto 2.5rem;
   padding: 1.1rem 1rem;
   text-align: center;
+  background: color-mix(in srgb, var(--color-gold) 55%, var(--color-surface));   /* soft peach */
+}
+
+/* A vertical leaf divider: a thin gold line above and below the three-leaf
+   flower, like the leaf divider turned upright. Used on the Classes page
+   between Registration and the share box, on larger screens only (on phones
+   the share box is underneath, so it is hidden). */
+.divider-vertical {
+  display: none;
 }
 
 .share-box h2 { font-size: 1.15rem; margin-bottom: 0.25rem; }
 
 .share-box .actions { justify-content: center; }
 
-/* On the sage-green box, a white button with a thin gold border (like the
-   cards) looks softer than the pink one */
+/* On the peach box, a white button with a thin gold border (like the cards)
+   looks softer than a pink one */
 .share-box .button--soft {
   background: var(--color-surface);
   border-color: var(--color-gold);
@@ -1053,5 +1063,32 @@ html:not(.js) .copy-button {
 
   .footer-columns > :first-child {
     grid-column: auto;
+  }
+
+  /* Classes page: the share box sits to the right of the Registration
+     section, in the space that was empty there, with a vertical leaf
+     divider between them */
+  .registration-row {
+    display: grid;
+    grid-template-columns: 1fr auto minmax(15rem, 22rem);
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .divider-vertical {
+    display: block;
+    align-self: stretch;
+    width: 1.5rem;
+    margin: 0.5rem 0 3rem;      /* about as tall as the Registration section */
+    background:
+      url("../images/leaf-sprig.svg") center / 1.5rem auto no-repeat,
+      linear-gradient(var(--divider-line), var(--divider-line)) top / 2px calc(50% - 1.6rem) no-repeat,
+      linear-gradient(var(--divider-line), var(--divider-line)) bottom / 2px calc(50% - 1.6rem) no-repeat;
+    /* the gold line, softened to look like the lines of the horizontal flourish */
+    --divider-line: color-mix(in srgb, var(--color-gold-line) 55%, transparent);
+  }
+
+  .registration-row .share-box {
+    margin: 0 0 2.5rem;
   }
 }

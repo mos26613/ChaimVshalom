@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="72 0 32 24">
+  <!-- The three-leaf flower on its own (the same leaves as in flourish.svg),
+       used in the middle of the vertical divider on the Classes page
+       (css/style.css: ".divider-vertical"). -->
+  <path d="M88 2 C94 8 94 16 88 22 C82 16 82 8 88 2Z" fill="#e9b5af"/>
+  <path d="M86 21 C80 20 74 15 72 9 C79 10 85 15 86 21Z" fill="#bac9c1"/>
+  <path d="M90 21 C96 20 102 15 104 9 C97 10 91 15 90 21Z" fill="#c4bad3"/>
+</svg>

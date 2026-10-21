@@ -227,8 +227,10 @@ first (see `CLAUDE.md`).
   "reduce motion".
 - Classes page Registration: "📝 Sign up here" button to the Google Form
   (https://forms.gle/sbRKyN59JcLqJEvbA; the maintainer confirmed it works), a leaf divider, then "Have a
-  question?" with WhatsApp us / Call us; "Share with a friend" sits lower in a
-  small centered sage box ("Know someone who'd enjoy this?").
+  question?" with WhatsApp us / Call us. "Share with a friend" is in a small
+  peach box ("Know someone who'd enjoy this?"): on tablets and computers to
+  the right of Registration, with a vertical leaf divider between them; on
+  phones underneath.
 - Floating "✍️ Register for classes" button in the bottom-right corner of every
   page; one click goes to the Registration section of the Classes page
   (`classes.html#registration`). It may cover the copyright line at the very

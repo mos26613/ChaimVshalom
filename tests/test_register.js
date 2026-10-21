@@ -46,8 +46,9 @@ const { chromium } = require('playwright');
        || !r.rel.includes('noopener') || !r.inside || r.overflow > 0) fail(`${w}px sign-up button: ${JSON.stringify(r)}`);
    else console.log(String(w).padStart(5), 'px: Sign up button OK');
    await p.close(); }
- // Classes page layout: Sign up, then the leaf divider, then "Have a question?", and
- // "Share with a friend" in its own narrow, centered box further down.
+ // Classes page layout: Sign up, then the leaf divider, then "Have a question?". The peach
+ // "Share with a friend" box: on larger screens to the right of Registration with a vertical
+ // leaf divider between them; on phones underneath, centered, without the vertical divider.
  for (const w of [320, 390, 768, 1280]) {
    const p = await b.newPage({ viewport: { width: w, height: 800 } });
    await p.goto('http://localhost:8765/classes.html', { waitUntil: 'networkidle' });
@@ -55,17 +56,24 @@ const { chromium } = require('playwright');
      const kids = [...reg.children].map(el => el.matches('hr.leaf-divider') ? 'divider' : el.querySelector('.button--signup') ? 'signup'
        : /Have a question/.test(el.textContent) ? 'question' : '');
      const order = kids.filter(Boolean).join(' > ');
-     const box = document.querySelector('.share-box'), bb = box && box.getBoundingClientRect(), hr = reg.querySelector('hr.leaf-divider');
+     const box = document.querySelector('.share-box'), bb = box && box.getBoundingClientRect(), rr = reg.getBoundingClientRect(), hr = reg.querySelector('hr.leaf-divider');
+     const v = document.querySelector('.divider-vertical'), vb = v && v.getBoundingClientRect(), vs = v && getComputedStyle(v);
      return { order, shareInReg: !!reg.querySelector('a[href*="wa.me/?text"]'), shareInBox: !!(box && box.querySelector('a[href*="wa.me/?text"]')),
        boxAfter: !!box && reg.compareDocumentPosition(box) === Node.DOCUMENT_POSITION_FOLLOWING,
        boxW: bb && Math.round(bb.width), centered: bb && Math.abs((bb.left + bb.right) / 2 - innerWidth / 2) <= 1,
+       besideReg: !!bb && bb.left > rr.right && Math.abs((bb.top + bb.bottom) / 2 - (rr.top + rr.bottom) / 2) < rr.height / 2,
+       belowReg: !!bb && bb.top >= rr.bottom,
+       vertical: !!v && vs.display !== 'none' && vb.height > 100 && vb.left >= rr.right && vb.right <= bb.left && vs.backgroundImage.includes('leaf-sprig.svg'),
+       verticalHidden: !v || vs.display === 'none',
+       peach: !!box && !['rgb(221, 231, 225)', 'rgb(231, 227, 240)', 'rgb(250, 212, 210)'].includes(getComputedStyle(box).backgroundColor),
        divider: hr && hr.getBoundingClientRect().height > 0 && getComputedStyle(hr).backgroundImage.includes('svg'),
        shareWhite: !!box && getComputedStyle(box.querySelector('.button')).backgroundColor === 'rgb(255, 255, 255)',
        overflow: document.documentElement.scrollWidth - innerWidth }; });
-   const okW = r.boxW <= 24 * 16 + 1;
-   if (r.order !== 'signup > divider > question' || r.shareInReg || !r.shareInBox || !r.boxAfter || !okW || !r.centered || !r.divider || !r.shareWhite || r.overflow > 0)
+   const wide = w >= 768;
+   const placed = wide ? r.besideReg && r.vertical : r.belowReg && r.centered && r.verticalHidden && r.boxW <= 24 * 16 + 1;
+   if (r.order !== 'signup > divider > question' || r.shareInReg || !r.shareInBox || !r.boxAfter || !placed || !r.peach || !r.divider || !r.shareWhite || r.overflow > 0)
      fail(`${w}px Classes layout: ${JSON.stringify(r)}`);
-   else console.log(String(w).padStart(5), `px: layout OK (share box ${r.boxW}px wide)`);
+   else console.log(String(w).padStart(5), `px: layout OK (share box ${wide ? 'beside Registration, vertical divider between' : 'underneath, centered'})`);
    await p.close(); }
  // Keyboard: Tab reaches the button; printing hides it.
  const p = await b.newPage({ viewport: { width: 390, height: 844 } });
