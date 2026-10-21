@@ -203,9 +203,9 @@ first (see `CLAUDE.md`).
 
 ### Waiting on the maintainer / organization
 
-- Confirm the Hebrew spelling of the dedication names in the footer. (The
-  About page text from the maintainer writes ישעי׳ with a Hebrew geresh ׳;
-  the footer has ישעי' with a plain apostrophe.)
+- Confirm the Hebrew spelling of the dedication names in the footer. (Decided
+  Oct 21, 2026: ישעי' is written with a plain apostrophe ', not a geresh ׳,
+  in the footer and on the About page.)
 - Real text for the placeholders (grey italics) that are still left.
 - Nice to have: a **larger version of the logo emblem** (at least 1024 px wide,
   or SVG), ideally with a transparent background. The drawing in the current
