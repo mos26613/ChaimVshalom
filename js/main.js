@@ -1,11 +1,16 @@
-// Chaim V'Shalom Women's Learning Center — small site scripts:
+// Chaim V'Shalom Women's Learning Center — small site scripts.
+// Each part below starts with a ---------- title:
+// 0. Before the page is drawn: tell the CSS that JavaScript runs, and decide
+//    whether to show the Home page logo intro.
 // 1. The "Menu" button on phones, which opens the menu as a small floating box
 //    on top of the page.
 // 2. A gentle fade-in for page sections as they scroll into view.
 // 3. "Copy" buttons (e.g. copying the email address in the footer).
-// 4. On large screens, the row of page links stays at the top while scrolling;
-//    on phones, the "Menu" button stays in the top-right corner.
-// 5. The Home page logo intro, the first time the Home page is opened in a tab.
+// 4. On large screens, the row of page links stays at the top while scrolling.
+// 5. On phones, the "Menu" button stays in the top-right corner while scrolling.
+// 6. The Home page logo intro: the big logo glides into the header.
+
+// ---------- 0. Before the page is drawn ----------
 
 // Tell the CSS that JavaScript is running, so the phone menu can start closed.
 document.documentElement.classList.add("js");
@@ -30,6 +35,7 @@ document.documentElement.classList.add("js");
   }
 })();
 
+// ---------- 1. The Menu button on phones ----------
 document.addEventListener("DOMContentLoaded", function () {
   var button = document.querySelector(".menu-toggle");
   var nav = document.getElementById("site-nav");
@@ -64,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// ---------- 2. Scroll fade-in ----------
 // Fade page content in gradually as it scrolls into view: the further an item
 // has come up the screen, the clearer it is. Each item only ever fades in:
 // scrolling back up never fades it out again. Items are whole sections, or,
@@ -172,6 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("resize", onScroll);
 });
 
+// ---------- 3. Copy buttons ----------
 // "Copy" buttons: copy the text in the button's data-copy attribute, then show
 // "Copied!" with a check mark. It stays "Copied!" (and the button does nothing
 // more) until the page is loaded again. If the browser doesn't allow copying,
@@ -257,6 +265,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// ---------- 4. Page links stay at the top (large screens) ----------
 // On large screens the header is "sticky", but moved up by the height of
 // everything above the page links (בס״ד and the logo), so only the row of
 // links (and the pastel line under it) stays at the top while scrolling. The
@@ -278,6 +287,7 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("load", measure);   // after the logo and fonts have loaded
 });
 
+// ---------- 5. Menu button stays in the corner (phones) ----------
 // On phones, the "Menu" button stays in the top-right corner while scrolling.
 // It starts in its usual place next to the logo; just as it would scroll off
 // the top of the screen, it is pinned to the corner (the "menu-floating"
@@ -316,7 +326,8 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("resize", onScroll);
 });
 
-// The Home page intro (see the top of this file): waits for the first scroll,
+// ---------- 6. Home page logo intro ----------
+// The Home page intro (see part 0 at the top of this file): waits for the first scroll,
 // tap or key press, then slides the big logo onto the header logo and fades the
 // intro away. The page itself doesn't scroll until the logo has landed.
 document.addEventListener("DOMContentLoaded", function () {
