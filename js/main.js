@@ -173,8 +173,9 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // "Copy" buttons: copy the text in the button's data-copy attribute, then show
-// "Copied!" with a check mark for a moment. If the browser doesn't allow
-// copying, highlight the text so the visitor can copy it themselves.
+// "Copied!" with a check mark. It stays "Copied!" (and the button does nothing
+// more) until the page is loaded again. If the browser doesn't allow copying,
+// highlight the text so it can be copied by hand, and allow another try.
 document.addEventListener("DOMContentLoaded", function () {
   function copyText(text) {
     if (navigator.clipboard && window.isSecureContext) {
@@ -219,6 +220,11 @@ document.addEventListener("DOMContentLoaded", function () {
         status.textContent = statusText;
       }
       window.clearTimeout(timer);
+      if (copied) {
+        // Copied: stay like this until the page is loaded again
+        button.setAttribute("aria-disabled", "true");
+        return;
+      }
       timer = window.setTimeout(function () {
         icon.textContent = "📋";
         label.textContent = "Copy";
@@ -230,6 +236,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     button.addEventListener("click", function () {
+      if (button.classList.contains("is-copied")) {
+        return;                    // already copied on this page
+      }
       var text = button.getAttribute("data-copy");
       copyText(text).then(function () {
         show("✅", "Copied!", "Email address copied", true);

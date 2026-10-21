@@ -20,8 +20,18 @@ const { chromium } = require('playwright');
    if (clip !== 'cvswomenslc@gmail.com') fail(w + ': clipboard has ' + JSON.stringify(clip));
    if (s.label !== 'Copied!' || s.icon !== '✅' || s.status !== 'Email address copied') fail(w + ': no Copied! feedback ' + JSON.stringify(s));
    if (w === 1280) { const f = await p.locator('.site-footer').boundingBox(); await p.screenshot({ path: process.argv[2] + '/copied.png', clip: { x: 300, y: f.y - 30, width: 700, height: 230 } }); }
-   await p.waitForTimeout(2200); s = await pop(p); if (s.label !== 'Copy' || s.icon !== '📋' || s.status !== '') fail(w + ': did not reset after 2 seconds');
-   console.log(w + 'px: hover, move into box, copy (clipboard = ' + clip + '), Copied! feedback and reset all OK');
+   // It stays "Copied!" and a second click copies nothing, until the page is loaded again
+   await p.waitForTimeout(2500); s = await pop(p);
+   if (s.label !== 'Copied!' || s.icon !== '✅') fail(w + ': "Copied!" did not stay ' + JSON.stringify(s));
+   if ((await p.getAttribute('.copy-button', 'aria-disabled')) !== 'true') fail(w + ': button not marked as done');
+   await p.evaluate(() => navigator.clipboard.writeText('something else'));
+   await p.mouse.down(); await p.mouse.up(); await p.waitForTimeout(300);
+   if ((await p.evaluate(() => navigator.clipboard.readText())) !== 'something else') fail(w + ': second click copied again');
+   const cursor = await p.evaluate(() => getComputedStyle(document.querySelector('.copy-button')).cursor);
+   if (cursor !== 'default') fail(w + ': button still looks clickable after copying (' + cursor + ')');
+   await p.reload({ waitUntil: 'networkidle' }); s = await pop(p);
+   if (s.label !== 'Copy' || s.icon !== '📋' || s.status !== '') fail(w + ': not back to "Copy" after reload ' + JSON.stringify(s));
+   console.log(w + 'px: hover, move into box, copy (clipboard = ' + clip + '), "Copied!" stays, no second copy, reset on reload: OK');
    await ctx.close(); }
  // 2. keyboard
  { const ctx = await b.newContext({ viewport: { width: 1280, height: 800 } }); await ctx.grantPermissions(['clipboard-read', 'clipboard-write']);
@@ -41,6 +51,7 @@ const { chromium } = require('playwright');
    await p.locator('.has-popover > a').hover(); await p.waitForTimeout(300); await p.locator('.copy-button').click(); await p.waitForTimeout(300);
    const s = await pop(p); const sel = await p.evaluate(() => String(window.getSelection()));
    if (s.label !== 'Press Ctrl+C' || sel !== 'cvswomenslc@gmail.com') fail('blocked copy: no fallback ' + JSON.stringify([s.label, sel])); else console.log('copy blocked: shows "Press Ctrl+C" and highlights the address');
+   await p.waitForTimeout(2200); if ((await pop(p)).label !== 'Copy') fail('blocked copy: button did not come back to "Copy" to try again');
    await p.close(); }
  // 4. phone and no-JS
  { const ctx = await b.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true }); const p = await ctx.newPage();

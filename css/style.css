@@ -780,10 +780,13 @@ main h1::after,
   background: var(--color-rose);
 }
 
-/* After copying: a soft green "Copied!" */
-.copy-button.is-copied {
+/* After copying: a soft green "Copied!", which stays until the page is
+   loaded again and no longer reacts to the mouse */
+.copy-button.is-copied,
+.copy-button.is-copied:hover {
   background: var(--color-sage);
   border-color: var(--color-sage);
+  cursor: default;
 }
 
 /* Without JavaScript the Copy button can't work, so hide it */

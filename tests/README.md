@@ -12,7 +12,7 @@ bash tests/run_all.sh
 | `test_pages.js` | Every page at phone and computer size: no errors, no broken links or images, no sideways scrolling, menu basics |
 | `test_menu.js` | The floating phone menu: doesn't move the page, fits on screen, closes on outside tap / Escape |
 | `test_fade.js` | The scroll fade-in: gradual, never fades back out, nothing left hidden at the bottom of any page; reduced motion, no JavaScript and printing show everything |
-| `test_copy.js` | Footer "Email us" pop-up and Copy button (clipboard, "Copied!", keyboard, fallback), "Call us" tooltip |
+| `test_copy.js` | Footer "Email us" pop-up and Copy button (clipboard; "Copied!" stays and no second copy until the page is reloaded; keyboard; fallback), "Call us" tooltip |
 | `test_footer.js` | Footer Contact/Pages columns are symmetric and nothing overflows |
 | `test_register.js` | The floating "Register for classes" button: on every page, on screen, never covers the footer links, one click shows the Registration section, keyboard, hidden when printing; the Classes page "Sign up here" button opens the Google Form in a new tab; Registration layout (Sign up, leaf divider, questions) and the narrow centered share box with its white button |
 | `test_nav_hover.js` | Header menu links get a pink underline while the mouse is over them (computer, tablet, open phone menu), and lose it after |
