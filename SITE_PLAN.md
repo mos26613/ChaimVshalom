@@ -203,9 +203,10 @@ first (see `CLAUDE.md`).
 
 ### Waiting on the maintainer / organization
 
-- Confirm the Hebrew spelling of the dedication names in the footer.
-- Real text for the placeholders (grey italics): home welcome sentence, mission,
-  story, teacher descriptions, events/trips, why support matters.
+- Confirm the Hebrew spelling of the dedication names in the footer. (The
+  About page text from the maintainer writes ישעי׳ with a Hebrew geresh ׳;
+  the footer has ישעי' with a plain apostrophe.)
+- Real text for the placeholders (grey italics) that are still left.
 - Nice to have: a **larger version of the logo emblem** (at least 1024 px wide,
   or SVG), ideally with a transparent background. The drawing in the current
   file is only about 440×220 px, so it would look soft if shown large.
@@ -223,6 +224,9 @@ first (see `CLAUDE.md`).
   on computers, hovering "Call us" shows the number and "Email us" shows the
   address with a Copy button.
 - Directions: Google Maps share link and Waze coordinates for the venue.
+- About page: real Mission, Story (with the L'Ilui Nishmas dedication, each
+  name on its own line) and Vision text from the maintainer (Oct 21, 2026).
+  "Chaim V'Shalom" on its own in that text was written out as the full name.
 - Classes page Registration: "📝 Sign up here" button to the Google Form
   (https://forms.gle/sbRKyN59JcLqJEvbA; the maintainer confirmed it works), a leaf divider, then "Have a
   question?" with WhatsApp us / Call us; "Share with a friend" sits lower in a

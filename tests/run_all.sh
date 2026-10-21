@@ -29,6 +29,7 @@ node "$REPO/tests/test_copy.js" "$WORK/shots"                 # footer Email us 
 node "$REPO/tests/test_footer.js"                             # footer columns symmetric, no overflow
 node "$REPO/tests/test_register.js" "$WORK/shots"             # floating "Register for classes" button
 node "$REPO/tests/test_nav_hover.js" "$WORK/shots"            # pink underline on header links when hovered
+node "$REPO/tests/test_about.js" "$WORK/shots"                # About page sections; name never shortened on any page
 node "$REPO/tests/screenshots.js" 8765 "$WORK/shots"          # full-page screenshots (phone + computer)
 kill $SERVER
 echo "Screenshots are in $WORK/shots"
