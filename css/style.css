@@ -186,6 +186,16 @@ button:focus-visible {
   text-decoration-thickness: 3px;
 }
 
+/* On devices with a mouse, a menu link gets the same pink underline while
+   the pointer is over it */
+@media (hover: hover) {
+  .site-nav a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--color-rose);
+    text-decoration-thickness: 3px;
+  }
+}
+
 /* When JavaScript is running, the phone menu starts closed. The "Menu" button opens
    it as a small floating box on top of the page, so the page itself doesn't move.
    Without JavaScript, the "js" class is never added, so the menu simply stays visible. */

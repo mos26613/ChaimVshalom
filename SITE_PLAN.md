@@ -179,7 +179,8 @@ first (see `CLAUDE.md`).
 1. Fill up the header a bit (it feels a little empty).
 2. On large screens, make the header's page links sticky (they stay at the
    top while scrolling).
-3. When hovering over a page link in the header, underline it in pink.
+3. ~~When hovering over a page link in the header, underline it in pink.~~
+   **Done (Oct 21, 2026).**
 4. Fill up the background of the pages a bit more.
 5. Fill in the rest of the texts that still need writing (the grey
    placeholders). Real content must come from the organization; never invent it.
