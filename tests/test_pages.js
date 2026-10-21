@@ -1,5 +1,6 @@
 // Every page at phone and computer size: no console errors, no broken links or images,
-// no sideways scrolling, the current page marked in the menu, and the phone menu opens/closes.
+// no sideways scrolling, the current page marked in the menu, the phone menu opens/closes,
+// and the "Skip to content" link shows on the first Tab.
 const { chromium } = require('playwright');
 const fs = require('fs');
 const BASE = 'http://localhost:8765/';
@@ -17,6 +18,12 @@ const pages = ['index.html','about.html','classes.html','events.html','support.h
       page.on('pageerror', e => report(`${vp.name} ${p} JS error: ${e.message}`));
       page.on('response', r => { if (r.url().startsWith(BASE) && r.status() >= 400) report(`${vp.name} ${p} ${r.status()} ${r.url()}`); });
       await page.goto(BASE + p, { waitUntil: 'networkidle' });
+      // The first Tab shows the "Skip to content" link, on top of everything
+      await page.keyboard.press('Tab');
+      const skip = await page.evaluate(() => { const a = document.activeElement, r = a.getBoundingClientRect();
+        return a.classList.contains('skip-link') && r.top >= 0 && document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2) === a; });
+      if (!skip) report(`${vp.name} ${p} "Skip to content" link not visible on the first Tab`);
+      await page.evaluate(() => document.activeElement.blur());
       // No sideways scrolling
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       if (overflow > 0) report(`${vp.name} ${p} horizontal overflow ${overflow}px`);

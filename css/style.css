@@ -115,6 +115,8 @@ button:focus-visible {
   white-space: nowrap;
 }
 
+/* "Skip to content": hidden above the page until it gets keyboard focus (the
+   first Tab), then shown on top of everything, including the header */
 .skip-link {
   position: absolute;
   left: 1rem;
@@ -123,7 +125,7 @@ button:focus-visible {
   color: #fff;
   padding: 0.5rem 1rem;
   border-radius: var(--radius);
-  z-index: 10;
+  z-index: 200;
 }
 
 .skip-link:focus {
