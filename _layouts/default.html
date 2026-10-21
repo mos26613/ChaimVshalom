@@ -17,7 +17,11 @@
   <link rel="icon" href="images/logo-emblem.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&amp;display=swap">
+  {%- comment -%}
+    The heading font, Playfair Display: upright 600 and 700 (headings, buttons)
+    and italic 400 (the italic lines, e.g. on the Classes page).
+  {%- endcomment %}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&amp;display=swap">
   {%- comment -%}
     "?v=..." is the time the site was built. It changes on every update, so
     browsers always load the newest stylesheet and script instead of an old
@@ -28,8 +32,7 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-
-{%- comment -%}
+  {%- comment -%}
     Home page only: the logo intro shown the first time the Home page is opened
     in a browser tab (see js/main.js). Without JavaScript it never shows.
   {%- endcomment %}

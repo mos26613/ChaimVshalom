@@ -1,16 +1,23 @@
 /* ==========================================================================
-   Chaim V'Shalom — shared stylesheet
-   Mobile-first: the base styles are for phones; the @media block near the
-   bottom adjusts the layout for wider screens (tablets and desktops).
+   Chaim V'Shalom Women's Learning Center — shared stylesheet
+   Mobile-first: the base styles are for phones; the "Wider screens" block
+   near the bottom adjusts the layout for tablets and computers.
+
+   Contents (search for the ---------- titles):
+     Colors, fonts and layers   Basic reset   Page background   Header
+     Main content   Buttons   Class details and icons   Scroll fade-in
+     Footer   Footer pop-ups   Floating "Register for classes" button
+     Home page logo intro   Printing   Wider screens
    ========================================================================== */
 
-/* ---------- Colors and fonts (change them here, and the whole site follows) ---------- */
+/* ---------- Colors, fonts and layers (change them here, and the whole site follows) ---------- */
 :root {
   --color-bg: #faf8f2;         /* warm off-white, same as the logo background */
   --color-surface: #ffffff;    /* cards */
   --color-text: #1b2440;       /* body text: dark navy */
   --color-heading: #0f1f50;    /* headings: deep navy */
   --color-muted: #4a5470;      /* secondary text */
+  --color-on-dark: #ffffff;    /* text on the dark navy buttons */
 
   --color-blush: #fad4d2;      /* pastel accents, from the logo */
   --color-rose: #e9b5af;
@@ -28,6 +35,16 @@
   --shadow-lift: 0 0.6rem 1.5rem rgba(15, 31, 80, 0.12);     /* cards lifted on hover */
   --shadow-button: 0 0.4rem 1rem rgba(15, 31, 80, 0.15);     /* buttons lifted on hover */
   --radius-large: 1rem;        /* cards and boxes */
+
+  /* Layers: which things sit on top of which (higher numbers are on top) */
+  --layer-background: -1;      /* the page background washes and leaves */
+  --layer-popup: 10;           /* footer tooltip and Email us pop-up */
+  --layer-floating-button: 15; /* "Register for classes" */
+  --layer-menu: 20;            /* the open phone menu box */
+  --layer-menu-button: 25;     /* the phone Menu button while it stays in the corner */
+  --layer-header: 30;          /* the stuck row of page links on large screens */
+  --layer-intro: 100;          /* the Home page logo intro */
+  --layer-skip-link: 200;      /* "Skip to content", above everything */
 }
 
 /* ---------- Basic reset ---------- */
@@ -60,7 +77,7 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  z-index: -1;                 /* behind everything on the page */
+  z-index: var(--layer-background);
   pointer-events: none;
   background: var(--page-washes);
 }
@@ -122,10 +139,10 @@ button:focus-visible {
   left: 1rem;
   top: -3rem;
   background: var(--color-heading);
-  color: #fff;
+  color: var(--color-on-dark);
   padding: 0.5rem 1rem;
   border-radius: var(--radius);
-  z-index: 200;
+  z-index: var(--layer-skip-link);
 }
 
 .skip-link:focus {
@@ -235,7 +252,7 @@ button:focus-visible {
   position: absolute;
   top: 100%;                   /* just below the header */
   right: 1rem;
-  z-index: 20;                 /* above the page content */
+  z-index: var(--layer-menu);
   width: 15rem;
   max-width: calc(100% - 2rem);
   background: var(--color-surface);
@@ -270,7 +287,7 @@ button:focus-visible {
   top: 0.75rem;
   bottom: auto;                /* undo its usual place at the bottom of the header */
   right: 1rem;
-  z-index: 25;                 /* above the page and the menu box */
+  z-index: var(--layer-menu-button);
   box-shadow: var(--shadow);
 }
 
@@ -348,6 +365,12 @@ main h1::after,
   margin-bottom: 2.5rem;
 }
 
+/* Jumping to a section (e.g. "Register for classes" to #registration) leaves a
+   little room above its heading, also while the section is still fading in */
+.section[id] {
+  scroll-margin-top: 2rem;
+}
+
 /* A soft pastel band used to highlight a section */
 .band {
   background: var(--color-blush);
@@ -410,11 +433,12 @@ main h1::after,
 
 .card p:last-child { margin-bottom: 0; }
 
+/* ---------- Buttons ---------- */
 /* Buttons (used on links) */
 .button {
   display: inline-block;
   background: var(--color-heading);
-  color: #fff;
+  color: var(--color-on-dark);
   text-decoration: none;
   padding: 0.7rem 1.3rem;
   border-radius: 2rem;
@@ -462,12 +486,15 @@ main h1::after,
 /* No movement for visitors who asked their device to reduce motion */
 @media (prefers-reduced-motion: reduce) {
   .card,
-  .button {
+  .button,
+  .register-float {
     transition: none;
   }
   .card:hover,
   .button:hover,
-  .button:active {
+  .button:active,
+  .register-float:hover,
+  .register-float:active {
     transform: none;
   }
 }
@@ -485,6 +512,7 @@ main h1::after,
   margin: 0;
 }
 
+/* ---------- Class details and icons ---------- */
 /* Simple label/value list (used for class details) */
 .details {
   margin: 0;
@@ -546,6 +574,7 @@ main h1::after,
   font-style: normal;
 }
 
+/* ---------- Scroll fade-in ---------- */
 /* Page content fades in gradually as you scroll (js/main.js sets each item's
    fade as the page scrolls; items are sections, or headings and cards). Items
    start faded; when the page opens, the ones on screen glide into place (the
@@ -561,13 +590,6 @@ main h1::after,
   }
   .js .reveal.is-scroll-linked {
     transition: none;
-  }
-}
-
-@media print {
-  .reveal {
-    opacity: 1 !important;
-    transform: none !important;
   }
 }
 
@@ -649,73 +671,29 @@ main h1::after,
   margin-bottom: 0.35rem;
 }
 
-/* A small box that pops up above a link to show extra details, e.g. the phone
-   number above "Call us" on computers. The details are always in the page
-   (screen readers read them as part of the link); they are only shown as a
-   pop-up when hovering with a mouse or tabbing to the link with the keyboard. */
+
+/* ---------- Footer pop-ups ----------
+   Small white boxes that pop up above a footer link on computers, when
+   hovering with a mouse or tabbing to the link with the keyboard:
+   - a tooltip: the phone number above "Call us". The number is always in the
+     page (screen readers read it as part of the link), it is only hidden.
+   - a pop-up you can click inside: the email address with a Copy button above
+     "Email us". It stays open while the mouse moves from the link up into it. */
 .has-tooltip {
   position: relative;
 }
 
-.tooltip {
-  position: absolute;
-  bottom: calc(100% + 0.6rem);
-  left: 50%;
-  z-index: 10;
-  padding: 0.4rem 0.75rem;
-  background: var(--color-surface);
-  border: 1px solid var(--color-gold);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  color: var(--color-heading);
-  font-weight: 600;
-  white-space: nowrap;
-  pointer-events: none;
-  opacity: 0;
-  transform: translate(-50%, 4px);
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-/* The little pointer under the box */
-.tooltip::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -0.4rem;
-  border: 0.4rem solid transparent;
-  border-top-color: var(--color-gold);
-}
-
-@media (hover: hover) {
-  .has-tooltip:hover .tooltip {
-    opacity: 1;
-    transform: translate(-50%, 0);
-  }
-}
-
-.has-tooltip:focus-visible .tooltip {
-  opacity: 1;
-  transform: translate(-50%, 0);
-}
-
-/* A pop-up you can click inside, e.g. the email address with a Copy button
-   above "Email us" on computers. It looks like the tooltip above, and stays
-   open while the mouse moves from the link up into the box. */
 .has-popover {
   position: relative;
   display: inline-block;
 }
 
+.tooltip,
 .popover {
   position: absolute;
   bottom: calc(100% + 0.6rem);
   left: 50%;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.4rem 0.45rem 0.4rem 0.8rem;
+  z-index: var(--layer-popup);
   background: var(--color-surface);
   border: 1px solid var(--color-gold);
   border-radius: var(--radius);
@@ -729,18 +707,19 @@ main h1::after,
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-/* An invisible strip under the box that covers the gap down to the link,
-   so the box doesn't close while the mouse moves up to it */
-.popover::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 100%;
-  height: 0.8rem;
+.tooltip {
+  padding: 0.4rem 0.75rem;
+}
+
+.popover {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.45rem 0.4rem 0.8rem;
 }
 
 /* The little pointer under the box */
+.tooltip::after,
 .popover::after {
   content: "";
   position: absolute;
@@ -751,17 +730,40 @@ main h1::after,
   border-top-color: var(--color-gold);
 }
 
+/* An invisible strip under the pop-up that covers the gap down to the link,
+   so it doesn't close while the mouse moves up to it */
+.popover::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 0.8rem;
+}
+
+/* Showing them */
 @media (hover: hover) {
+  .has-tooltip:hover .tooltip,
   .has-popover:hover .popover {
     opacity: 1;
     transform: translate(-50%, 0);
+  }
+}
+
+.has-tooltip:focus-visible .tooltip,
+.has-popover:focus-within .popover {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* The email pop-up can be clicked into (for the Copy button) */
+@media (hover: hover) {
+  .has-popover:hover .popover {
     pointer-events: auto;
   }
 }
 
 .has-popover:focus-within .popover {
-  opacity: 1;
-  transform: translate(-50%, 0);
   pointer-events: auto;
 }
 
@@ -834,7 +836,7 @@ html:not(.js) .copy-button {
   position: fixed;
   right: 1rem;
   bottom: 1rem;
-  z-index: 15;                 /* above the page, below the open phone menu */
+  z-index: var(--layer-floating-button);
   padding: 0.65rem 1.1rem;
   border: 1px solid var(--color-rose);
   border-radius: 2rem;
@@ -860,14 +862,99 @@ html:not(.js) .copy-button {
   }
 }
 
-/* When the button jumps to a section (e.g. #registration), leave a little
-   room above its heading, also while the section is still fading in */
-.section[id] {
-  scroll-margin-top: 2rem;
+/* ---------- Home page logo intro ----------
+   Shown only the first time the Home page is opened in a browser tab (js/main.js
+   adds "intro-on"). The big logo sits in the middle of a soft pastel screen;
+   on the first scroll it glides into the header and the pastel screen fades,
+   showing the page underneath. */
+.intro {
+  display: none;
 }
 
+.intro-on .intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  inset: 0;
+  z-index: var(--layer-intro);
+}
+
+/* The pastel screen behind the big logo (fades away separately from the logo) */
+.intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 15% 10%, var(--color-blush), transparent 70%),
+    radial-gradient(ellipse 60% 55% at 90% 45%, var(--color-lavender), transparent 70%),
+    radial-gradient(ellipse 75% 50% at 20% 100%, var(--color-sage), transparent 70%),
+    var(--color-bg);
+  transition: opacity 0.8s ease;
+}
+
+.intro-logo {
+  position: relative;
+  width: min(72vw, 24rem);
+  height: auto;
+  transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* "Scroll down": a round white button with a pink border and a dark arrow,
+   gently bobbing at the bottom of the screen */
+.intro-hint {
+  position: absolute;
+  bottom: 2.25rem;
+  left: 50%;
+  width: 3rem;
+  height: 3rem;
+  margin-left: -1.5rem;
+  border-radius: 50%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-rose);
+  box-shadow: var(--shadow);
+  animation: intro-bob 1.6s ease-in-out infinite;
+  transition: opacity 0.3s ease;
+}
+
+.intro-hint::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 44%;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-right: 2.5px solid var(--color-heading);
+  border-bottom: 2.5px solid var(--color-heading);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+@keyframes intro-bob {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 8px; }
+}
+
+.intro.is-leaving::before,
+.intro.is-leaving .intro-hint {
+  opacity: 0;
+}
+
+/* While the intro shows, the header logo waits (the big logo lands on its spot) */
+.intro-on .site-header .brand-logo {
+  visibility: hidden;
+}
+
+/* ---------- Printing ----------
+   On paper: everything fully shown (no fade-in), and no floating button or intro */
 @media print {
-  .register-float { display: none; }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .register-float,
+  .intro {
+    display: none !important;
+  }
 }
 
 /* ==========================================================================
@@ -898,7 +985,7 @@ html:not(.js) .copy-button {
      the header simply scrolls away as before. */
   .js .site-header {
     position: sticky;
-    z-index: 30;                 /* above the page content */
+    z-index: var(--layer-header);
   }
 
   /* Page content passing under the stuck links row is softly blurred. (Only on
@@ -968,90 +1055,4 @@ html:not(.js) .copy-button {
   .footer-columns > :first-child {
     grid-column: auto;
   }
-}
-
-/* ---------- Home page logo intro ----------
-   Shown only the first time the Home page is opened in a browser tab (js/main.js
-   adds "intro-on"). The big logo sits in the middle of a soft pastel screen;
-   on the first scroll it glides into the header and the pastel screen fades,
-   showing the page underneath. */
-.intro {
-  display: none;
-}
-
-.intro-on .intro {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  inset: 0;
-  z-index: 100;                /* above everything */
-}
-
-/* The pastel screen behind the big logo (fades away separately from the logo) */
-.intro::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 70% 55% at 15% 10%, var(--color-blush), transparent 70%),
-    radial-gradient(ellipse 60% 55% at 90% 45%, var(--color-lavender), transparent 70%),
-    radial-gradient(ellipse 75% 50% at 20% 100%, var(--color-sage), transparent 70%),
-    var(--color-bg);
-  transition: opacity 0.8s ease;
-}
-
-.intro-logo {
-  position: relative;
-  width: min(72vw, 24rem);
-  height: auto;
-  transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* "Scroll down": a round white button with a pink border and a dark arrow,
-   gently bobbing at the bottom of the screen */
-.intro-hint {
-  position: absolute;
-  bottom: 2.25rem;
-  left: 50%;
-  width: 3rem;
-  height: 3rem;
-  margin-left: -1.5rem;
-  border-radius: 50%;
-  background: var(--color-surface);
-  border: 1px solid var(--color-rose);
-  box-shadow: var(--shadow);
-  animation: intro-bob 1.6s ease-in-out infinite;
-  transition: opacity 0.3s ease;
-}
-
-.intro-hint::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 44%;
-  width: 0.75rem;
-  height: 0.75rem;
-  border-right: 2.5px solid var(--color-heading);
-  border-bottom: 2.5px solid var(--color-heading);
-  transform: translate(-50%, -50%) rotate(45deg);
-}
-
-@keyframes intro-bob {
-  0%, 100% { translate: 0 0; }
-  50% { translate: 0 8px; }
-}
-
-.intro.is-leaving::before,
-.intro.is-leaving .intro-hint {
-  opacity: 0;
-}
-
-/* While the intro shows, the header logo waits (the big logo lands on its spot) */
-.intro-on .site-header .brand-logo {
-  visibility: hidden;
-}
-
-@media print {
-  .intro { display: none !important; }
 }
