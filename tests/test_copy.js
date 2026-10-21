@@ -1,3 +1,5 @@
+// Footer "Email us" pop-up and its Copy button (mouse, keyboard, blocked clipboard),
+// and the "Call us" tooltip.
 const { chromium } = require('playwright');
 (async () => { const b = await chromium.launch(); let bad = 0; const fail = m => { bad++; console.log('PROBLEM:', m); };
  const pop = p => p.evaluate(() => { const e = document.querySelector('.popover'); const r = e.getBoundingClientRect();
@@ -66,4 +68,5 @@ const { chromium } = require('playwright');
    await p.locator('a.has-tooltip').hover(); await p.waitForTimeout(300);
    if (+(await p.evaluate(() => getComputedStyle(document.querySelector('.tooltip')).opacity)) !== 1) fail('Call us tooltip broken'); else console.log('Call us tooltip still works');
    await p.close(); }
+ process.exitCode = bad ? 1 : 0;   // tells run_all.sh whether this check passed
  console.log(bad ? `${bad} problem(s)` : 'COPY CHECKS PASSED'); await b.close(); })();

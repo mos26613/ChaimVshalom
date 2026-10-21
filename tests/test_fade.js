@@ -1,3 +1,6 @@
+// The scroll fade-in: items fade in gradually as they come up the screen, never fade back out,
+// nothing is left hidden at the bottom of any page, and reduce-motion / no JavaScript / printing
+// show everything.
 const { chromium } = require('playwright');
 const pages = ['index','about','classes','events','support','contact','privacy'];
 // the same items the script fades: sections without cards; otherwise their headings + each card
@@ -11,7 +14,7 @@ const ITEMS = `(() => { const out = []; document.querySelectorAll('main section'
    const st = await state(p); console.log('home page items:', st.length, '(cards:', st.filter(s => s.card).length + ')');
    for (const s of st) { if (s.top <= 490 && s.op !== 1) fail('on-screen item not shown at load'); if (s.top >= 700 && s.op !== 0) fail('item below the screen not hidden at load'); }
    const lastCard = st.length - 1;
-   const at = async frac => { await p.evaluate(([f, i]) => { const e = eval(arguments[0][2])[i]; }, [frac, lastCard, '0']).catch(() => {});
+   const at = async frac => {
      await p.evaluate(({ f, i, src }) => { const e = eval(src)[i]; window.scrollTo(0, e.getBoundingClientRect().top + scrollY - innerHeight * f); }, { f: frac, i: lastCard, src: ITEMS });
      await p.waitForTimeout(150); return (await state(p))[lastCard].op; };
    const a = await at(0.95), m = await at(0.85), backDown = await at(0.97), full = await at(0.6), back2 = await at(1.05);
@@ -45,4 +48,5 @@ const ITEMS = `(() => { const out = []; document.querySelectorAll('main section'
      await p.goto(`http://localhost:8765/${pg}.html`, { waitUntil: 'networkidle' }); await p.waitForTimeout(300);
      if ((await state(p)).some(s => s.op !== 1)) fail(`${pg}: hidden with ${label}`); await p.close(); }
    console.log(label + ': all pages fully shown'); await ctx.close(); }
+ process.exitCode = bad ? 1 : 0;   // tells run_all.sh whether this check passed
  console.log(bad ? `${bad} problem(s)` : 'FADE CHECKS PASSED'); await b.close(); })();

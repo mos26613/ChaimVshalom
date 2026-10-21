@@ -1,3 +1,5 @@
+// Every page at phone and computer size: no console errors, no broken links or images,
+// no sideways scrolling, the current page marked in the menu, and the phone menu opens/closes.
 const { chromium } = require('playwright');
 const fs = require('fs');
 const BASE = 'http://localhost:8765/';
@@ -55,5 +57,6 @@ const pages = ['index.html','about.html','classes.html','events.html','support.h
       if (!fs.existsSync(`${root}/${m[1]}`)) report(`${p} links to missing ${m[1]}`);
     }
   }
+  process.exitCode = problems ? 1 : 0;   // tells run_all.sh whether this check passed
   console.log(problems ? `${problems} problem(s)` : 'ALL CHECKS PASSED');
 })();

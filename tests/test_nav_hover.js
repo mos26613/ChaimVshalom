@@ -22,4 +22,5 @@ const { chromium } = require('playwright');
    if (process.argv[2] && w === 1280) { await p.hover(sel); await p.screenshot({ path: `${process.argv[2]}/nav-hover-1280.png`, clip: { x: 0, y: 0, width: w, height: 270 } }); }
    console.log(String(w).padStart(5), 'px: hover underline', on.line, on.color);
    await p.close(); }
+ process.exitCode = bad ? 1 : 0;   // tells run_all.sh whether this check passed
  console.log(bad ? `${bad} NAV HOVER PROBLEM(S)` : 'NAV HOVER CHECKS PASSED'); await b.close(); })();

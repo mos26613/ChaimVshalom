@@ -66,4 +66,5 @@ const { chromium } = require('playwright');
    if (!p.url().endsWith('contact.html')) fail(`${w}px: menu link did not work after scrolling`);
    console.log(String(w).padStart(5), 'px: header scrolls away, Menu button stays in the corner (phone)');
    await p.close(); }
+ process.exitCode = bad ? 1 : 0;   // tells run_all.sh whether this check passed
  console.log(bad ? `${bad} STICKY HEADER PROBLEM(S)` : 'STICKY HEADER CHECKS PASSED'); await b.close(); })();

@@ -21,4 +21,5 @@ const { chromium } = require('playwright');
    else console.log(String(w).padStart(5), 'px: About page OK');
    if (process.argv[2] && w !== 320) await p.screenshot({ path: `${process.argv[2]}/about-${w}.png`, fullPage: true });
    await p.close(); }
+ process.exitCode = bad ? 1 : 0;   // tells run_all.sh whether this check passed
  console.log(bad ? `${bad} ABOUT PAGE PROBLEM(S)` : 'ABOUT PAGE CHECKS PASSED'); await b.close(); })();

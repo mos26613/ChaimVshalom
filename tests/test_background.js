@@ -19,4 +19,5 @@ const { chromium } = require('playwright');
    }
    console.log(String(w).padStart(5), `px: washes${leaves ? ' + leaves' : ', no leaves'}`);
    await p.close(); }
+ process.exitCode = bad ? 1 : 0;   // tells run_all.sh whether this check passed
  console.log(bad ? `${bad} BACKGROUND PROBLEM(S)` : 'BACKGROUND CHECKS PASSED'); await b.close(); })();

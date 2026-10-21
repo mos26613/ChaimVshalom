@@ -1,3 +1,5 @@
+// The floating phone menu: opens without moving the page, fits on the screen, is on top,
+// closes on an outside tap or Escape (focus back on the button), and becomes a row on wide screens.
 const { chromium } = require('playwright');
 (async () => {
   const b = await chromium.launch(); let bad = 0;
@@ -33,5 +35,6 @@ const { chromium } = require('playwright');
   const pos = await p.evaluate(() => getComputedStyle(document.getElementById('site-nav')).position);
   if (pos !== 'static') fail('desktop after resize: menu still floating');
   await b.close();
+  process.exitCode = bad ? 1 : 0;   // tells run_all.sh whether this check passed
   console.log(bad ? `${bad} problem(s)` : 'MENU CHECKS PASSED');
 })();

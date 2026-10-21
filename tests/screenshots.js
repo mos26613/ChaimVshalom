@@ -1,3 +1,4 @@
+// Not a check: full-page screenshots of Home, Classes and Contact (phone and computer), to look at.
 const { chromium } = require('playwright');
 (async () => { const b = await chromium.launch(); const [port, out] = process.argv.slice(2);
  for (const [w, h, name] of [[390, 844, 'phone'], [1280, 800, 'desktop']]) {

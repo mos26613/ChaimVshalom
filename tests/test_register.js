@@ -76,4 +76,5 @@ const { chromium } = require('playwright');
  await p.emulateMedia({ media: 'print' });
  if (await p.isVisible('.register-float')) fail('button shows when printing'); else console.log('print: button hidden');
  if (process.argv[2]) { await p.emulateMedia({ media: 'screen' }); await p.screenshot({ path: `${process.argv[2]}/register-390.png` }); }
+ process.exitCode = bad ? 1 : 0;   // tells run_all.sh whether this check passed
  console.log(bad ? `${bad} REGISTER BUTTON PROBLEM(S)` : 'REGISTER BUTTON CHECKS PASSED'); await b.close(); })();

@@ -1,3 +1,5 @@
+// The footer's Contact and Pages columns mirror each other around the middle on phones,
+// and nothing makes the page scroll sideways.
 const { chromium } = require('playwright');
 (async () => { const b = await chromium.launch(); let bad = 0;
  for (const w of [320, 360, 375, 390, 414, 600, 700]) {
@@ -15,4 +17,5 @@ const { chromium } = require('playwright');
    if (!sym || r.overflow > 0) bad++;
    if (process.argv[2]) await (await p.$('.site-footer')).screenshot({ path: `${process.argv[2]}/footer-${w}.png` });
    await p.close(); }
+ process.exitCode = bad ? 1 : 0;   // tells run_all.sh whether this check passed
  console.log(bad ? `${bad} width(s) not symmetric/overflowing` : 'FOOTER SYMMETRIC, NO OVERFLOW'); await b.close(); })();

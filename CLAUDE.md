@@ -101,6 +101,8 @@ The maintainer is a computer science student who is new to web development.
 - Re-read your diff: valid HTML, nothing broken on other pages, no new colors or
   fonts outside the variables, no images of people.
 - Run `bash tests/run_all.sh` (builds the site with GitHub Pages' Jekyll,
-  validates the HTML, and runs all browser checks); everything must pass.
+  validates the HTML, and runs all browser checks); it must end with
+  "ALL TESTS PASSED". Every check sets its exit code, so a failure or crash is
+  listed in the summary.
 - In your reply, summarize what changed in plain language and what the
   maintainer should check on the live site.
