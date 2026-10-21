@@ -224,9 +224,9 @@ first (see `CLAUDE.md`).
   on computers, hovering "Call us" shows the number and "Email us" shows the
   address with a Copy button.
 - Directions: Google Maps share link and Waze coordinates for the venue.
-- About page: real Mission, Story (with the L'Ilui Nishmas dedication, each
-  name on its own line) and Vision text from the maintainer (Oct 21, 2026).
-  "Chaim V'Shalom" on its own in that text was written out as the full name.
+- About page: real Mission, Story (with the L'Ilui Nishmas dedication)
+  and Vision text from the maintainer (Oct 21, 2026), kept exactly as written,
+  including the short form "Chaim V'Shalom" where it is mentioned again.
 - Classes page Registration: "📝 Sign up here" button to the Google Form
   (https://forms.gle/sbRKyN59JcLqJEvbA; the maintainer confirmed it works), a leaf divider, then "Have a
   question?" with WhatsApp us / Call us; "Share with a friend" sits lower in a

@@ -290,22 +290,9 @@ main h1::after,
   margin: 0 auto;
 }
 
-.about-dedication-title {
-  font-family: var(--font-heading);
-  font-style: italic;
-  font-size: 1.15rem;
-  color: var(--color-heading);
-  margin-bottom: 0.25rem;
-}
-
-.about-dedication-names {
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--color-heading);
-}
-
-.about-dedication-names span {
-  display: block;              /* each name on its own line */
+/* A Hebrew name inside an English sentence: kept on one line, never split */
+.hebrew-name {
+  white-space: nowrap;
 }
 
 .closing-line {

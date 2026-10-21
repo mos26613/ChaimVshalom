@@ -43,11 +43,16 @@ The maintainer is a computer science student who is new to web development.
 
 ## Content rules (must follow)
 
-- **The name is always all five words: "Chaim V'Shalom Women's Learning Center"**,
+- **The name: "Chaim V'Shalom Women's Learning Center"**, all five words
   written together in the same font and style (never split into a name plus a
-  smaller tagline, never shortened to "Chaim V'Shalom" on the site). This rule is
-  for text on the site; the official round logo (`images/logo.png`, centered in
-  the header) shows the name in its own artwork style, which is fine.
+  smaller tagline). Use the full name in page titles, headings, the header and
+  footer, and the first time a text mentions it. **In running text the short
+  form "Chaim V'Shalom" is fine** when it is mentioned again (the maintainer's
+  decision, Oct 21, 2026); never "correct" it to the full name. The official
+  round logo (`images/logo.png`) shows the name in its own artwork style.
+- **Keep the maintainer's text exactly as sent** when adding it to the site
+  (wording, short name, order). Don't reword or "fix" it; if something seems
+  off, point it out and ask instead.
 - **No photos or images of people**, not even silhouettes. Visuals come from the
   logo, colors, typography, decorations, and photos of places without people.
   Standard symbols and emojis (e.g. ♿) are fine.

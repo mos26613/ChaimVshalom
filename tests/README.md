@@ -16,7 +16,7 @@ bash tests/run_all.sh
 | `test_footer.js` | Footer Contact/Pages columns are symmetric and nothing overflows |
 | `test_register.js` | The floating "Register for classes" button: on every page, on screen, never covers the footer links, one click shows the Registration section, keyboard, hidden when printing; the Classes page "Sign up here" button opens the Google Form in a new tab; Registration layout (Sign up, leaf divider, questions) and the narrow centered share box |
 | `test_nav_hover.js` | Header menu links get a pink underline while the mouse is over them (computer, tablet, open phone menu), and lose it after |
-| `test_about.js` | About page: Mission, Story, Vision, teachers in order, no placeholders left, Hebrew names marked; on every page the name is never shortened to "Chaim V'Shalom" |
+| `test_about.js` | About page: Mission, Story, Vision, teachers in order, no placeholders left, Hebrew names marked and never split across lines; on every page the first mention of the name is the full name |
 | `screenshots.js` | Full-page screenshots of Home, Classes and Contact at phone and computer size |
 
 Requirements: Ruby with Bundler, Node.js with Playwright and a Chromium browser,
