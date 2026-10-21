@@ -37,6 +37,11 @@ The maintainer is a computer science student who is new to web development.
   Check phone (~390px), very narrow phones (320px), tablets and computers.
 - **Show, don't just tell:** send screenshots (and short recordings for motion)
   of the result, and say what to check on the live site.
+- **Publishing takes a few minutes.** After a push, GitHub's "pages build and
+  deployment" run (repository Actions tab) must finish before the live site
+  changes; it sometimes takes 3+ minutes. Until then the maintainer sees the
+  old version. When a change "doesn't work" right after a push, check that
+  run first, then ask for a hard refresh (Ctrl+Shift+R).
 - Browsers cache old files: `css/style.css` and `js/main.js` are loaded with a
   build-time `?v=` tag in `_layouts/default.html`; keep that for any new
   stylesheet or script.
