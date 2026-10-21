@@ -189,6 +189,8 @@ first (see `CLAUDE.md`).
    maintainer may still adjust it after seeing it live.
 5. Fill in the rest of the texts that still need writing (the grey
    placeholders). Real content must come from the organization; never invent it.
+   Status Oct 21, 2026: all pages have real text except Mrs. Fayge Grossman's
+   description on the About page.
 
 ### On hold (don't start without the maintainer's go-ahead)
 
@@ -208,7 +210,7 @@ first (see `CLAUDE.md`).
 - Confirm the Hebrew spelling of the dedication names in the footer. (Decided
   Oct 21, 2026: ישעי' is written with a plain apostrophe ', not a geresh ׳,
   in the footer and on the About page.)
-- Real text for the placeholders (grey italics) that are still left.
+- Mrs. Fayge Grossman's description (About page), the last placeholder.
 - Nice to have: a **larger version of the logo emblem** (at least 1024 px wide,
   or SVG), ideally with a transparent background. The drawing in the current
   file is only about 440×220 px, so it would look soft if shown large.
