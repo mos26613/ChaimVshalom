@@ -229,6 +229,11 @@ first (see `CLAUDE.md`).
 - About page: real Mission, Story (with the L'Ilui Nishmas dedication)
   and Vision text from the maintainer (Oct 21, 2026), kept exactly as written,
   including the short form "Chaim V'Shalom" where it is mentioned again.
+- Home page logo intro (Oct 21, 2026): the first time the Home page is opened
+  in a browser tab, the logo shows large in the middle with a "scroll down"
+  arrow; the first scroll, tap or key glides it into the header. It doesn't
+  repeat in that tab (other pages, back to Home, reload), and is skipped for
+  "reduce motion".
 - Classes page Registration: "📝 Sign up here" button to the Google Form
   (https://forms.gle/sbRKyN59JcLqJEvbA; the maintainer confirmed it works), a leaf divider, then "Have a
   question?" with WhatsApp us / Call us; "Share with a friend" sits lower in a

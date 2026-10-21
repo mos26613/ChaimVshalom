@@ -22,6 +22,9 @@ npx --yes html-validate@8 "$WORK"/site/*.html && echo "HTML VALID"
 echo "== Browser checks =="
 python3 -m http.server 8765 --directory "$WORK/site" >/dev/null 2>&1 & SERVER=$!
 sleep 1
+node "$REPO/tests/test_intro.js" "$WORK/shots"                # Home page logo intro (first visit only)
+# For all other checks, the intro counts as already seen (see skip_intro.js)
+export NODE_OPTIONS="--require $REPO/tests/skip_intro.js"
 node "$REPO/tests/test_pages.js" "$WORK/shots" "$WORK/site"   # every page, phone + computer, links, menu basics
 node "$REPO/tests/test_menu.js" "$WORK/shots"                 # floating phone menu
 node "$REPO/tests/test_fade.js"                               # scroll fade-in

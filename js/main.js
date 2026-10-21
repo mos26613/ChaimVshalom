@@ -5,9 +5,30 @@
 // 3. "Copy" buttons (e.g. copying the email address in the footer).
 // 4. On large screens, the row of page links stays at the top while scrolling;
 //    on phones, the "Menu" button stays in the top-right corner.
+// 5. The Home page logo intro, the first time the Home page is opened in a tab.
 
 // Tell the CSS that JavaScript is running, so the phone menu can start closed.
 document.documentElement.classList.add("js");
+
+// Home page intro: the first time the Home page is opened in a browser tab, the
+// logo is shown large in the middle of the screen; as soon as the visitor
+// scrolls (or taps, or presses a key) it glides up into its place in the
+// header. This part runs before the page is drawn, so nothing flickers: it
+// only decides whether to show the intro ("intro-on"), and remembers for the
+// rest of the visit that it was shown, so going back to Home doesn't repeat
+// it. Skipped when the device is set to reduce motion.
+(function () {
+  try {
+    var isHome = /\/(index\.html)?$/.test(window.location.pathname);
+    var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (isHome && !calm && !window.location.hash && !window.sessionStorage.getItem("intro-seen")) {
+      window.sessionStorage.setItem("intro-seen", "yes");
+      document.documentElement.classList.add("intro-on");
+    }
+  } catch (e) {
+    // Browser storage not available (e.g. some private modes): no intro.
+  }
+})();
 
 document.addEventListener("DOMContentLoaded", function () {
   var button = document.querySelector(".menu-toggle");
@@ -284,4 +305,68 @@ document.addEventListener("DOMContentLoaded", function () {
   update();
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onScroll);
+});
+
+// The Home page intro (see the top of this file): waits for the first scroll,
+// tap or key press, then slides the big logo onto the header logo and fades the
+// intro away. The page itself doesn't scroll until the logo has landed.
+document.addEventListener("DOMContentLoaded", function () {
+  var root = document.documentElement;
+  var intro = document.querySelector(".intro");
+  if (!intro) {
+    return;
+  }
+  if (!root.classList.contains("intro-on")) {
+    intro.parentNode.removeChild(intro);
+    return;
+  }
+  var big = intro.querySelector(".intro-logo");
+  var target = document.querySelector(".brand-logo");
+  var started = false;
+  var scrollKeys = [" ", "ArrowDown", "ArrowUp", "PageDown", "PageUp", "End", "Home"];
+
+  window.scrollTo(0, 0);
+
+  function hold(event) {
+    // Keep the page still until the logo has landed
+    if (event.cancelable && (event.type !== "keydown" || scrollKeys.indexOf(event.key) !== -1)) {
+      event.preventDefault();
+    }
+    start();
+  }
+
+  function start() {
+    if (started) {
+      return;
+    }
+    started = true;
+    var from = big.getBoundingClientRect();
+    var to = target.getBoundingClientRect();
+    var dx = (to.left + to.width / 2) - (from.left + from.width / 2);
+    var dy = (to.top + to.height / 2) - (from.top + from.height / 2);
+    big.style.transform = "translate(" + dx + "px, " + dy + "px) scale(" + (to.width / from.width) + ")";
+    intro.classList.add("is-leaving");
+    // Remove the intro once the logo has landed (or after 2 seconds, just in case)
+    big.addEventListener("transitionend", finish);
+    window.setTimeout(finish, 2000);
+  }
+
+  function finish() {
+    if (!root.classList.contains("intro-on")) {
+      return;
+    }
+    root.classList.remove("intro-on");
+    if (intro.parentNode) {
+      intro.parentNode.removeChild(intro);
+    }
+    window.removeEventListener("wheel", hold);
+    window.removeEventListener("touchmove", hold);
+    window.removeEventListener("keydown", hold);
+  }
+
+  window.addEventListener("wheel", hold, { passive: false });
+  window.addEventListener("touchmove", hold, { passive: false });
+  window.addEventListener("keydown", hold);
+  intro.addEventListener("click", start);
+  intro.addEventListener("touchstart", start, { passive: true });
 });

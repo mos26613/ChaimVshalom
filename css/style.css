@@ -964,3 +964,89 @@ html:not(.js) .copy-button {
     grid-column: auto;
   }
 }
+
+/* ---------- Home page logo intro ----------
+   Shown only the first time the Home page is opened in a browser tab (js/main.js
+   adds "intro-on"). The big logo sits in the middle of a soft pastel screen;
+   on the first scroll it glides into the header and the pastel screen fades,
+   showing the page underneath. */
+.intro {
+  display: none;
+}
+
+.intro-on .intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  inset: 0;
+  z-index: 100;                /* above everything */
+}
+
+/* The pastel screen behind the big logo (fades away separately from the logo) */
+.intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 15% 10%, var(--color-blush), transparent 70%),
+    radial-gradient(ellipse 60% 55% at 90% 45%, var(--color-lavender), transparent 70%),
+    radial-gradient(ellipse 75% 50% at 20% 100%, var(--color-sage), transparent 70%),
+    var(--color-bg);
+  transition: opacity 0.8s ease;
+}
+
+.intro-logo {
+  position: relative;
+  width: min(72vw, 24rem);
+  height: auto;
+  transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* "Scroll down": a round white button with a pink border and a dark arrow,
+   gently bobbing at the bottom of the screen */
+.intro-hint {
+  position: absolute;
+  bottom: 2.25rem;
+  left: 50%;
+  width: 3rem;
+  height: 3rem;
+  margin-left: -1.5rem;
+  border-radius: 50%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-rose);
+  box-shadow: var(--shadow);
+  animation: intro-bob 1.6s ease-in-out infinite;
+  transition: opacity 0.3s ease;
+}
+
+.intro-hint::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 44%;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-right: 2.5px solid var(--color-heading);
+  border-bottom: 2.5px solid var(--color-heading);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+@keyframes intro-bob {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 8px; }
+}
+
+.intro.is-leaving::before,
+.intro.is-leaving .intro-hint {
+  opacity: 0;
+}
+
+/* While the intro shows, the header logo waits (the big logo lands on its spot) */
+.intro-on .site-header .brand-logo {
+  visibility: hidden;
+}
+
+@media print {
+  .intro { display: none !important; }
+}

@@ -29,6 +29,17 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+{%- comment -%}
+    Home page only: the logo intro shown the first time the Home page is opened
+    in a browser tab (see js/main.js). Without JavaScript it never shows.
+  {%- endcomment %}
+  {%- if page.path == "index.html" %}
+  <div class="intro" aria-hidden="true">
+    <img class="intro-logo" src="images/logo.png" alt="" width="320" height="320">
+    <span class="intro-hint"></span>
+  </div>
+  {%- endif %}
+
 {% include header.html %}
 
   <!-- ===== Page content ===== -->

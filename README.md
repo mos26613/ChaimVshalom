@@ -60,7 +60,7 @@ description: "About Chaim V'Shalom Women's Learning Center."
 | `contact.html` | Contact details (email, phone, WhatsApp) |
 | `privacy.html` | Privacy Policy |
 | `css/style.css` | All the styling. Mobile first: the `@media (min-width: 48rem)` section adjusts for wider screens. |
-| `js/main.js` | The "Menu" button on phones (it stays in the top-right corner while scrolling), the scroll fade-in, the footer "Copy" button, and the page-links row that stays at the top on large screens |
+| `js/main.js` | The "Menu" button on phones (it stays in the top-right corner while scrolling), the scroll fade-in, the footer "Copy" button, the page-links row that stays at the top on large screens, and the Home page logo intro (first visit in a tab only) |
 | `tests/` | Automatic checks run after every change (`bash tests/run_all.sh`); not published |
 | `CNAME` | Connects the custom domain `chaimvshalom.org` to the site. Don't delete or rename it. |
 | `files/inaugural-program.ics` | Calendar file for the "Add to my calendar" button on the Classes page (8 Tuesdays) |
