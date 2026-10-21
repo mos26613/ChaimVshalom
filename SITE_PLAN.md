@@ -264,9 +264,10 @@ first (see `CLAUDE.md`).
 
 ## 12. Other decisions
 
-- **Shabbos (decided Oct 21, 2026):** the site stays on over Shabbos; no
-  closing is needed, as long as nothing is sold on the site. If the
-  site ever starts selling things or taking payments, the question comes back
+- **Shabbos (decided Oct 21, 2026):** the site stays on over Shabbos and Yom
+  Tov; no closing is needed, as long as nothing is sold on the site. Online
+  donations are fine too. If the site ever starts selling things, the
+  question comes back
   (the earlier idea for that case: a saved yearly list of Beit Shemesh times
   checked by a small script).
 
