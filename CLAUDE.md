@@ -64,7 +64,8 @@ The maintainer is a computer science student who is new to web development.
 - **Soft pastel theme** (a specific request from the organization). Pastels are
   for backgrounds, cards, borders and decorations only — **all text stays dark
   navy** for readability. Colors are defined once in `:root` in `css/style.css`;
-  reuse those variables instead of adding new hard-coded colors.
+  reuse those variables instead of adding new hard-coded colors. The same goes
+  for the stacking layers (`--layer-...`, instead of loose z-index numbers).
 - **English only** for now. Hebrew appears only in short items (בס״ד, the
   dedication, Hebrew dates), marked with `lang="he" dir="rtl"`.
 - **Modest, warm tone.** Placeholder text uses `class="placeholder"`; never invent
@@ -89,6 +90,10 @@ The maintainer is a computer science student who is new to web development.
     `{{ site.data.contact.email }}` etc. instead of typing them out
   - Each page (`index.html`, `about.html`, …) has front matter (`layout`,
     `title`, `description`) followed by only its own content.
+- Drawings (title flourish, background leaves, footer wave) are SVG files in
+  `images/`, referenced from the stylesheet. Never put `--` inside an SVG
+  comment: it makes the file invalid and the drawing silently disappears
+  (`run_all.sh` checks this).
 - Links are relative (`about.html`, `css/style.css`). Keep them relative, so
   the site works at both its own domain and the old GitHub address.
 - **Mobile first:** base CSS is for phones; `@media (min-width: 48rem)` adapts

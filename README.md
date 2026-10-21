@@ -14,7 +14,7 @@ run for the live site.
 
 ```
 _layouts/default.html    the page frame: <head>, header, page content, footer
-_includes/header.html    the header (logo, name, menu)   ← edit once, every page updates
+_includes/header.html    the header (בס״ד, logo, menu)   ← edit once, every page updates
 _includes/footer.html    the footer (contact, dedication) ← edit once, every page updates
 _data/navigation.yml     the list of menu items
 _data/contact.yml        the email address and phone numbers  ← used on every page
@@ -49,6 +49,9 @@ description: "About Chaim V'Shalom Women's Learning Center."
   footer, Contact, Classes and Privacy pages all use it, written as e.g.
   `{{ site.data.contact.email }}` in the page files.
 - **Change colors:** edit the `:root` section at the top of `css/style.css`.
+- **Change a drawing** (the leaf flourish, the background leaves, the footer
+  wave): edit its file in `images/` (`.svg` files are plain text). Don't write
+  two hyphens in a row (`--`) inside their comments: that breaks the drawing.
 - **Placeholder text** is shown in grey italics (`class="placeholder"`). Replace
   it with real text and remove the `class="placeholder"` part.
 
@@ -66,6 +69,8 @@ description: "About Chaim V'Shalom Women's Learning Center."
 | `css/style.css` | All the styling. Mobile first: the `@media (min-width: 48rem)` section adjusts for wider screens. |
 | `js/main.js` | The "Menu" button on phones (it stays in the top-right corner while scrolling), the scroll fade-in, the footer "Copy" button, the page-links row that stays at the top on large screens, and the Home page logo intro (first visit in a tab only) |
 | `tests/` | Automatic checks run after every change (`bash tests/run_all.sh`); not published |
+| `_data/contact.yml` | The email address and phone numbers, used on every page |
+| `.github/workflows/claude.yml` | Lets you ask Claude for changes from GitHub (see below; not set up yet) |
 | `CNAME` | Connects the custom domain `chaimvshalom.org` to the site. Don't delete or rename it. |
 | `files/inaugural-program.ics` | Calendar file for the "Add to my calendar" button on the Classes page (8 Tuesdays) |
 | `images/logo.png` | The official round logo, shown centered in the header |
@@ -78,8 +83,10 @@ description: "About Chaim V'Shalom Women's Learning Center."
 
 Because the pages are assembled by Jekyll, opening a page file directly in a
 browser shows it without its header and footer. To see the real site, push the
-changes and open the live GitHub Pages address (it updates within a minute or
-two), or run Jekyll locally (`bundle exec jekyll serve`, requires Ruby).
+changes and open https://chaimvshalom.org/. It updates once GitHub's "pages
+build and deployment" run (the repository's Actions tab) has finished, usually
+within a few minutes; then refresh with Ctrl+Shift+R. Or run Jekyll locally
+(`bundle exec jekyll serve`, requires Ruby).
 
 ## Asking Claude from GitHub
 

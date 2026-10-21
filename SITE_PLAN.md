@@ -1,7 +1,8 @@
 # Chaim V'Shalom — Website Plan
 
-A planning document for the organization's website. No code yet — this is the
-blueprint we'll build from.
+The plan and the decisions for the organization's website. The site is built
+and live; `README.md` explains how its files work, and section 11 below has
+the current status.
 
 ## 1. About the organization
 
@@ -25,7 +26,7 @@ blueprint we'll build from.
 
 | Page | Purpose | Notes |
 |---|---|---|
-| **Home** | First impression | Logo, one-line mission, next upcoming class/event, buttons: "See classes", "Support us" |
+| **Home** | First impression | Logo, one-line mission, next upcoming class/event, buttons: "See our classes", "Contact us" |
 | **About** | Who we are | Mission, the story of how it started, founder & teachers (text only, no photos) |
 | **Classes** | The weekly shiurim | Day, time, topic, teacher, location or online link |
 | **Events & Trips** | What's coming up | Date, place, cost, sign-up link; later an archive of past events |
@@ -51,20 +52,7 @@ newsletter sign-up, Hebrew version.
 - **Basic SEO:** page titles, descriptions, and preview images for when links
   are shared on WhatsApp/Facebook.
 
-Planned folder layout:
-
-```
-index.html          ← Home
-about.html
-classes.html
-events.html
-support.html
-contact.html
-privacy.html
-css/style.css       ← one shared stylesheet
-js/main.js          ← small scripts (mobile menu, etc.)
-images/             ← logo, photos
-```
+The files and folders are described in `README.md`.
 
 ## 5. Outside services (no servers to run ourselves)
 
@@ -118,29 +106,32 @@ tax-deductible until then.
 ## 9. Branding (from the first flyer)
 
 - **Full name:** Chaim V'Shalom Women's Learning Center. All five words are the
-  name and always appear together, in the same font and style.
+  name and appear together, in the same font and style, in titles, headings,
+  the header and the footer. In running text the short form "Chaim V'Shalom"
+  is fine (the maintainer's decision, Oct 21, 2026).
 - **Logo:** an open book under a pink arch with a small leaf sprig, the name in
   a classic serif typeface, "WOMEN'S LEARNING CENTER" in serif capitals below.
 - **Official logo:** `images/logo.png` — the round logo with the book and the full
   name inside (from the administrator; source PDF is 1254×1254 px). Shown
   centered in the header on every page (8rem wide on phones, 10rem on larger
   screens), with the area outside the circle transparent.
-- **Logo emblem file:** `images/logo-emblem.png`, now used only as the
-  browser-tab icon (512×512, no text, watercolor
-  style, off-white background `#faf8f2`, not transparent). The name and
-  the full name will be real text next to/under it.
+- **Logo emblem file:** `images/logo-emblem.png`, used only as the browser-tab
+  icon (512×512, no text, watercolor style, off-white background `#faf8f2`,
+  not transparent).
 - **Theme: soft pastels** (a specific request from the organization).
-  Colors sampled from the logo emblem:
+  Colors sampled from the logo emblem. The site uses them through the color
+  variables at the top of `css/style.css`; lavender and sage are used there in
+  lighter shades, and the sampled ones appear in the little leaf drawings.
 
-  | Role | Color | Hex (approx.) |
-  |---|---|---|
-  | Page background | Warm off-white (same as the logo's background) | `#faf8f2` |
-  | Pastel accent | Blush pink (watercolor wash) | `#fad4d2` |
-  | Pastel accent | Dusty rose (center leaf) | `#e9b5af` |
-  | Pastel accent | Lavender (watercolor wash) | `#d8d4e3` |
-  | Pastel accent | Sage green (left leaf) | `#bac9c1` |
-  | Pastel accent | Soft gold (page edges) | `#f4d3ad` |
-  | Text and headings | Deep navy (book cover / flyer name) | `#0f1f50` |
+  | Role | Color | Sampled | On the site (`css/style.css`) |
+  |---|---|---|---|
+  | Page background | Warm off-white (same as the logo's background) | `#faf8f2` | `--color-bg` `#faf8f2` |
+  | Pastel accent | Blush pink (watercolor wash) | `#fad4d2` | `--color-blush` `#fad4d2` |
+  | Pastel accent | Dusty rose (center leaf) | `#e9b5af` | `--color-rose` `#e9b5af` |
+  | Pastel accent | Lavender (watercolor wash) | `#d8d4e3` | `--color-lavender` `#e7e3f0` (lighter) |
+  | Pastel accent | Sage green (left leaf) | `#bac9c1` | `--color-sage` `#dde7e1` (lighter) |
+  | Pastel accent | Soft gold (page edges) | `#f4d3ad` | `--color-gold` `#f4d3ad` |
+  | Text and headings | Deep navy (book cover / flyer name) | `#0f1f50` | `--color-heading` `#0f1f50`; body text `--color-text` `#1b2440` |
 
 - **Readability rule:** pastels are used for backgrounds, cards, borders and
   decorations — never for text. All text stays dark navy (or near-black) so it
@@ -207,13 +198,11 @@ first (see `CLAUDE.md`).
 
 ### Waiting on the maintainer / organization
 
-- Confirm the Hebrew spelling of the dedication names in the footer. (Decided
-  Oct 21, 2026: ישעי' is written with a plain apostrophe ', not a geresh ׳,
-  in the footer and on the About page.)
 - Mrs. Fayge Grossman's description (About page), the last placeholder.
-- Nice to have: a **larger version of the logo emblem** (at least 1024 px wide,
-  or SVG), ideally with a transparent background. The drawing in the current
-  file is only about 440×220 px, so it would look soft if shown large.
+- Nice to have: a **larger `images/logo.png`** (the round logo), about 800×800
+  px, exported from the 1254×1254 source PDF. The current file is 320×320, but
+  the Home page intro shows the logo up to 384 px wide, so on sharp phone
+  screens it can look slightly soft.
 
 ### Done
 
@@ -245,6 +234,11 @@ first (see `CLAUDE.md`).
   (`classes.html#registration`). It may cover the copyright line at the very
   bottom of a page; the maintainer decided that's fine (no extra footer space).
 
+- Code review and tidy-up (Oct 21, 2026), no visible change: the tests now
+  fail properly when something breaks; "Skip to content" fixed on computers;
+  contact details in `_data/contact.yml`; stylesheet sections, shared pop-up
+  styles and named layers; drawings moved to `images/*.svg`.
+
 - Batsheva Singer reviewed the site and had no objection. Her name was later
   removed from the Contact page at the maintainer's request (the phone number
   stays). The Classes page no longer names her either; its Registration text
@@ -264,8 +258,9 @@ first (see `CLAUDE.md`).
 - ~~Custom domain~~ **Done (Oct 20, 2026):** the site's address is now
   `chaimvshalom.org` (spelled without an "e" after the "v"). The maintainer
   added the `CNAME` file; it must stay in the repository.
-- `_config.yml` now uses `url: https://chaimvshalom.org` and an empty
-  `baseurl` (used by the "Share with a friend" link).
+- ~~Update `_config.yml`~~ **Done (Oct 20, 2026):** `url:
+  https://chaimvshalom.org` and an empty `baseurl` (used by the "Share with a
+  friend" link).
 - Switch publishing to `main` (see above).
 - Final check of every page on phone and computer.
 
@@ -278,4 +273,6 @@ first (see `CLAUDE.md`).
   (the earlier idea for that case: a saved yearly list of Beit Shemesh times
   checked by a small script).
 
-- The L'Ilui Nishmas dedication goes at the bottom of every page, in the footer.
+- The L'Ilui Nishmas dedication goes at the bottom of every page, in the footer
+  (and on the About page). Spelling (Oct 21, 2026): ישעי' is written with a
+  plain apostrophe ', not a geresh ׳.
