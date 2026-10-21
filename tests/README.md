@@ -18,6 +18,7 @@ bash tests/run_all.sh
 | `test_nav_hover.js` | Header menu links get a pink underline while the mouse is over them (computer, tablet, open phone menu), and lose it after |
 | `test_about.js` | About page: Mission, Story, Vision, teachers in order, no placeholders left, Hebrew names marked and never split across lines |
 | `test_sticky.js` | Large screens: only the row of page links stays at the top while scrolling, stays clickable, and doesn't cover a section you jump to; phones: the header scrolls away but the Menu button stays in the top-right corner (no jump) and its menu opens under it |
+| `test_background.js` | Page background: soft color washes on every screen, the little leaves only from 768px up, fixed behind everything; the header lets it show through |
 | `screenshots.js` | Full-page screenshots of Home, Classes and Contact at phone and computer size |
 
 Requirements: Ruby with Bundler, Node.js with Playwright and a Chromium browser,

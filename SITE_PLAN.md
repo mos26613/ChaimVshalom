@@ -183,7 +183,10 @@ first (see `CLAUDE.md`).
    stays at the top; on phones the Menu button stays in the top-right corner.
 3. ~~When hovering over a page link in the header, underline it in pink.~~
    **Done (Oct 21, 2026).**
-4. Fill up the background of the pages a bit more.
+4. ~~Fill up the background of the pages a bit more.~~ **Done (Oct 21,
+   2026):** very soft pink/lavender/sage washes on every page, plus the logo's
+   little leaves scattered on large screens only (not on phones). The
+   maintainer may still adjust it after seeing it live.
 5. Fill in the rest of the texts that still need writing (the grey
    placeholders). Real content must come from the organization; never invent it.
 

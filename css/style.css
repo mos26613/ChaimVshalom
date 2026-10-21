@@ -46,6 +46,25 @@ body {
   line-height: 1.6;
 }
 
+/* ---------- Page background ----------
+   Very soft watercolor washes (like the wash in the logo): pink in the
+   top-left, lavender on the right, sage at the bottom, fading into the
+   off-white. It stays in place while the page scrolls. On larger screens a
+   scattering of the logo's little three-leaf sprig is added (see the
+   @media block at the bottom). */
+body::before {
+  --page-washes:
+    radial-gradient(ellipse 70% 55% at 0% 0%, color-mix(in srgb, var(--color-blush) 35%, transparent), transparent 75%),
+    radial-gradient(ellipse 60% 55% at 100% 40%, color-mix(in srgb, var(--color-lavender) 45%, transparent), transparent 75%),
+    radial-gradient(ellipse 75% 50% at 10% 100%, color-mix(in srgb, var(--color-sage) 45%, transparent), transparent 75%);
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;                 /* behind everything on the page */
+  pointer-events: none;
+  background: var(--page-washes);
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -112,9 +131,11 @@ button:focus-visible {
 }
 
 /* ---------- Header ---------- */
-/* A thin pastel line (blush → lavender → sage) along the bottom of the header */
+/* A thin pastel line (blush → lavender → sage) along the bottom of the header.
+   The header itself is slightly see-through, so the page background shows
+   softly behind it. */
 .site-header {
-  background-color: var(--color-bg);
+  background-color: color-mix(in srgb, var(--color-bg) 82%, transparent);
   background-image: linear-gradient(90deg, var(--color-blush), var(--color-lavender), var(--color-sage));
   background-size: 100% 3px;
   background-position: bottom;
@@ -850,6 +871,14 @@ html:not(.js) .copy-button {
 @media (min-width: 48rem) {
   h1 { font-size: 2.5rem; }
 
+  /* The logo's little leaves, scattered over the page background. (A drawing
+     can't use the color variables, so its colors are written in it, like the
+     flourish under the page titles.) Phones don't get them, so they never sit
+     behind text on a narrow screen. */
+  body::before {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cg opacity='0.42'%3E%3Cg transform='translate(40 40) rotate(-15)'%3E%3Cpath d='M0 -10 C4 -6 4 0 0 4 C-4 0 -4 -6 0 -10Z' fill='%23e9b5af'/%3E%3Cpath d='M-1 4 C-5 3 -9 0 -10 -4 C-6 -3 -2 0 -1 4Z' fill='%23bac9c1'/%3E%3Cpath d='M1 4 C5 3 9 0 10 -4 C6 -3 2 0 1 4Z' fill='%23c4bad3'/%3E%3C/g%3E%3Cg transform='translate(160 140) rotate(20)'%3E%3Cpath d='M0 -10 C4 -6 4 0 0 4 C-4 0 -4 -6 0 -10Z' fill='%23e9b5af'/%3E%3Cpath d='M-1 4 C-5 3 -9 0 -10 -4 C-6 -3 -2 0 -1 4Z' fill='%23bac9c1'/%3E%3Cpath d='M1 4 C5 3 9 0 10 -4 C6 -3 2 0 1 4Z' fill='%23c4bad3'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat, var(--page-washes);
+  }
+
   .brand-logo { width: 10rem; }
 
   .header-bar {
@@ -863,6 +892,14 @@ html:not(.js) .copy-button {
   .js .site-header {
     position: sticky;
     z-index: 30;                 /* above the page content */
+  }
+
+  /* Page content passing under the stuck links row is softly blurred. (Only on
+     large screens: on phones this would stop the Menu button from staying in
+     the corner.) */
+  .site-header {
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
   }
 
   /* Jumping to a section (e.g. #registration) leaves room for the links row */

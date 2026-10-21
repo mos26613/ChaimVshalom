@@ -31,6 +31,7 @@ node "$REPO/tests/test_register.js" "$WORK/shots"             # floating "Regist
 node "$REPO/tests/test_nav_hover.js" "$WORK/shots"            # pink underline on header links when hovered
 node "$REPO/tests/test_about.js" "$WORK/shots"                # About page sections; name never shortened on any page
 node "$REPO/tests/test_sticky.js" "$WORK/shots"               # sticky links row (large screens), Menu button (phones)
+node "$REPO/tests/test_background.js"                         # page background: washes everywhere, leaves on large screens
 node "$REPO/tests/screenshots.js" 8765 "$WORK/shots"          # full-page screenshots (phone + computer)
 kill $SERVER
 echo "Screenshots are in $WORK/shots"
