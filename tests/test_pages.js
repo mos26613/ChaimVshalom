@@ -58,8 +58,22 @@ const pages = ['index.html','about.html','classes.html','events.html','support.h
   await browser.close();
   // Every internal link in every file points to an existing file
   const root = process.argv[3];
+  const yml = fs.readFileSync(`${__dirname}/../_data/contact.yml`, 'utf8');
+  const contact = Object.fromEntries([...yml.matchAll(/^(\w+):\s*"?([^"\n]+)"?/gm)].map(m => [m[1], m[2].trim()]));
   for (const p of pages) {
     const html = fs.readFileSync(`${root}/${p}`, 'utf8');
+    // No Jekyll code left over on the built page
+    if (/\{\{|\{%/.test(html)) report(`${p} still contains {{ or {% (Jekyll code that didn't work)`);
+    // A mistyped name such as {{ site.data.contact.emial }} turns into nothing, leaving
+    // an empty link ("mailto:" with no address) or a link with no words in it
+    // (a picture's description, its alt text, counts as words).
+    for (const empty of ['href="mailto:"', 'href="tel:"', 'href="https://wa.me/"'])
+      if (html.includes(empty)) report(`${p} has an empty link: ${empty}`);
+    for (const m of html.matchAll(/<a\b[^>]*>([\s\S]*?)<\/a>/g))
+      if (!m[1].replace(/<img\b[^>]*\balt="([^"]*)"[^>]*>/g, '$1').replace(/<[^>]*>/g, '').trim()) report(`${p} has a link with no text: ${m[0].slice(0, 80)}`);
+    // The footer shows the contact details from _data/contact.yml
+    for (const link of [`mailto:${contact.email}`, `tel:${contact.phone_link}`, `https://wa.me/${contact.whatsapp}`])
+      if (!html.includes(`href="${link}"`)) report(`${p} has no link to ${link}`);
     for (const m of html.matchAll(/(?:href|src)="([^"#:?]+)(?=["?#])/g)) {
       if (!fs.existsSync(`${root}/${m[1]}`)) report(`${p} links to missing ${m[1]}`);
     }

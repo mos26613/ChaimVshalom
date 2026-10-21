@@ -85,6 +85,8 @@ The maintainer is a computer science student who is new to web development.
   - `_includes/header.html`, `_includes/footer.html` — shared on every page;
     change them only there
   - `_data/navigation.yml` — the menu items
+  - `_data/contact.yml` — email and phone numbers; pages use
+    `{{ site.data.contact.email }}` etc. instead of typing them out
   - Each page (`index.html`, `about.html`, …) has front matter (`layout`,
     `title`, `description`) followed by only its own content.
 - Links are relative (`about.html`, `css/style.css`). Keep them relative, so

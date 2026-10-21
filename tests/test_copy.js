@@ -1,6 +1,8 @@
 // Footer "Email us" pop-up and its Copy button (mouse, keyboard, blocked clipboard),
 // and the "Call us" tooltip.
 const { chromium } = require('playwright');
+// The email address, from _data/contact.yml (the same place the site gets it)
+const EMAIL = require('fs').readFileSync(`${__dirname}/../_data/contact.yml`, 'utf8').match(/^email:\s*(\S+)/m)[1];
 (async () => { const b = await chromium.launch(); let bad = 0; const fail = m => { bad++; console.log('PROBLEM:', m); };
  const pop = p => p.evaluate(() => { const e = document.querySelector('.popover'); const r = e.getBoundingClientRect();
    return { op: +getComputedStyle(e).opacity, l: r.left, r: r.right, w: innerWidth, label: document.querySelector('.copy-label').textContent, icon: document.querySelector('.copy-icon').textContent, status: document.querySelector('.copy-status').textContent }; });
@@ -19,7 +21,7 @@ const { chromium } = require('playwright');
    if (w === 1280) { const f = await p.locator('.site-footer').boundingBox(); await p.screenshot({ path: process.argv[2] + '/popover.png', clip: { x: 300, y: f.y - 30, width: 700, height: 230 } }); }
    await p.mouse.down(); await p.mouse.up(); await p.waitForTimeout(300); s = await pop(p);
    const clip = await p.evaluate(() => navigator.clipboard.readText());
-   if (clip !== 'cvswomenslc@gmail.com') fail(w + ': clipboard has ' + JSON.stringify(clip));
+   if (clip !== EMAIL) fail(w + ': clipboard has ' + JSON.stringify(clip));
    if (s.label !== 'Copied!' || s.icon !== '✅' || s.status !== 'Email address copied') fail(w + ': no Copied! feedback ' + JSON.stringify(s));
    if (w === 1280) { const f = await p.locator('.site-footer').boundingBox(); await p.screenshot({ path: process.argv[2] + '/copied.png', clip: { x: 300, y: f.y - 30, width: 700, height: 230 } }); }
    // It stays "Copied!" and a second click copies nothing, until the page is loaded again
@@ -43,7 +45,7 @@ const { chromium } = require('playwright');
    await p.keyboard.press('Tab'); const onBtn = await p.evaluate(() => document.activeElement.classList.contains('copy-button'));
    await p.waitForTimeout(300); if (!onBtn || (await pop(p)).op !== 1) fail('keyboard: cannot reach the Copy button');
    await p.keyboard.press('Enter'); await p.waitForTimeout(300);
-   if ((await p.evaluate(() => navigator.clipboard.readText())) !== 'cvswomenslc@gmail.com' || (await pop(p)).label !== 'Copied!') fail('keyboard: copy failed');
+   if ((await p.evaluate(() => navigator.clipboard.readText())) !== EMAIL || (await pop(p)).label !== 'Copied!') fail('keyboard: copy failed');
    else console.log('keyboard: Tab to Email us shows the box, Tab reaches Copy, Enter copies');
    await ctx.close(); }
  // 3. copying blocked: fallback hint and highlighted address
@@ -52,7 +54,7 @@ const { chromium } = require('playwright');
    await p.goto('http://localhost:8765/index.html', { waitUntil: 'networkidle' });
    await p.locator('.has-popover > a').hover(); await p.waitForTimeout(300); await p.locator('.copy-button').click(); await p.waitForTimeout(300);
    const s = await pop(p); const sel = await p.evaluate(() => String(window.getSelection()));
-   if (s.label !== 'Press Ctrl+C' || sel !== 'cvswomenslc@gmail.com') fail('blocked copy: no fallback ' + JSON.stringify([s.label, sel])); else console.log('copy blocked: shows "Press Ctrl+C" and highlights the address');
+   if (s.label !== 'Press Ctrl+C' || sel !== EMAIL) fail('blocked copy: no fallback ' + JSON.stringify([s.label, sel])); else console.log('copy blocked: shows "Press Ctrl+C" and highlights the address');
    await p.waitForTimeout(2200); if ((await pop(p)).label !== 'Copy') fail('blocked copy: button did not come back to "Copy" to try again');
    await p.close(); }
  // 4. phone and no-JS

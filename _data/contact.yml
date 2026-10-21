@@ -1,0 +1,15 @@
+# The center's contact details. Every page reads them from here (the footer,
+# the Contact page, the Classes page and the Privacy Policy), so to change the
+# email address or phone number, change it only here.
+email: cvswomenslc@gmail.com
+
+# The phone number as shown on the site. "&#8209;" is a dash that never lets
+# the number break onto two lines.
+phone_display: "050&#8209;933&#8209;2205"
+
+# The same number in international form, for "tap to call" links (with +972,
+# without the first 0).
+phone_link: "+972509332205"
+
+# The WhatsApp number: the same international number without the "+".
+whatsapp: "972509332205"

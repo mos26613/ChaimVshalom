@@ -17,6 +17,7 @@ _layouts/default.html    the page frame: <head>, header, page content, footer
 _includes/header.html    the header (logo, name, menu)   ← edit once, every page updates
 _includes/footer.html    the footer (contact, dedication) ← edit once, every page updates
 _data/navigation.yml     the list of menu items
+_data/contact.yml        the email address and phone numbers  ← used on every page
 _config.yml              site settings (and files that should not be published)
 ```
 
@@ -44,6 +45,9 @@ description: "About Chaim V'Shalom Women's Learning Center."
 - **Add a new page:** copy an existing page (e.g. `privacy.html`), give it a new
   file name, and change its title, description and content.
 - **Add a page to the menu:** add its name and file to `_data/navigation.yml`.
+- **Change the email address or phone number:** edit `_data/contact.yml`. The
+  footer, Contact, Classes and Privacy pages all use it, written as e.g.
+  `{{ site.data.contact.email }}` in the page files.
 - **Change colors:** edit the `:root` section at the top of `css/style.css`.
 - **Placeholder text** is shown in grey italics (`class="placeholder"`). Replace
   it with real text and remove the `class="placeholder"` part.
