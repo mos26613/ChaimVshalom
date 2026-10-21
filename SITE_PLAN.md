@@ -177,9 +177,10 @@ The maintainer will say when to start each item. Design items get a preview
 first (see `CLAUDE.md`).
 
 1. Fill up the header a bit (it feels a little empty).
-2. On large screens, make the header's page links sticky (they stay at the
-   top while scrolling). On phones, possibly a sticky "Menu" button as well.
-   Preview both before deciding.
+2. ~~On large screens, make the header's page links sticky (they stay at the
+   top while scrolling). On phones, possibly a sticky "Menu" button as well.~~
+   **Done (Oct 21, 2026):** on large screens only the row of page links
+   stays at the top; on phones the Menu button stays in the top-right corner.
 3. ~~When hovering over a page link in the header, underline it in pink.~~
    **Done (Oct 21, 2026).**
 4. Fill up the background of the pages a bit more.

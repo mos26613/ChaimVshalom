@@ -239,6 +239,23 @@ button:focus-visible {
   background: var(--color-blush);
 }
 
+/* On phones, once the page is scrolled down, the Menu button stays in the
+   top-right corner (js/main.js adds "menu-floating"), and the opened menu box
+   appears right under it */
+.menu-floating .header-bar .menu-toggle {
+  position: fixed;
+  top: 0.75rem;
+  bottom: auto;                /* undo its usual place at the bottom of the header */
+  right: 1rem;
+  z-index: 25;                 /* above the page and the menu box */
+  box-shadow: var(--shadow);
+}
+
+.js .menu-floating .site-nav.is-open {
+  position: fixed;
+  top: calc(var(--menu-bottom, 3.25rem) + 0.4rem);
+}
+
 /* Without JavaScript the button would do nothing, so hide it */
 html:not(.js) .menu-toggle {
   display: none;

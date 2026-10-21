@@ -1,6 +1,7 @@
 // Sticky header. Large screens: after scrolling, only the row of page links stays at the
 // top (logo scrolled away), on top of the page, and clickable; jumping to #registration
-// isn't hidden behind it. Phones: the header scrolls away as before.
+// isn't hidden behind it. Phones: the header scrolls away, but the Menu button stays in the
+// top-right corner (without jumping) and its menu box opens under it.
 const { chromium } = require('playwright');
 (async () => { const b = await chromium.launch(); let bad = 0;
  const fail = msg => { console.log('  FAIL:', msg); bad++; };
@@ -38,6 +39,31 @@ const { chromium } = require('playwright');
    await p.goto('http://localhost:8765/about.html', { waitUntil: 'load' });
    await p.evaluate(() => window.scrollTo(0, 900)); await p.waitForTimeout(100);
    const gone = await p.evaluate(() => document.querySelector('.brand-logo').getBoundingClientRect().bottom <= 0 && getComputedStyle(document.querySelector('.site-header')).position !== 'sticky');
-   if (!gone) fail(`${w}px: header should scroll away on phones`); else console.log(String(w).padStart(5), 'px: header scrolls away (phone)');
+   if (!gone) fail(`${w}px: header should scroll away on phones`);
+   // The Menu button: in its usual place at the top of the page, then pinned to the top-right
+   // corner while scrolling, without jumping; the menu box opens under it and works.
+   await p.evaluate(() => window.scrollTo(0, 0)); await p.waitForTimeout(100);
+   const btn = () => p.evaluate(() => { const r = document.querySelector('.menu-toggle').getBoundingClientRect();
+     return { top: Math.round(r.top), right: Math.round(innerWidth - r.right), fixed: getComputedStyle(document.querySelector('.menu-toggle')).position === 'fixed' }; });
+   const start = await btn();
+   if (start.fixed) fail(`${w}px: Menu button pinned before scrolling`);
+   let prev = start.top, jump = 0;
+   for (let y = 10; y <= 400; y += 10) { await p.evaluate(y => window.scrollTo(0, y), y); await p.waitForTimeout(30);
+     const now = await btn(); jump = Math.max(jump, Math.abs(prev - now.top) - 10); prev = now.top; }
+   const end = await btn();
+   if (!end.fixed || end.top !== 12 || end.right !== 16) fail(`${w}px: Menu button not in the top-right corner after scrolling ${JSON.stringify(end)}`);
+   if (jump > 1) fail(`${w}px: Menu button jumped by ${jump}px while scrolling`);
+   await p.evaluate(() => window.scrollTo(0, 900)); await p.waitForTimeout(100);
+   await p.click('.menu-toggle');
+   const box = await p.evaluate(() => { const n = document.getElementById('site-nav').getBoundingClientRect(), bt = document.querySelector('.menu-toggle').getBoundingClientRect();
+     const hit = document.elementFromPoint((n.left + n.right) / 2, n.bottom - 10);
+     return { visible: n.height > 0, below: n.top >= bt.bottom && n.top - bt.bottom < 12, inside: n.left >= 0 && n.right <= innerWidth && n.bottom <= innerHeight, onTop: !!(hit && hit.closest('#site-nav')) }; });
+   if (!box.visible || !box.below || !box.inside || !box.onTop) fail(`${w}px: menu box after scrolling ${JSON.stringify(box)}`);
+   if (process.argv[2] && w === 390) await p.screenshot({ path: `${process.argv[2]}/menu-floating-390.png` });
+   await p.mouse.click(w / 2, 600);
+   if (await p.isVisible('.site-nav')) fail(`${w}px: tap outside did not close the menu`);
+   await p.click('.menu-toggle'); await p.click('.site-nav a[href="contact.html"]'); await p.waitForLoadState('load');
+   if (!p.url().endsWith('contact.html')) fail(`${w}px: menu link did not work after scrolling`);
+   console.log(String(w).padStart(5), 'px: header scrolls away, Menu button stays in the corner (phone)');
    await p.close(); }
  console.log(bad ? `${bad} STICKY HEADER PROBLEM(S)` : 'STICKY HEADER CHECKS PASSED'); await b.close(); })();

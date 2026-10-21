@@ -3,7 +3,8 @@
 //    on top of the page.
 // 2. A gentle fade-in for page sections as they scroll into view.
 // 3. "Copy" buttons (e.g. copying the email address in the footer).
-// 4. On large screens, the row of page links stays at the top while scrolling.
+// 4. On large screens, the row of page links stays at the top while scrolling;
+//    on phones, the "Menu" button stays in the top-right corner.
 
 // Tell the CSS that JavaScript is running, so the phone menu can start closed.
 document.documentElement.classList.add("js");
@@ -245,4 +246,42 @@ document.addEventListener("DOMContentLoaded", function () {
   measure();
   window.addEventListener("resize", measure);
   window.addEventListener("load", measure);   // after the logo and fonts have loaded
+});
+
+// On phones, the "Menu" button stays in the top-right corner while scrolling.
+// It starts in its usual place next to the logo; just as it would scroll off
+// the top of the screen, it is pinned to the corner (the "menu-floating"
+// class), so it never jumps. The opened menu box then appears right under it.
+document.addEventListener("DOMContentLoaded", function () {
+  var header = document.querySelector(".site-header");
+  var bar = document.querySelector(".header-bar");
+  var button = document.querySelector(".menu-toggle");
+  if (!header || !bar || !button) {
+    return;
+  }
+  var wide = window.matchMedia("(min-width: 48rem)");
+  var waiting = false;
+
+  function update() {
+    waiting = false;
+    var gap = parseFloat(getComputedStyle(bar).paddingBottom) || 0;   // 0.75rem
+    // Where the button's top would be if it simply scrolled with the header
+    var usualTop = bar.getBoundingClientRect().bottom - gap - button.offsetHeight;
+    var floating = !wide.matches && usualTop < gap;
+    header.classList.toggle("menu-floating", floating);
+    if (floating) {
+      header.style.setProperty("--menu-bottom", button.getBoundingClientRect().bottom + "px");
+    }
+  }
+
+  function onScroll() {
+    if (!waiting) {
+      waiting = true;
+      window.requestAnimationFrame(update);
+    }
+  }
+
+  update();
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
 });
