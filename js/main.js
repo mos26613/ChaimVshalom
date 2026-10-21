@@ -3,6 +3,7 @@
 //    on top of the page.
 // 2. A gentle fade-in for page sections as they scroll into view.
 // 3. "Copy" buttons (e.g. copying the email address in the footer).
+// 4. On large screens, the row of page links stays at the top while scrolling.
 
 // Tell the CSS that JavaScript is running, so the phone menu can start closed.
 document.documentElement.classList.add("js");
@@ -223,4 +224,25 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   });
+});
+
+// On large screens the header is "sticky", but moved up by the height of
+// everything above the page links (בס״ד and the logo), so only the row of
+// links (and the pastel line under it) stays at the top while scrolling. The
+// stickiness itself is in css/style.css; this only measures how far to move it.
+document.addEventListener("DOMContentLoaded", function () {
+  var header = document.querySelector(".site-header");
+  var nav = document.getElementById("site-nav");
+  if (!header || !nav) {
+    return;
+  }
+
+  function measure() {
+    var above = nav.getBoundingClientRect().top - header.getBoundingClientRect().top;
+    header.style.top = (-Math.max(0, above)) + "px";
+  }
+
+  measure();
+  window.addEventListener("resize", measure);
+  window.addEventListener("load", measure);   // after the logo and fonts have loaded
 });

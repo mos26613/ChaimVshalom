@@ -839,6 +839,20 @@ html:not(.js) .copy-button {
     padding-bottom: 0;
   }
 
+  /* The row of page links stays at the top of the screen while scrolling.
+     The whole header is sticky, but js/main.js moves it up so that only the
+     links (and the pastel line under them) stay in view. Without JavaScript
+     the header simply scrolls away as before. */
+  .js .site-header {
+    position: sticky;
+    z-index: 30;                 /* above the page content */
+  }
+
+  /* Jumping to a section (e.g. #registration) leaves room for the links row */
+  .section[id] {
+    scroll-margin-top: 6rem;
+  }
+
   /* On wide screens the menu is always visible, and the button is hidden */
   .menu-toggle,
   html:not(.js) .menu-toggle {
