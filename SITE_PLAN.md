@@ -200,9 +200,6 @@ first (see `CLAUDE.md`).
   live only after a merge) waits until the site goes public. Note: a new Claude
   session may work on a different branch, which would not publish until merged
   or moved to this branch.
-- **Shabbos closing:** waiting for the rav's answers (whether needed, whose
-  times, closing/reopening times, Yom Tov). See the earlier proposal: a saved
-  yearly list of Beit Shemesh times checked by a small script.
 - **Online donations:** waiting for amuta registration and a bank account
   (section 6).
 
@@ -266,5 +263,11 @@ first (see `CLAUDE.md`).
 - Final check of every page on phone and computer.
 
 ## 12. Other decisions
+
+- **Shabbos (decided Oct 21, 2026):** the site stays on over Shabbos and Yom
+  Tov; no closing is needed, as long as nothing is sold on the site. If the
+  site ever starts selling things or taking payments, the question comes back
+  (the earlier idea for that case: a saved yearly list of Beit Shemesh times
+  checked by a small script).
 
 - The L'Ilui Nishmas dedication goes at the bottom of every page, in the footer.

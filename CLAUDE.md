@@ -67,8 +67,10 @@ The maintainer is a computer science student who is new to web development.
 - **Donations:** the organization is not yet a registered amuta. Don't add live
   donation or payment features unless explicitly asked, and **never** describe
   donations as tax-deductible (that requires Section 46 approval, not yet granted).
-- **Shabbos closing** is planned but waiting on rabbinic answers — don't build it
-  unless asked.
+- **Shabbos: the site stays on** (decided Oct 21, 2026). No Shabbos closing is
+  needed as long as nothing is sold on the site. If a feature would sell
+  something or take payments, raise the Shabbos question with the maintainer
+  before building it.
 
 ## How the site is built
 
