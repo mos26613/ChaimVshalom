@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 176 24">
+  <!-- The three-leaf flourish (like the leaves in the logo) between two thin
+       gold lines, under every page title and as the leaf divider inside pages
+       (css/style.css: "main h1::after, .leaf-divider"). The colors match the
+       logo's leaves. -->
+  <line x1="0" y1="14" x2="64" y2="14" stroke="#e5c08f" stroke-width="1.2"/>
+  <line x1="112" y1="14" x2="176" y2="14" stroke="#e5c08f" stroke-width="1.2"/>
+  <path d="M88 2 C94 8 94 16 88 22 C82 16 82 8 88 2Z" fill="#e9b5af"/>
+  <path d="M86 21 C80 20 74 15 72 9 C79 10 85 15 86 21Z" fill="#bac9c1"/>
+  <path d="M90 21 C96 20 102 15 104 9 C97 10 91 15 90 21Z" fill="#c4bad3"/>
+</svg>

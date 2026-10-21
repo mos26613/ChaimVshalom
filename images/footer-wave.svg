@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 40" preserveAspectRatio="none">
+  <!-- The soft wave along the top of the footer. Only its shape is used (as a
+       "mask" in css/style.css: ".site-footer::before"); its color comes from
+       the footer's lavender color variable, so it always matches the footer.
+       (Note: a double hyphen is not allowed inside these comments.) -->
+  <path d="M0 40 V22 C150 0 300 0 450 18 S750 40 900 20 S1100 2 1200 16 V40Z"/>
+</svg>

@@ -69,6 +69,9 @@ description: "About Chaim V'Shalom Women's Learning Center."
 | `CNAME` | Connects the custom domain `chaimvshalom.org` to the site. Don't delete or rename it. |
 | `files/inaugural-program.ics` | Calendar file for the "Add to my calendar" button on the Classes page (8 Tuesdays) |
 | `images/logo.png` | The official round logo, shown centered in the header |
+| `images/flourish.svg` | The three-leaf flourish under page titles (and the leaf divider) |
+| `images/background-leaves.svg` | The little leaves scattered over the page background on large screens |
+| `images/footer-wave.svg` | The shape of the wave along the top of the footer |
 | `images/logo-emblem.png` | The book emblem, used as the small browser-tab icon |
 
 ## Previewing

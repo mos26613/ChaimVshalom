@@ -31,6 +31,14 @@ grep -E "done|rror" "$WORK/build.log"
 echo "== Checking the HTML =="
 check "HTML validation" npx --yes html-validate@8 "$WORK"/site/*.html && echo "HTML VALID"
 
+echo "== Checking the drawings (images/*.svg) =="
+# A broken drawing (e.g. "--" inside a comment) silently shows nothing in the browser
+check "SVG drawings" python3 -c '
+import sys, xml.dom.minidom
+for f in sys.argv[1:]:
+    xml.dom.minidom.parse(f)
+print("SVG VALID")' "$REPO"/images/*.svg
+
 echo "== Browser checks =="
 python3 -m http.server 8765 --directory "$WORK/site" >/dev/null 2>&1 & SERVER=$!
 sleep 1
