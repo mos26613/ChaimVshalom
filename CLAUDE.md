@@ -46,9 +46,9 @@ The maintainer is a computer science student who is new to web development.
 - **The name: "Chaim V'Shalom Women's Learning Center"**, all five words
   written together in the same font and style (never split into a name plus a
   smaller tagline). Use the full name in page titles, headings, the header and
-  footer, and the first time a text mentions it. **In running text the short
-  form "Chaim V'Shalom" is fine** when it is mentioned again (the maintainer's
-  decision, Oct 21, 2026); never "correct" it to the full name. The official
+  footer. **In running text the short form "Chaim V'Shalom" is fine** (the
+  maintainer's decision, Oct 21, 2026; the maintainer's own texts use it, even on
+  first mention); never "correct" it to the full name. The official
   round logo (`images/logo.png`) shows the name in its own artwork style.
 - **Keep the maintainer's text exactly as sent** when adding it to the site
   (wording, short name, order). Don't reword or "fix" it; if something seems

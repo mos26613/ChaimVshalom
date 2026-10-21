@@ -1,6 +1,6 @@
 // About page: Mission, Story, Vision (then teachers) in order, with no placeholders left in them;
 // the two Hebrew names in the dedication marked as Hebrew and never split across lines.
-// Every page: the first mention of the name is the full name (the short form is fine after that).
+// (How the name is written in page text is the maintainer's choice, so it isn't checked here.)
 const { chromium } = require('playwright');
 (async () => { const b = await chromium.launch(); let bad = 0;
  const fail = msg => { console.log('  FAIL:', msg); bad++; };
@@ -19,10 +19,4 @@ const { chromium } = require('playwright');
    else console.log(String(w).padStart(5), 'px: About page OK');
    if (process.argv[2] && w !== 320) await p.screenshot({ path: `${process.argv[2]}/about-${w}.png`, fullPage: true });
    await p.close(); }
- const p = await b.newPage();
- for (const pg of ['index', 'about', 'classes', 'events', 'support', 'contact', 'privacy']) {
-   await p.goto(`http://localhost:8765/${pg}.html`, { waitUntil: 'networkidle' });
-   const first = await p.evaluate(() => { const t = document.querySelector('main').innerText.replace(/[‘’]/g, "'");
-     const i = t.indexOf("Chaim V'Shalom"); return i < 0 ? 'none' : t.substr(i, 38); });
-   if (first !== 'none' && first !== "Chaim V'Shalom Women's Learning Center") fail(`${pg}: first mention is short: "${first}"`); }
  console.log(bad ? `${bad} ABOUT PAGE PROBLEM(S)` : 'ABOUT PAGE CHECKS PASSED'); await b.close(); })();

@@ -60,9 +60,10 @@ const { chromium } = require('playwright');
        boxAfter: !!box && reg.compareDocumentPosition(box) === Node.DOCUMENT_POSITION_FOLLOWING,
        boxW: bb && Math.round(bb.width), centered: bb && Math.abs((bb.left + bb.right) / 2 - innerWidth / 2) <= 1,
        divider: hr && hr.getBoundingClientRect().height > 0 && getComputedStyle(hr).backgroundImage.includes('svg'),
+       shareWhite: !!box && getComputedStyle(box.querySelector('.button')).backgroundColor === 'rgb(255, 255, 255)',
        overflow: document.documentElement.scrollWidth - innerWidth }; });
    const okW = r.boxW <= 24 * 16 + 1;
-   if (r.order !== 'signup > divider > question' || r.shareInReg || !r.shareInBox || !r.boxAfter || !okW || !r.centered || !r.divider || r.overflow > 0)
+   if (r.order !== 'signup > divider > question' || r.shareInReg || !r.shareInBox || !r.boxAfter || !okW || !r.centered || !r.divider || !r.shareWhite || r.overflow > 0)
      fail(`${w}px Classes layout: ${JSON.stringify(r)}`);
    else console.log(String(w).padStart(5), `px: layout OK (share box ${r.boxW}px wide)`);
    await p.close(); }

@@ -332,6 +332,13 @@ main h1::after,
 
 .share-box .actions { justify-content: center; }
 
+/* On the sage-green box, a white button with a thin gold border (like the
+   cards) looks softer than the pink one */
+.share-box .button--soft {
+  background: var(--color-surface);
+  border-color: var(--color-gold);
+}
+
 /* The home page welcome, on a soft watercolor-style pastel background
    (like the wash in the logo) */
 .hero {
