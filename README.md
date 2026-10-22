@@ -14,7 +14,7 @@ run for the live site.
 
 ```
 _layouts/default.html    the page frame: <head>, header, page content, footer
-_includes/header.html    the header (בס״ד, logo, menu)   ← edit once, every page updates
+_includes/header.html    the header (בס״ד, logo with the pesukim arc, menu)   ← edit once, every page updates
 _includes/footer.html    the footer (contact, dedication) ← edit once, every page updates
 _data/navigation.yml     the list of menu items
 _data/contact.yml        the email address and phone numbers  ← used on every page
@@ -45,6 +45,9 @@ description: "About Chaim V'Shalom Women's Learning Center."
 - **Add a new page:** copy an existing page (e.g. `privacy.html`), give it a new
   file name, and change its title, description and content.
 - **Add a page to the menu:** add its name and file to `_data/navigation.yml`.
+- **Change the pesukim over the logo:** edit the text in `_includes/header.html`;
+  it appears twice (the wide arc and the phone arc), once per pasuk in each.
+  The script fits the wide arc to the menu by itself.
 - **Change the email address or phone number:** edit `_data/contact.yml`. The
   footer, Contact, Classes and Privacy pages all use it, written as e.g.
   `{{ site.data.contact.email }}` in the page files.
@@ -70,7 +73,7 @@ description: "About Chaim V'Shalom Women's Learning Center."
 | `contact.html` | Contact details (email, phone, WhatsApp) |
 | `privacy.html` | Privacy Policy |
 | `css/style.css` | All the styling. Mobile first: the `@media (min-width: 48rem)` section adjusts for wider screens. |
-| `js/main.js` | The "Menu" button on phones (it stays in the top-right corner while scrolling), the scroll fade-in, the footer "Copy" button, the page-links row that stays at the top on large screens, and the Home page logo intro (first visit in a tab only) |
+| `js/main.js` | The "Menu" button on phones (it stays in the top-right corner while scrolling), the scroll fade-in, the footer "Copy" button, fitting the pesukim arc between "Home" and "Contact Us", the page-links row that stays at the top on large screens, and the Home page logo intro (first visit in a tab only) |
 | `tests/` | Automatic checks run after every change (`bash tests/run_all.sh`); not published |
 | `_data/contact.yml` | The email address and phone numbers, used on every page |
 | `.github/workflows/claude.yml` | Lets you ask Claude for changes from GitHub (see below; not set up yet) |

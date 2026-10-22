@@ -20,6 +20,7 @@ bash tests/run_all.sh
 | `test_sticky.js` | Large screens: only the row of page links stays at the top while scrolling, stays clickable, and doesn't cover a section you jump to; phones: the header scrolls away but the Menu button stays in the top-right corner (no jump) and its menu opens under it |
 | `test_background.js` | Page background: soft color washes on every screen, the little leaves only from 768px up, fixed behind everything; the header lets it show through |
 | `test_calendar.js` | Classes page "Add to my calendar:" buttons: 🍎 Apple (the calendar file) and 🤖 Android (Google Calendar) on one row at every size; the Google link has the same dates, weekly repeat and title as the calendar file |
+| `test_arc.js` | The pesukim arc over the logo: on larger screens its text starts exactly at "Home" and ends exactly at "Contact Us", diamond centered over the logo, clear of the logo and links; on phones the small arc fits and clears the Menu button; navy text, gold diamond |
 | `test_intro.js` | Home page logo intro: shows on the first visit to Home in a tab, big logo centered; the first scroll/tap/key glides it exactly onto the header logo and the page stays at the top; never repeats in that tab (other pages, back to Home, reload); skipped for "reduce motion" |
 | `skip_intro.js` | Helper, not a check: makes the other checks behave as if the intro was already seen |
 | `screenshots.js` | Full-page screenshots of Home, Classes and Contact at phone and computer size |

@@ -24,9 +24,11 @@
   --color-lavender: #e7e3f0;
   --color-sage: #dde7e1;
   --color-gold: #f4d3ad;
-  --color-gold-line: #e5c08f;  /* the thin gold lines of the leaf dividers (same as in images/flourish.svg) */
+  --color-gold-line: #e5c08f;
+  --color-gold-deep: #c49a5c;  /* the diamond between the pesukim over the logo */  /* the thin gold lines of the leaf dividers (same as in images/flourish.svg) */
 
   --font-heading: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-hebrew: "Frank Ruhl Libre", "Times New Roman", serif;   /* the pesukim over the logo */
   --font-body: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 
   --max-width: 60rem;          /* widest the content gets on big screens */
@@ -186,6 +188,45 @@ button:focus-visible {
 .brand-logo {
   width: 8rem;
   height: auto;
+}
+
+/* ---------- Pesukim arc over the logo ----------
+   Two pesukim in an arc over the logo, in navy with a gold diamond at the top
+   (the drawings are in _includes/header.html). Phones: a small arc around the
+   logo. Larger screens: a wide half-circle whose ends sit right above "Home"
+   and "Contact Us"; js/main.js sets its exact size and place, and the room
+   above the logo. */
+.brand-wrap {
+  padding-top: 3.2rem;         /* phones: room for the arc above the logo */
+}
+
+.brand-arc {
+  position: absolute;
+  height: auto;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.arc-text {
+  font-family: var(--font-hebrew);
+  font-weight: 700;
+  fill: var(--color-heading);
+}
+
+.arc-mark {
+  fill: var(--color-gold-deep);
+}
+
+/* Phones: centered on the logo (its centre is 3.2rem + half of 8rem from the top) */
+.arc-narrow {
+  left: 50%;
+  top: 7.2rem;
+  width: min(100%, 22.5rem);
+  transform: translate(-50%, -88.2%);
+}
+
+.arc-wide {
+  display: none;
 }
 
 .header-bar .menu-toggle {
@@ -963,9 +1004,19 @@ html:not(.js) .copy-button {
   opacity: 0;
 }
 
-/* While the intro shows, the header logo waits (the big logo lands on its spot) */
-.intro-on .site-header .brand-logo {
+/* While the intro shows, only the pesukim arc of the header stays visible, on
+   top of the intro screen; the big logo glides into place under it */
+.js.intro-on .site-header {    /* ".js" so it also wins over the sticky header on large screens */
+  position: relative;
+  top: 0 !important;           /* not moved up as the sticky header would be */
+  z-index: calc(var(--layer-intro) + 1);
   visibility: hidden;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.intro-on .site-header .brand-arc {
+  visibility: visible;
 }
 
 /* ---------- Printing ----------
@@ -996,6 +1047,24 @@ html:not(.js) .copy-button {
   }
 
   .brand-logo { width: 10rem; }
+
+  /* The wide arc: these are starting values until js/main.js fits it
+     between "Home" and "Contact Us" */
+  .arc-narrow {
+    display: none;
+  }
+
+  .arc-wide {
+    display: block;
+    left: 50%;
+    bottom: 0;
+    width: 35.5rem;
+    transform: translateX(-50%);
+  }
+
+  .brand-wrap {
+    padding-top: 3.6rem;
+  }
 
   .header-bar {
     padding-bottom: 0;

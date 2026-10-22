@@ -3,9 +3,30 @@
     <div class="container">
       <p class="bsd" lang="he" dir="rtl">בס״ד</p>
       <div class="header-bar">
-        <a class="brand" href="index.html">
-          <img class="brand-logo" src="images/logo.png" alt="Chaim V'Shalom Women's Learning Center — home" width="320" height="320">
-        </a>
+        <!-- Two pesukim in an arc over the logo (Mishlei 3:18 on the right,
+             Tehillim 29:11 on the left, a gold diamond at the top). Two drawings:
+             a wide one for larger screens, fitted between "Home" and "Contact Us"
+             by js/main.js, and a smaller one around the logo for phones. The
+             text is decoration (aria-hidden); to change it, edit both drawings. -->
+        <div class="brand-wrap">
+          <svg class="brand-arc arc-wide" viewBox="0 0 560 222" lang="he" aria-hidden="true">
+            <path id="arc-wide-left" d="M10 210 A270 186 0 0 1 280 24" fill="none"/>
+            <path id="arc-wide-right" d="M280 24 A270 186 0 0 1 550 210" fill="none"/>
+            <text class="arc-text" direction="rtl" font-size="25"><textPath href="#arc-wide-right" startOffset="193.6" text-anchor="middle" textLength="335.2" lengthAdjust="spacing">עץ חיים היא למחזיקים בה</textPath></text>
+            <text class="arc-text" direction="rtl" font-size="25"><textPath href="#arc-wide-left" startOffset="167.6" text-anchor="middle" textLength="335.2" lengthAdjust="spacing">ה׳ יברך את עמו בשלום</textPath></text>
+            <text class="arc-mark" x="280" y="24" text-anchor="middle" font-size="25">✦</text>
+          </svg>
+          <svg class="brand-arc arc-narrow" viewBox="0 0 360 170" lang="he" aria-hidden="true">
+            <path id="arc-narrow-left" d="M30 150 A150 98 0 0 1 180 52" fill="none"/>
+            <path id="arc-narrow-right" d="M180 52 A150 98 0 0 1 330 150" fill="none"/>
+            <text class="arc-text" direction="rtl" font-size="15"><textPath href="#arc-narrow-right" startOffset="106.5" text-anchor="middle" textLength="180.9" lengthAdjust="spacing">עץ חיים היא למחזיקים בה</textPath></text>
+            <text class="arc-text" direction="rtl" font-size="15"><textPath href="#arc-narrow-left" startOffset="90.5" text-anchor="middle" textLength="180.9" lengthAdjust="spacing">ה׳ יברך את עמו בשלום</textPath></text>
+            <text class="arc-mark" x="180" y="52" text-anchor="middle" font-size="15">✦</text>
+          </svg>
+          <a class="brand" href="index.html">
+            <img class="brand-logo" src="images/logo.png" alt="Chaim V'Shalom Women's Learning Center — home" width="320" height="320">
+          </a>
+        </div>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
       </div>
       <nav class="site-nav" id="site-nav" aria-label="Main">

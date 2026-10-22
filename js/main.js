@@ -6,9 +6,10 @@
 //    on top of the page.
 // 2. A gentle fade-in for page sections as they scroll into view.
 // 3. "Copy" buttons (e.g. copying the email address in the footer).
-// 4. On large screens, the row of page links stays at the top while scrolling.
-// 5. On phones, the "Menu" button stays in the top-right corner while scrolling.
-// 6. The Home page logo intro: the big logo glides into the header.
+// 4. The pesukim arc over the logo: fitted between "Home" and "Contact Us".
+// 5. On large screens, the row of page links stays at the top while scrolling.
+// 6. On phones, the "Menu" button stays in the top-right corner while scrolling.
+// 7. The Home page logo intro: the big logo glides into the header.
 
 // ---------- 0. Before the page is drawn ----------
 
@@ -265,7 +266,68 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// ---------- 4. Page links stay at the top (large screens) ----------
+// ---------- 4. Pesukim arc over the logo ----------
+// On larger screens the arc's text should start exactly where the word "Home"
+// starts and end exactly where "Contact Us" ends, whatever the screen and fonts.
+// This measures the words and the arc's text, then scales and moves the arc so
+// they line up, and gives the header just enough room above the logo for it.
+document.addEventListener("DOMContentLoaded", function () {
+  var arc = document.querySelector(".arc-wide");
+  var bar = document.querySelector(".header-bar");
+  var wrap = document.querySelector(".brand-wrap");
+  var links = document.querySelectorAll(".site-nav a");
+  if (!arc || !bar || !wrap || links.length < 2) {
+    return;
+  }
+  var wide = window.matchMedia("(min-width: 48rem)");
+
+  // Left and right edge of the words themselves (not the link's padding)
+  function wordEdges(link) {
+    var range = document.createRange();
+    range.selectNodeContents(link);
+    return range.getBoundingClientRect();
+  }
+
+  // Left, right and top of all the arc's text together
+  function textBox() {
+    var box = null;
+    Array.prototype.forEach.call(arc.querySelectorAll("text"), function (t) {
+      var r = t.getBoundingClientRect();
+      box = box ? { left: Math.min(box.left, r.left), right: Math.max(box.right, r.right), top: Math.min(box.top, r.top) }
+                : { left: r.left, right: r.right, top: r.top };
+    });
+    return box;
+  }
+
+  function fit() {
+    if (!wide.matches) {
+      arc.style.cssText = "";
+      wrap.style.paddingTop = "";
+      return;
+    }
+    var want = { left: wordEdges(links[0]).left, right: wordEdges(links[links.length - 1]).right };
+    var a = arc.getBoundingClientRect(), t = textBox();
+    // Everything in the drawing scales with its width, so one correction is exact
+    var scale = (want.right - want.left) / (t.right - t.left);
+    var width = a.width * scale;
+    var left = want.left - (t.left - a.left) * scale - bar.getBoundingClientRect().left;
+    arc.style.width = width + "px";
+    arc.style.left = left + "px";
+    arc.style.transform = "none";
+    // Room above the logo: the top of the text sits just below the top of the bar
+    var gap = bar.getBoundingClientRect().top + 4 - textBox().top;
+    wrap.style.paddingTop = Math.max(0, (parseFloat(getComputedStyle(wrap).paddingTop) || 0) + gap) + "px";
+  }
+
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("load", fit);
+  if (document.fonts) {
+    document.fonts.ready.then(fit);      // the words change size once the fonts arrive
+  }
+});
+
+// ---------- 5. Page links stay at the top (large screens) ----------
 // On large screens the header is "sticky", but moved up by the height of
 // everything above the page links (בס״ד and the logo), so only the row of
 // links (and the pastel line under it) stays at the top while scrolling. The
@@ -285,9 +347,12 @@ document.addEventListener("DOMContentLoaded", function () {
   measure();
   window.addEventListener("resize", measure);
   window.addEventListener("load", measure);   // after the logo and fonts have loaded
+  if (document.fonts) {
+    document.fonts.ready.then(measure);       // after the header arc (part 4) has been fitted
+  }
 });
 
-// ---------- 5. Menu button stays in the corner (phones) ----------
+// ---------- 6. Menu button stays in the corner (phones) ----------
 // On phones, the "Menu" button stays in the top-right corner while scrolling.
 // It starts in its usual place next to the logo; just as it would scroll off
 // the top of the screen, it is pinned to the corner (the "menu-floating"
@@ -326,7 +391,7 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("resize", onScroll);
 });
 
-// ---------- 6. Home page logo intro ----------
+// ---------- 7. Home page logo intro ----------
 // The Home page intro (see part 0 at the top of this file): waits for the first scroll,
 // tap or key press, then slides the big logo onto the header logo and fades the
 // intro away. The page itself doesn't scroll until the logo has landed.

@@ -56,6 +56,7 @@ check test_about      node "$REPO/tests/test_about.js" "$WORK/shots"        # Ab
 check test_sticky     node "$REPO/tests/test_sticky.js" "$WORK/shots"       # sticky links row (large screens), Menu button (phones)
 check test_background node "$REPO/tests/test_background.js"                 # page background: washes everywhere, leaves on large screens
 check test_calendar   node "$REPO/tests/test_calendar.js"                   # Classes page Apple / Android calendar buttons
+check test_arc        node "$REPO/tests/test_arc.js" "$WORK/shots"          # pesukim arc over the logo
 check screenshots     node "$REPO/tests/screenshots.js" 8765 "$WORK/shots"  # full-page screenshots (phone + computer)
 kill $SERVER
 echo "Screenshots are in $WORK/shots"

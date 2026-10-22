@@ -167,7 +167,14 @@ not public yet.
 The maintainer will say when to start each item. Design items get a preview
 first (see `CLAUDE.md`).
 
-1. Fill up the header a bit (it feels a little empty).
+1. ~~Fill up the header a bit (it feels a little empty).~~ **Done (Oct 22,
+   2026):** two pesukim in an arc over the logo, in navy (Frank Ruhl Libre)
+   with a gold ✦ exactly at the top: עץ חיים היא למחזיקים בה (Mishlei 3:18)
+   on the right, ה׳ יברך את עמו בשלום (Tehillim 29:11) on the left, no
+   nekudos, ה׳ written as the maintainer wrote it. On larger screens the text
+   starts exactly at the word "Home" and ends exactly at "Contact Us" (fitted
+   by js/main.js); on phones a smaller arc goes around the logo. The arc stays
+   visible during the Home page intro, and the big logo glides in under it.
 2. ~~On large screens, make the header's page links sticky (they stay at the
    top while scrolling). On phones, possibly a sticky "Menu" button as well.~~
    **Done (Oct 21, 2026):** on large screens only the row of page links
