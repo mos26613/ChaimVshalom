@@ -1,8 +1,8 @@
 // The pesukim arc over the logo. Larger screens: the text's outer edges line up with the
 // start of the word "Home" and the end of "Contact Us", the gold diamond is centered over
 // the logo, and the text doesn't touch the logo or the links. Phones: the small arc fits on
-// screen and clears the Menu button. Text navy, diamond gold. During the Home page intro
-// the arc stays visible.
+// screen and clears the Menu button. Text navy, diamond gold. The Home page intro shows
+// only the big logo; the arc is there once the logo has landed.
 const { chromium } = require('playwright');
 (async () => { const b = await chromium.launch(); let bad = 0;
  const fail = msg => { console.log('  FAIL:', msg); bad++; };
@@ -47,17 +47,22 @@ const { chromium } = require('playwright');
    if (process.argv[2] && (w === 1280 || w === 390)) { await p.goto('http://localhost:8765/index.html', { waitUntil: 'networkidle' }); await p.evaluate(() => document.fonts.ready);
      await p.screenshot({ path: `${process.argv[2]}/arc-${w}.png`, clip: { x: 0, y: 0, width: w, height: w > 700 ? 380 : 330 } }); }
    await p.close(); }
- // During the Home page intro the arc is visible on top of the intro screen (phone and computer)
+ // The Home page intro shows only the big logo: the arc is covered by the intro screen,
+ // and is there again once the logo has landed under it (phone and computer)
  for (const [w, h] of [[390, 844], [1280, 800]]) {
    const ctx = await b.newContext({ viewport: { width: w, height: h } }); const p = await ctx.newPage();
    await p.addInitScript(() => sessionStorage.removeItem('intro-seen'));
    await p.goto('http://localhost:8765/', { waitUntil: 'networkidle' }); await p.evaluate(() => document.fonts.ready); await p.waitForTimeout(200);
-   const seen = await p.evaluate(() => { if (!document.documentElement.classList.contains('intro-on')) return 'no intro';
-     const vis = [...document.querySelectorAll('.brand-arc')].find(s => getComputedStyle(s).display !== 'none');
+   const onTop = () => p.evaluate(() => { const vis = [...document.querySelectorAll('.brand-arc')].find(s => getComputedStyle(s).display !== 'none');
      vis.style.pointerEvents = 'auto';   // the arc normally ignores the mouse, which would hide it from elementFromPoint
      const r = vis.querySelector('.arc-mark').getBoundingClientRect(); const hit = document.elementFromPoint((r.left + r.right) / 2, (r.top + r.bottom) / 2);
-     return hit && hit.closest('.brand-arc') ? 'visible' : 'hidden under ' + (hit && hit.className); });
-   if (seen !== 'visible') fail(`${w}px intro: arc ${seen}`); else console.log(String(w).padStart(5), 'px: arc visible during the intro');
+     vis.style.pointerEvents = ''; return !!(hit && hit.closest('.brand-arc')); });
+   const during = await p.evaluate(() => document.documentElement.classList.contains('intro-on')) && await onTop();
+   await p.mouse.wheel(0, 300); await p.waitForTimeout(2300);
+   const after = await onTop();
+   if (during) fail(`${w}px intro: the arc shows during the intro`);
+   if (!after) fail(`${w}px intro: the arc is not there after the intro`);
+   if (!during && after) console.log(String(w).padStart(5), 'px: arc hidden during the intro, there after the logo lands');
    await ctx.close(); }
  process.exitCode = bad ? 1 : 0;   // tells run_all.sh whether this check passed
  console.log(bad ? `${bad} ARC PROBLEM(S)` : 'ARC CHECKS PASSED'); await b.close(); })();

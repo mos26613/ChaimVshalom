@@ -1004,19 +1004,10 @@ html:not(.js) .copy-button {
   opacity: 0;
 }
 
-/* While the intro shows, only the pesukim arc of the header stays visible, on
-   top of the intro screen; the big logo glides into place under it */
-.js.intro-on .site-header {    /* ".js" so it also wins over the sticky header on large screens */
-  position: relative;
-  top: 0 !important;           /* not moved up as the sticky header would be */
-  z-index: calc(var(--layer-intro) + 1);
+/* While the intro shows, the header logo waits (the big logo lands on its
+   spot, under the pesukim arc, which appears as the intro screen fades) */
+.intro-on .site-header .brand-logo {
   visibility: hidden;
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
-}
-
-.intro-on .site-header .brand-arc {
-  visibility: visible;
 }
 
 /* ---------- Printing ----------

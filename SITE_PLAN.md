@@ -173,8 +173,9 @@ first (see `CLAUDE.md`).
    on the right, ה׳ יברך את עמו בשלום (Tehillim 29:11) on the left, no
    nekudos, ה׳ written as the maintainer wrote it. On larger screens the text
    starts exactly at the word "Home" and ends exactly at "Contact Us" (fitted
-   by js/main.js); on phones a smaller arc goes around the logo. The arc stays
-   visible during the Home page intro, and the big logo glides in under it.
+   by js/main.js); on phones a smaller arc goes around the logo. The Home page
+   intro shows only the big logo; the arc appears as the intro screen fades and
+   the logo glides into place under it.
 2. ~~On large screens, make the header's page links sticky (they stay at the
    top while scrolling). On phones, possibly a sticky "Menu" button as well.~~
    **Done (Oct 21, 2026):** on large screens only the row of page links
