@@ -68,8 +68,9 @@ The maintainer is a computer science student who is new to web development.
   for the stacking layers (`--layer-...`, instead of loose z-index numbers).
 - **English only** for now. Hebrew appears only in short items (בס״ד, the
   dedication, Hebrew dates), marked with `lang="he" dir="rtl"`.
-- **Modest, warm tone.** Placeholder text uses `class="placeholder"`; never invent
-  facts (names, dates, prices, biographies) — use a placeholder and say so.
+- **Modest, warm tone.** Never invent facts (names, dates, prices, biographies) —
+  use a placeholder and say so. All placeholders were filled (Oct 22, 2026) and
+  the `.placeholder` style removed; to add one again, see README.md.
 - **Donations:** the organization is not yet a registered amuta. Don't add live
   donation or payment features unless explicitly asked, and **never** describe
   donations as tax-deductible (that requires Section 46 approval, not yet granted).

@@ -178,10 +178,10 @@ first (see `CLAUDE.md`).
    2026):** very soft pink/lavender/sage washes on every page, plus the logo's
    little leaves scattered on large screens only (not on phones). The
    maintainer may still adjust it after seeing it live.
-5. Fill in the rest of the texts that still need writing (the grey
-   placeholders). Real content must come from the organization; never invent it.
-   Status Oct 21, 2026: all pages have real text except Mrs. Fayge Grossman's
-   description on the About page.
+5. ~~Fill in the rest of the texts that still need writing (the grey
+   placeholders).~~ **Done (Oct 22, 2026):** every page has its real text; the
+   last one was Mrs. Fayge Grossman's description. The placeholder style was
+   removed from the stylesheet.
 
 ### On hold (don't start without the maintainer's go-ahead)
 
@@ -198,7 +198,6 @@ first (see `CLAUDE.md`).
 
 ### Waiting on the maintainer / organization
 
-- Mrs. Fayge Grossman's description (About page), the last placeholder.
 - Nice to have: a **larger `images/logo.png`** (the round logo), about 800×800
   px, exported from the 1254×1254 source PDF. The current file is 320×320, but
   the Home page intro shows the logo up to 384 px wide, so on sharp phone

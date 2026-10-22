@@ -603,12 +603,6 @@ main h1::after,
   }
 }
 
-/* Text that still needs to be written — easy to spot while building */
-.placeholder {
-  color: var(--color-muted);
-  font-style: italic;
-}
-
 /* ---------- Footer ---------- */
 /* On phones and tablets the footer sections are stacked, so they are centered
    to use the full width. Wider screens switch to three columns (see below). */

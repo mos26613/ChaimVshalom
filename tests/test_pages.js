@@ -62,6 +62,8 @@ const pages = ['index.html','about.html','classes.html','events.html','support.h
   const contact = Object.fromEntries([...yml.matchAll(/^(\w+):\s*"?([^"\n]+)"?/gm)].map(m => [m[1], m[2].trim()]));
   for (const p of pages) {
     const html = fs.readFileSync(`${root}/${p}`, 'utf8');
+    // No placeholder text left (it has no special look any more, so it would pass for real text)
+    if (/class="[^"]*\bplaceholder\b/.test(html)) report(`${p} still has placeholder text (class="placeholder")`);
     // No Jekyll code left over on the built page
     if (/\{\{|\{%/.test(html)) report(`${p} still contains {{ or {% (Jekyll code that didn't work)`);
     // A mistyped name such as {{ site.data.contact.emial }} turns into nothing, leaving

@@ -52,8 +52,11 @@ description: "About Chaim V'Shalom Women's Learning Center."
 - **Change a drawing** (the leaf flourish, the background leaves, the footer
   wave): edit its file in `images/` (`.svg` files are plain text). Don't write
   two hyphens in a row (`--`) inside their comments: that breaks the drawing.
-- **Placeholder text** is shown in grey italics (`class="placeholder"`). Replace
-  it with real text and remove the `class="placeholder"` part.
+- **Placeholder text:** all pages have their real text now, so the grey-italic
+  placeholder style was removed. If a new page needs a placeholder, add this
+  to `css/style.css` again and use `<p class="placeholder">…</p>`:
+  `.placeholder { color: var(--color-muted); font-style: italic; }`
+  (the tests flag any placeholder left on the site).
 
 ## Files
 
