@@ -522,6 +522,25 @@ main h1::after,
   margin: 0;
 }
 
+/* A short bold label above a row of buttons, e.g. "Add to my calendar:"
+   above the Apple and Android buttons on the Classes page */
+.calendar-label {
+  margin: 1rem 0 0;
+  font-weight: 700;
+  color: var(--color-heading);
+}
+
+.calendar-label + .actions {
+  margin-top: 0.4rem;
+}
+
+/* A little less space at the sides, so both buttons fit on one row even on
+   the narrowest phones */
+.calendar-label + .actions .button {
+  padding-left: 1.05rem;
+  padding-right: 1.05rem;
+}
+
 /* ---------- Class details and icons ---------- */
 /* Simple label/value list (used for class details) */
 .details {

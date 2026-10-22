@@ -216,6 +216,9 @@ first (see `CLAUDE.md`).
   on computers, hovering "Call us" shows the number and "Email us" shows the
   address with a Copy button.
 - Directions: Google Maps share link and Waze coordinates for the venue.
+- "Add to my calendar:" on the Classes page (Oct 22, 2026): 🍎 Apple (the
+  calendar file; confirmed working on an iPhone) and 🤖 Android (a Google
+  Calendar link, since on Android the file only went to Downloads).
 - About page: real Mission, Story (with the L'Ilui Nishmas dedication)
   and Vision text from the maintainer (Oct 21, 2026), kept exactly as written,
   including the short form "Chaim V'Shalom" where it is mentioned again.
@@ -250,7 +253,8 @@ first (see `CLAUDE.md`).
 - After **December 15, 2026** the home page banner ("Now running: our first
   learning program") and the Classes page will be out of date — update them,
   including the calendar file `files/inaugural-program.ics` (a new program
-  needs a new calendar file).
+  needs a new calendar file) and the Google Calendar link of the 🤖 Android
+  button in `classes.html` (the tests check that the two match).
   Also update or remove the floating "Register for classes" button
   (`_layouts/default.html`) if there is no program open for registration.
 

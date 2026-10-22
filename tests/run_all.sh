@@ -55,6 +55,7 @@ check test_nav_hover  node "$REPO/tests/test_nav_hover.js" "$WORK/shots"    # pi
 check test_about      node "$REPO/tests/test_about.js" "$WORK/shots"        # About page sections and dedication
 check test_sticky     node "$REPO/tests/test_sticky.js" "$WORK/shots"       # sticky links row (large screens), Menu button (phones)
 check test_background node "$REPO/tests/test_background.js"                 # page background: washes everywhere, leaves on large screens
+check test_calendar   node "$REPO/tests/test_calendar.js"                   # Classes page Apple / Android calendar buttons
 check screenshots     node "$REPO/tests/screenshots.js" 8765 "$WORK/shots"  # full-page screenshots (phone + computer)
 kill $SERVER
 echo "Screenshots are in $WORK/shots"
