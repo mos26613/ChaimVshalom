@@ -86,6 +86,8 @@ description: "About Chaim V'Shalom Women's Learning Center."
 | `images/header-book.svg` | The open-book medallion on each side of the header on computers (the right one is mirrored) |
 | `images/leaf-sprig.svg` | The three-leaf flower alone, in the middle of the vertical divider on the Classes page |
 | `images/logo-emblem.png` | The book emblem, used as the small browser-tab icon |
+| `favicon.ico` | The same book emblem as an icon file in the main folder; Google shows it next to the site in search results. Keep its name and place. |
+| `images/apple-touch-icon.png` | The same emblem, used when the site is saved to an iPhone home screen |
 
 ## Previewing
 
