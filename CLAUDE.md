@@ -16,29 +16,34 @@ The maintainer is a computer science student who is new to web development.
 
 ## How we work (learned in earlier sessions)
 
-- **Branch:** the live site publishes from
-  `claude/nonprofit-website-planning-21uvpw` (GitHub Pages, branch deploy, root
-  folder). Commit and push there unless the maintainer says otherwise; work on
-  any other branch does not appear on the site. Live address: the custom
+- **Branch:** the live site publishes from **`main`** (GitHub Pages, branch
+  deploy, root folder; switched on Oct 23, 2026). **Never push to `main`
+  directly.** Start from the latest `main`, work on your own branch, and open a
+  **pull request** into `main`; the maintainer reviews it and clicks "Merge",
+  and only then does it go live. In the pull request description, say in plain
+  language what changed and what to check after merging. The old branch
+  `claude/nonprofit-website-planning-21uvpw` no longer publishes. Live address: the custom
   domain **https://chaimvshalom.org/** (set by the `CNAME` file, which the
   maintainer added; never delete or rename it, or the domain stops working).
   The old address https://mos26613.github.io/ChaimVshalom/ forwards there.
   Repository: mos26613/ChaimVshalom.
 - **Pull first.** The maintainer sometimes edits files directly on GitHub, so
-  start every task with `git pull` and build on their changes.
+  start every task from the latest `main` (`git fetch origin main`) and build
+  on their changes.
 - **One change at a time.** For a list of changes: do one, test it fully, commit
-  and push it, then start the next. Clear commit messages.
+  and push it, then start the next. Clear commit messages. Related small
+  changes can share one pull request; ask the maintainer if unsure.
 - **Design ideas get a preview first.** When proposing new looks or features,
   build them in a scratch copy, send before/after screenshots, and only add the
   approved ones to the real site. Direct requests ("move the button", "rename
-  X") can be done, tested and pushed, then shown.
+  X") can be done, tested and put in a pull request, then shown.
 - **Test thoroughly** with `bash tests/run_all.sh` (see `tests/README.md`), and
   add a focused test for anything new (e.g. tooltips, fade-in, copy button).
   Check phone (~390px), very narrow phones (320px), tablets and computers.
 - **Show, don't just tell:** send screenshots (and short recordings for motion)
   of the result, and say what to check on the live site.
-- **Publishing takes a few minutes.** After a push, GitHub's "pages build and
-  deployment" run (repository Actions tab) must finish before the live site
+- **Publishing takes a few minutes.** After a merge into `main`, GitHub's "pages
+  build and deployment" run (repository Actions tab) must finish before the live site
   changes; it sometimes takes 3+ minutes. Until then the maintainer sees the
   old version. When a change "doesn't work" right after a push, check that
   run first, then ask for a hard refresh (Ctrl+Shift+R).
