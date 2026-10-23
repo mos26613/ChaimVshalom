@@ -78,7 +78,7 @@ description: "About Chaim V'Shalom Women's Learning Center."
 | `_data/contact.yml` | The email address and phone numbers, used on every page |
 | `.github/workflows/claude.yml` | Lets you ask Claude for changes from GitHub (see below; not set up yet) |
 | `CNAME` | Connects the custom domain `chaimvshalom.org` to the site. Don't delete or rename it. |
-| `files/inaugural-program.ics` | Calendar file for the 🍎 Apple "Add to my calendar" button on the Classes page (8 Tuesdays). The 🤖 Android button is a Google Calendar link in `classes.html` with the same details |
+| `files/inaugural-program.ics` | Calendar file for the 🍎 Apple and 💻 Windows "Add to my calendar" buttons on the Classes page (8 Tuesdays). The 🤖 Android button is a Google Calendar link in `classes.html` with the same details |
 | `images/logo.png` | The official round logo, shown centered in the header |
 | `images/flourish.svg` | The three-leaf flourish under page titles (and the leaf divider) |
 | `images/background-leaves.svg` | The little leaves scattered over the page background on large screens |

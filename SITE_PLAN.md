@@ -217,11 +217,14 @@ first (see `CLAUDE.md`).
   with a friend).
 - Footer: short and symmetric on phones (Email us · Call us · WhatsApp | Pages);
   on computers, hovering "Call us" shows the number and "Email us" shows the
-  address with a Copy button.
+  address with a Copy button. Phones and tablets never show these pop-ups
+  (Oct 23, 2026): tapping calls or opens the mail app directly.
 - Directions: Google Maps share link and Waze coordinates for the venue.
 - "Add to my calendar:" on the Classes page (Oct 22, 2026): 🍎 Apple (the
-  calendar file; confirmed working on an iPhone) and 🤖 Android (a Google
-  Calendar link, since on Android the file only went to Downloads).
+  calendar file; confirmed working on an iPhone), 🤖 Android (a Google
+  Calendar link, since on Android the file only went to Downloads) and, from
+  Oct 23, 💻 Windows (the same calendar file; opens in Outlook / Windows
+  Calendar). On phones the three are equal tiles in one row.
 - About page: real Mission, Story (with the L'Ilui Nishmas dedication)
   and Vision text from the maintainer (Oct 21, 2026), kept exactly as written,
   including the short form "Chaim V'Shalom" where it is mentioned again.
