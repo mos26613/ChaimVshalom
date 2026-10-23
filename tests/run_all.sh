@@ -57,6 +57,7 @@ check test_sticky     node "$REPO/tests/test_sticky.js" "$WORK/shots"       # st
 check test_background node "$REPO/tests/test_background.js"                 # page background: washes everywhere, leaves on large screens
 check test_calendar   node "$REPO/tests/test_calendar.js"                   # Classes page Apple / Android calendar buttons
 check test_arc        node "$REPO/tests/test_arc.js" "$WORK/shots"          # pesukim arc over the logo
+check test_header_decor node "$REPO/tests/test_header_decor.js" "$WORK/shots"  # header washes, book medallions, plain stuck row
 check screenshots     node "$REPO/tests/screenshots.js" 8765 "$WORK/shots"  # full-page screenshots (phone + computer)
 kill $SERVER
 echo "Screenshots are in $WORK/shots"

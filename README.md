@@ -83,6 +83,7 @@ description: "About Chaim V'Shalom Women's Learning Center."
 | `images/flourish.svg` | The three-leaf flourish under page titles (and the leaf divider) |
 | `images/background-leaves.svg` | The little leaves scattered over the page background on large screens |
 | `images/footer-wave.svg` | The shape of the wave along the top of the footer |
+| `images/header-book.svg` | The open-book medallion on each side of the header on computers (the right one is mirrored) |
 | `images/leaf-sprig.svg` | The three-leaf flower alone, in the middle of the vertical divider on the Classes page |
 | `images/logo-emblem.png` | The book emblem, used as the small browser-tab icon |
 
