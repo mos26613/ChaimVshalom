@@ -1,5 +1,6 @@
-// Classes page "Add to my calendar:" buttons. Apple downloads files/inaugural-program.ics;
-// Android opens Google Calendar with the same event. Both buttons fit on one row on every
+// Classes page "Add to my calendar:" buttons. Apple and Windows download
+// files/inaugural-program.ics; Android opens Google Calendar with the same event. The three
+// buttons fit on one row on every
 // screen, their emojis are skipped by screen readers, and the Google link has the same start,
 // end, weekly repeat and title as the calendar file (so the two can't drift apart).
 const { chromium } = require('playwright');
@@ -14,14 +15,15 @@ const fs = require('fs');
      return { label: label && label.textContent.trim(), names: btns.map(a => a.textContent.trim()),
        apple: btns[0] && { href: btns[0].getAttribute('href'), download: btns[0].hasAttribute('download') },
        android: btns[1] && { href: btns[1].href, target: btns[1].target, rel: btns[1].rel },
-       oneRow: btns.length === 2 && Math.abs(box(btns[0]).top - box(btns[1]).top) < 1 && btns.every(a => box(a).height < 60),
+       oneRow: btns.length === 3 && btns.every(a => Math.abs(box(a).top - box(btns[0]).top) < 1 && box(a).height < 80 && box(a).right <= innerWidth),
+       windows: btns[2] && { href: btns[2].getAttribute('href'), download: btns[2].hasAttribute('download') },
        emojisHidden: btns.every(a => a.querySelector('[aria-hidden="true"]')),
        overflow: document.documentElement.scrollWidth - innerWidth }; });
-   if (r.label !== 'Add to my calendar:' || r.names.join(' | ') !== '🍎 Apple | 🤖 Android' || !r.oneRow || !r.emojisHidden || r.overflow > 0
-       || r.apple.href !== 'files/inaugural-program.ics' || !r.apple.download
+   if (r.label !== 'Add to my calendar:' || r.names.join(' | ') !== '🍎 Apple | 🤖 Android | 💻 Windows' || !r.oneRow || !r.emojisHidden || r.overflow > 0
+       || r.apple.href !== 'files/inaugural-program.ics' || !r.apple.download || r.windows.href !== 'files/inaugural-program.ics' || !r.windows.download
        || !r.android.href.startsWith('https://calendar.google.com/calendar/render?action=TEMPLATE') || r.android.target !== '_blank' || !r.android.rel.includes('noopener'))
      fail(`${w}px: ${JSON.stringify(r)}`);
-   else console.log(String(w).padStart(5), 'px: Apple and Android buttons OK, on one row');
+   else console.log(String(w).padStart(5), 'px: Apple, Android and Windows buttons OK, on one row');
    if (w === 1280) {
      // The Google link and the calendar file describe the same event
      const ics = fs.readFileSync(`${__dirname}/../files/inaugural-program.ics`, 'utf8').replace(/\r\n /g, '');

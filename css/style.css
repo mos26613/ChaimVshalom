@@ -573,7 +573,7 @@ main h1::after,
 }
 
 /* A short bold label above a row of buttons, e.g. "Add to my calendar:"
-   above the Apple and Android buttons on the Classes page */
+   above the Apple, Android and Windows buttons on the Classes page */
 .calendar-label {
   margin: 1rem 0 0;
   font-weight: 700;
@@ -584,11 +584,26 @@ main h1::after,
   margin-top: 0.4rem;
 }
 
-/* A little less space at the sides, so both buttons fit on one row even on
-   the narrowest phones */
+/* Phones: the three calendar buttons are equal tiles side by side, with the
+   emoji above the word, so they fit on one row even on the narrowest phones.
+   Larger screens: ordinary buttons (see the "Wider screens" block). */
+.calendar-label + .actions {
+  flex-wrap: nowrap;
+}
+
 .calendar-label + .actions .button {
-  padding-left: 1.05rem;
-  padding-right: 1.05rem;
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0.5rem 0.25rem;
+  border-radius: var(--radius-large);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.calendar-label + .actions .button span {
+  display: block;
+  font-size: 1.25rem;
+  line-height: 1.3;
 }
 
 /* ---------- Class details and icons ---------- */
@@ -1180,6 +1195,20 @@ html:not(.js) .copy-button {
 
   .registration-row .share-box {
     margin: 0 0 2.5rem;
+  }
+
+  /* The calendar buttons as ordinary buttons again (phones: tiles, see above) */
+  .calendar-label + .actions .button {
+    flex: 0 0 auto;
+    padding: 0.7rem 1.3rem;
+    border-radius: 2rem;
+    font-size: inherit;
+  }
+
+  .calendar-label + .actions .button span {
+    display: inline;
+    font-size: inherit;
+    line-height: inherit;
   }
 }
 
