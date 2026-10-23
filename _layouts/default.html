@@ -15,6 +15,11 @@
   {%- endif %}
   <meta name="description" content="{{ page.description | escape }}">
   {%- comment -%}
+    Proves to Google Search Console that this site belongs to us. Keep it, or
+    Search Console loses access to the site's reports.
+  {%- endcomment %}
+  <meta name="google-site-verification" content="C7MAF-ab7w1-lR4rCUOr09ZkFkhMx67SNplmORR_gLM">
+  {%- comment -%}
     The little icon (the open book from the logo) in the browser tab and next
     to the site in Google results. favicon.ico (in the main folder) is the
     file Google and older browsers look for; the iPhone uses
