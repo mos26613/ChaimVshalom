@@ -225,6 +225,11 @@ first (see `CLAUDE.md`).
 - About page: real Mission, Story (with the L'Ilui Nishmas dedication)
   and Vision text from the maintainer (Oct 21, 2026), kept exactly as written,
   including the short form "Chaim V'Shalom" where it is mentioned again.
+- Header decorations (Oct 23, 2026): soft watercolor washes in the header
+  (pink, lavender, peach, sage), and on computers (1024px+) a small pastel
+  medallion with an open book on each side of the pesukim arc, mirrored. When
+  the page is scrolled on larger screens, the stuck links row is plain
+  half-transparent off-white (no washes).
 - Home page logo intro (Oct 21, 2026): the first time the Home page is opened
   in a browser tab, the logo shows large in the middle with a "scroll down"
   arrow; the first scroll, tap or key glides it into the header. It doesn't

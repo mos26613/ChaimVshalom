@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 260">
+  <!-- A small pastel medallion with an open book and the logo's three leaves,
+       shown on both sides of the header on computers (css/style.css:
+       ".site-header::before" and "::after"; the right one is mirrored). Drawn
+       for the left side: the gold line with the diamond points toward the logo. -->
+  <defs>
+    <radialGradient id="wash" cx="40%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#fad4d2"/><stop offset="0.55" stop-color="#f6e6ee"/><stop offset="1" stop-color="#e3e6f1"/>
+    </radialGradient>
+    <radialGradient id="wash2" cx="62%" cy="40%" r="70%">
+      <stop offset="0" stop-color="#e7e3f0"/><stop offset="0.6" stop-color="#f3eef4"/><stop offset="1" stop-color="#fbe9e4"/>
+    </radialGradient>
+    <path id="leaf" d="M0 -12 C5 -7 5 1 0 4 C-5 1 -5 -7 0 -12Z"/>
+  </defs>
+  <circle cx="130" cy="135" r="62" fill="url(#wash2)"/>
+  <circle cx="130" cy="135" r="62" fill="none" stroke="#c49a5c" stroke-width="2"/>
+  <circle cx="130" cy="135" r="69" fill="none" stroke="#e5c08f" stroke-width="1"/>
+  <path d="M130 149 Q112 131 90 137 L90 143 Q112 137 130 155 Z" fill="#fdf8f0" stroke="#e5c08f" stroke-width="0.8"/>
+  <path d="M130 145 Q112 127 90 133 L90 139 Q112 133 130 151 Z" fill="#f7ecd9" stroke="#e5c08f" stroke-width="0.8"/>
+  <path d="M130 141 Q112 123 90 129 L90 135 Q112 129 130 147 Z" fill="#f1dfc2" stroke="#e5c08f" stroke-width="0.8"/>
+  <path d="M130 157 Q110 141 86 147" fill="none" stroke="#0f1f50" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M130 149 Q148 131 170 137 L170 143 Q148 137 130 155 Z" fill="#fdf8f0" stroke="#e5c08f" stroke-width="0.8"/>
+  <path d="M130 145 Q148 127 170 133 L170 139 Q148 133 130 151 Z" fill="#f7ecd9" stroke="#e5c08f" stroke-width="0.8"/>
+  <path d="M130 141 Q148 123 170 129 L170 135 Q148 129 130 147 Z" fill="#f1dfc2" stroke="#e5c08f" stroke-width="0.8"/>
+  <path d="M130 157 Q150 141 174 147" fill="none" stroke="#0f1f50" stroke-width="2.6" stroke-linecap="round"/>
+  <use href="#leaf" fill="#e9b5af" transform="translate(130.0 115.6) rotate(0) scale(2.2)"/>
+  <use href="#leaf" fill="#bac9c1" transform="translate(125.6 122.2) rotate(-52) scale(1.804)"/>
+  <use href="#leaf" fill="#c4bad3" transform="translate(134.4 122.2) rotate(52) scale(1.804)"/>
+  <line x1="206" y1="135" x2="292" y2="135" stroke="#c49a5c" stroke-width="1.3"/>
+  <path d="M232 135 m-6 0 l6 -6 l6 6 l-6 6 Z" fill="#c49a5c"/>
+  <circle cx="54" cy="135" r="2.4" fill="#c49a5c"/>
+
+</svg>

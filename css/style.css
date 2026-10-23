@@ -155,12 +155,21 @@ button:focus-visible {
 /* ---------- Header ---------- */
 /* A thin pastel line (blush → lavender → sage) along the bottom of the header.
    The header itself is slightly see-through, so the page background shows
-   softly behind it. */
+   softly behind it, with soft watercolor washes over it (like the wash in the
+   logo): pink top left, lavender right, peach and sage in the bottom corners,
+   and a faint blush behind the logo. */
 .site-header {
+  --header-line: linear-gradient(90deg, var(--color-blush), var(--color-lavender), var(--color-sage));
   background-color: color-mix(in srgb, var(--color-bg) 82%, transparent);
-  background-image: linear-gradient(90deg, var(--color-blush), var(--color-lavender), var(--color-sage));
-  background-size: 100% 3px;
-  background-position: bottom;
+  background-image:
+    var(--header-line),
+    radial-gradient(ellipse 38% 70% at 8% 30%, color-mix(in srgb, var(--color-blush) 94%, transparent), transparent 72%),
+    radial-gradient(ellipse 34% 65% at 92% 35%, var(--color-lavender), transparent 72%),
+    radial-gradient(ellipse 30% 55% at 22% 95%, color-mix(in srgb, var(--color-gold) 51%, transparent), transparent 72%),
+    radial-gradient(ellipse 30% 55% at 80% 95%, var(--color-sage), transparent 72%),
+    radial-gradient(ellipse 22% 60% at 50% 55%, color-mix(in srgb, var(--color-blush) 48%, transparent), transparent 75%);
+  background-size: 100% 3px, auto, auto, auto, auto, auto;
+  background-position: bottom, 0 0, 0 0, 0 0, 0 0, 0 0;
   background-repeat: no-repeat;
 }
 
@@ -1070,6 +1079,14 @@ html:not(.js) .copy-button {
     z-index: var(--layer-header);
   }
 
+  /* Once only the links row is stuck at the top (js/main.js adds "is-stuck"),
+     it is plain half-transparent off-white again, without the washes */
+  .site-header.is-stuck {
+    background-image: var(--header-line);
+    background-size: 100% 3px;
+    background-position: bottom;
+  }
+
   /* Page content passing under the stuck links row is softly blurred. (Only on
      large screens: on phones this would stop the Menu button from staying in
      the corner.) */
@@ -1163,5 +1180,29 @@ html:not(.js) .copy-button {
 
   .registration-row .share-box {
     margin: 0 0 2.5rem;
+  }
+}
+
+/* Computers (1024px and up): a small open-book medallion (images/header-book.svg)
+   in the empty space on each side of the pesukim arc, mirrored on the right */
+@media (min-width: 64rem) {
+  .site-header::before,
+  .site-header::after {
+    content: "";
+    position: absolute;
+    top: 2.2rem;
+    width: min(17rem, calc(50% - 22rem));
+    aspect-ratio: 300 / 260;
+    background: url("../images/header-book.svg") center / contain no-repeat;
+    pointer-events: none;
+  }
+
+  .site-header::before {
+    right: calc(50% + 21rem);
+  }
+
+  .site-header::after {
+    left: calc(50% + 21rem);
+    transform: scaleX(-1);
   }
 }

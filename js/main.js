@@ -339,12 +339,23 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
+  var above = 0;
+  var wide = window.matchMedia("(min-width: 48rem)");
+
   function measure() {
-    var above = nav.getBoundingClientRect().top - header.getBoundingClientRect().top;
-    header.style.top = (-Math.max(0, above)) + "px";
+    above = Math.max(0, nav.getBoundingClientRect().top - header.getBoundingClientRect().top);
+    header.style.top = (-above) + "px";
+    markStuck();
+  }
+
+  // "is-stuck" once only the links row is left at the top (css/style.css then
+  // shows it plain, without the header's color washes)
+  function markStuck() {
+    header.classList.toggle("is-stuck", wide.matches && above > 0 && window.scrollY >= above - 1);
   }
 
   measure();
+  window.addEventListener("scroll", markStuck, { passive: true });
   window.addEventListener("resize", measure);
   window.addEventListener("load", measure);   // after the logo and fonts have loaded
   if (document.fonts) {
