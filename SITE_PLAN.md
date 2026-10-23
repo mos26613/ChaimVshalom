@@ -217,7 +217,8 @@ first (see `CLAUDE.md`).
   with a friend).
 - Footer: short and symmetric on phones (Email us · Call us · WhatsApp | Pages);
   on computers, hovering "Call us" shows the number and "Email us" shows the
-  address with a Copy button.
+  address with a Copy button. Phones and tablets never show these pop-ups
+  (Oct 23, 2026): tapping calls or opens the mail app directly.
 - Directions: Google Maps share link and Waze coordinates for the venue.
 - "Add to my calendar:" on the Classes page (Oct 22, 2026): 🍎 Apple (the
   calendar file; confirmed working on an iPhone), 🤖 Android (a Google

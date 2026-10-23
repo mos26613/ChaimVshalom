@@ -58,8 +58,19 @@ const EMAIL = require('fs').readFileSync(`${__dirname}/../_data/contact.yml`, 'u
    await p.waitForTimeout(2200); if ((await pop(p)).label !== 'Copy') fail('blocked copy: button did not come back to "Copy" to try again');
    await p.close(); }
  // 4. phone and no-JS
- { const ctx = await b.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true }); const p = await ctx.newPage();
-   await p.goto('http://localhost:8765/index.html', { waitUntil: 'networkidle' }); if ((await pop(p)).op !== 0) fail('phone: popover visible'); else console.log('phone: no popover');
+ // Touch devices (phone, tablet) can call and email straight away, so no pop-ups, not even
+ // when a link is tapped (a tap also gives the link focus, which must not open them)
+ for (const [w, h, name] of [[390, 844, 'phone'], [820, 1180, 'tablet'], [1180, 820, 'tablet sideways']]) {
+   const ctx = await b.newContext({ viewport: { width: w, height: h }, hasTouch: true, isMobile: true }); const p = await ctx.newPage();
+   await p.goto('http://localhost:8765/index.html', { waitUntil: 'networkidle' });
+   const shown = async () => p.evaluate(() => ({ popover: +getComputedStyle(document.querySelector('.popover')).opacity, tooltip: +getComputedStyle(document.querySelector('.tooltip')).opacity }));
+   let bad0 = (await shown()).popover !== 0;
+   await p.evaluate(() => document.querySelector('.has-popover > a').focus()); await p.waitForTimeout(300);
+   const afterEmail = await shown();
+   await p.evaluate(() => document.querySelector('a.has-tooltip').focus()); await p.waitForTimeout(300);
+   const afterCall = await shown();
+   if (bad0 || afterEmail.popover !== 0 || afterCall.tooltip !== 0) fail(`${name}: pop-up shown on a touch device ${JSON.stringify({ afterEmail, afterCall })}`);
+   else console.log(`${name}: no pop-ups, even when the links are tapped`);
    await ctx.close(); }
  { const ctx = await b.newContext({ viewport: { width: 1280, height: 800 }, javaScriptEnabled: false }); const p = await ctx.newPage();
    await p.goto('http://localhost:8765/index.html'); const d = await p.evaluate(() => getComputedStyle(document.querySelector('.copy-button')).display);

@@ -762,8 +762,9 @@ main h1::after,
 
 
 /* ---------- Footer pop-ups ----------
-   Small white boxes that pop up above a footer link on computers, when
-   hovering with a mouse or tabbing to the link with the keyboard:
+   Small white boxes that pop up above a footer link on computers (not on
+   phones or tablets), when hovering with a mouse or tabbing to the link with
+   the keyboard:
    - a tooltip: the phone number above "Call us". The number is always in the
      page (screen readers read it as part of the link), it is only hidden.
    - a pop-up you can click inside: the email address with a Copy button above
@@ -830,30 +831,24 @@ main h1::after,
   height: 0.8rem;
 }
 
-/* Showing them */
-@media (hover: hover) {
+/* Showing them: only on devices whose main pointer is a mouse or trackpad
+   (computers), when hovering or tabbing to the link. Phones and tablets can
+   call and email straight away, so there tapping a link just does that, with
+   no pop-up (a tap also gives the link focus, which would otherwise open it). */
+@media (hover: hover) and (pointer: fine) {
   .has-tooltip:hover .tooltip,
-  .has-popover:hover .popover {
+  .has-popover:hover .popover,
+  .has-tooltip:focus-visible .tooltip,
+  .has-popover:focus-within .popover {
     opacity: 1;
     transform: translate(-50%, 0);
   }
-}
 
-.has-tooltip:focus-visible .tooltip,
-.has-popover:focus-within .popover {
-  opacity: 1;
-  transform: translate(-50%, 0);
-}
-
-/* The email pop-up can be clicked into (for the Copy button) */
-@media (hover: hover) {
-  .has-popover:hover .popover {
+  /* The email pop-up can be clicked into (for the Copy button) */
+  .has-popover:hover .popover,
+  .has-popover:focus-within .popover {
     pointer-events: auto;
   }
-}
-
-.has-popover:focus-within .popover {
-  pointer-events: auto;
 }
 
 .copy-button {
