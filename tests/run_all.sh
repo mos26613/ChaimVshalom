@@ -56,6 +56,16 @@ for page in [f for f in os.listdir(site) if f.endswith(".html")]:
         assert w == h and w >= 48, (page, href, w, h)
 print("SITE ICON OK")' "$WORK/site"
 
+echo "== Checking the Google Search Console tag =="
+# Removing it makes Search Console lose access to the site
+check "Search Console tag" python3 -c '
+import sys, os
+site = sys.argv[1]
+tag = "<meta name=\"google-site-verification\" content=\"C7MAF-ab7w1-lR4rCUOr09ZkFkhMx67SNplmORR_gLM\">"
+for page in [f for f in os.listdir(site) if f.endswith(".html")]:
+    assert open(os.path.join(site, page)).read().count(tag) == 1, page
+print("SEARCH CONSOLE TAG OK")' "$WORK/site"
+
 echo "== Browser checks =="
 python3 -m http.server 8765 --directory "$WORK/site" >/dev/null 2>&1 & SERVER=$!
 sleep 1
