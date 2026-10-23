@@ -196,11 +196,6 @@ first (see `CLAUDE.md`).
 - **`@claude` from GitHub:** the workflow file and `CLAUDE.md` exist, but the
   token/secret setup and test are paused. Working in a Claude session is enough
   for now.
-- **`main` branch:** the site still publishes from
-  `claude/nonprofit-website-planning-21uvpw`. Switching to `main` (so changes go
-  live only after a merge) waits until the site goes public. Note: a new Claude
-  session may work on a different branch, which would not publish until merged
-  or moved to this branch.
 - **Online donations:** waiting for amuta registration and a bank account
   (section 6).
 
@@ -274,7 +269,11 @@ first (see `CLAUDE.md`).
 - ~~Update `_config.yml`~~ **Done (Oct 20, 2026):** `url:
   https://chaimvshalom.org` and an empty `baseurl` (used by the "Share with a
   friend" link).
-- Switch publishing to `main` (see above).
+- ~~Switch publishing to `main`~~ **Done (Oct 23, 2026):** the maintainer
+  created `main` from `claude/nonprofit-website-planning-21uvpw` and set
+  GitHub Pages to publish from it. Changes now go live only when a pull
+  request is merged into `main`. The old branch can be deleted once everything
+  is confirmed working.
 - Final check of every page on phone and computer.
 
 ## 12. Other decisions

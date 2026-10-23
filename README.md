@@ -89,10 +89,27 @@ description: "About Chaim V'Shalom Women's Learning Center."
 ## Previewing
 
 Because the pages are assembled by Jekyll, opening a page file directly in a
-browser shows it without its header and footer. To see the real site, push the
-changes and open https://chaimvshalom.org/. It updates once GitHub's "pages
-build and deployment" run (the repository's Actions tab) has finished, usually
-within a few minutes; then refresh with Ctrl+Shift+R. Or run Jekyll locally
+browser shows it without its header and footer. To see the real site, open
+https://chaimvshalom.org/. It updates once GitHub's "pages build and
+deployment" run (the repository's Actions tab) has finished, usually within a
+few minutes; then refresh with Ctrl+Shift+R.
+
+## Publishing a change
+
+The live site is built from the **`main`** branch. Changes are made on a
+separate branch and offered to `main` as a **pull request**:
+
+1. On GitHub, open the **Pull requests** tab and click the pull request.
+2. The **Files changed** tab shows exactly what changed (red = removed,
+   green = added).
+3. If it looks right, go back to the **Conversation** tab, click **Merge pull
+   request**, then **Confirm merge**.
+4. Wait for the "pages build and deployment" run in the **Actions** tab (about
+   a minute), then refresh the site with Ctrl+Shift+R.
+
+Small text fixes can also be made directly on GitHub: open the file on `main`,
+click the ✏️ pencil, and choose **"Create a new branch … and start a pull
+request"** when saving, so the same review step applies. Or run Jekyll locally
 (`bundle exec jekyll serve`, requires Ruby).
 
 ## Asking Claude from GitHub
