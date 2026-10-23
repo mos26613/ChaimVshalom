@@ -39,6 +39,23 @@ for f in sys.argv[1:]:
     xml.dom.minidom.parse(f)
 print("SVG VALID")' "$REPO"/images/*.svg
 
+echo "== Checking the site icon (favicon) =="
+# Google looks for favicon.ico in the main folder; every icon a page points to
+# must exist and be square
+check "Site icon" python3 -c '
+import sys, re, os
+from PIL import Image
+site = sys.argv[1]
+assert os.path.isfile(os.path.join(site, "favicon.ico")), "favicon.ico is missing"
+for page in [f for f in os.listdir(site) if f.endswith(".html")]:
+    html = open(os.path.join(site, page)).read()
+    links = re.findall(r"<link rel=\"(?:icon|apple-touch-icon)\" href=\"([^\"]+)\"", html)
+    assert len(links) == 3, (page, links)
+    for href in links:
+        w, h = Image.open(os.path.join(site, href)).size
+        assert w == h and w >= 48, (page, href, w, h)
+print("SITE ICON OK")' "$WORK/site"
+
 echo "== Browser checks =="
 python3 -m http.server 8765 --directory "$WORK/site" >/dev/null 2>&1 & SERVER=$!
 sleep 1
