@@ -41,6 +41,7 @@ async function measure(id) {
      const c = document.getElementById('chanukah-chagigah');
      return c && {
        date: /Tuesday, December 8th/.test(c.textContent),
+       hebrewDate: [...c.querySelectorAll('.details [lang="he"][dir="rtl"]')].some(e => e.textContent === 'כ״ח כסלו'),
        email: !!c.querySelector('.actions a[href^="mailto:cvswomenslc@gmail.com"]'),
        whatsapp: !!c.querySelector('.actions a[href^="https://wa.me/972509332205"][target="_blank"]') }; });
    if (chagigah && !Object.values(chagigah).every(Boolean)) probs.push('Chagigah ' + JSON.stringify(chagigah));
