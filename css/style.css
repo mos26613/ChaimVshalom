@@ -668,6 +668,43 @@ main h1::after,
   font-style: normal;
 }
 
+/* ---------- Flyer cards (Events page) ---------- */
+/* An event or announcement with its flyer: on phones the flyer is on top
+   (not too wide) and the details below it; larger screens put them side by
+   side (see the "Wider screens" block). Tapping the flyer opens it full size. */
+.flyer-card {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.flyer-link {
+  display: block;
+  justify-self: center;
+  width: 100%;
+  max-width: 22rem;
+}
+
+.flyer-link img {
+  width: 100%;
+  border: 1px solid var(--color-gold);
+  border-radius: var(--radius);
+}
+
+.flyer-text h3 {
+  margin-top: 0;
+}
+
+/* A short bold label above a row of buttons, e.g. "To register:" */
+.actions-label {
+  margin: 1rem 0 0;
+  font-weight: 700;
+  color: var(--color-heading);
+}
+
+.actions-label + .actions {
+  margin-top: 0.4rem;
+}
+
 /* ---------- Scroll fade-in ---------- */
 /* Page content fades in gradually as you scroll (js/main.js sets each item's
    fade as the page scrolls; items are sections, or headings and cards). Items
@@ -1190,6 +1227,13 @@ html:not(.js) .copy-button {
 
   .registration-row .share-box {
     margin: 0 0 2.5rem;
+  }
+
+  /* Events page: the flyer on the left, its details on the right */
+  .flyer-card {
+    grid-template-columns: minmax(0, 18rem) 1fr;
+    gap: 1.75rem;
+    align-items: start;
   }
 
   /* The calendar buttons as ordinary buttons again (phones: tiles, see above) */
