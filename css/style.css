@@ -476,6 +476,59 @@ main h1::after,
     var(--color-surface);
 }
 
+/* Home page: a small peach "quick link" pill under the hero buttons, with a
+   white "New!" badge, pointing to a post on the News page. On devices with a
+   mouse it lifts a little on hover, like the buttons. */
+.quick-link-row {
+  margin: 1.25rem 0 0;
+}
+
+.quick-link {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.3rem 0.4rem;
+  max-width: 100%;
+  padding: 0.45rem 1rem 0.45rem 0.45rem;
+  border: 1px solid var(--color-gold-line);
+  border-radius: 1.5rem;
+  background: var(--color-gold);
+  color: var(--color-heading);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (hover: hover) {
+  .quick-link:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-button);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quick-link { transition: none; }
+  .quick-link:hover { transform: none; }
+}
+
+/* The link's text breaks onto a new line only between these parts (phones) */
+.quick-link-part {
+  white-space: nowrap;
+}
+
+.quick-link-badge {
+  padding: 0.15rem 0.6rem;
+  border-radius: 2rem;
+  background: var(--color-surface);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
 /* Cards: stacked on phones, side by side on wider screens */
 .card-grid {
   display: grid;
@@ -1252,25 +1305,27 @@ html:not(.js) .copy-button {
 }
 
 /* Computers (1024px and up): a small open-book medallion (images/header-book.svg)
-   in the empty space on each side of the pesukim arc, mirrored on the right */
+   in the empty space on each side of the pesukim arc, mirrored on the right.
+   22.5rem from the middle keeps them clear of the arc, which is as wide as
+   the row of page links: with another menu item, check test_header_decor.js. */
 @media (min-width: 64rem) {
   .site-header::before,
   .site-header::after {
     content: "";
     position: absolute;
     top: 2.2rem;
-    width: min(17rem, calc(50% - 22rem));
+    width: min(17rem, calc(50% - 23.5rem));
     aspect-ratio: 300 / 260;
     background: url("../images/header-book.svg") center / contain no-repeat;
     pointer-events: none;
   }
 
   .site-header::before {
-    right: calc(50% + 21rem);
+    right: calc(50% + 22.5rem);
   }
 
   .site-header::after {
-    left: calc(50% + 21rem);
+    left: calc(50% + 22.5rem);
     transform: scaleX(-1);
   }
 }

@@ -69,6 +69,7 @@ description: "About Chaim V'Shalom Women's Learning Center."
 | `about.html` | About Us |
 | `classes.html` | Classes (current program details) |
 | `events.html` | Events & Trips |
+| `news.html` | News (announcements, e.g. a new sefer); newest post first |
 | `support.html` | Support Us (donations — "coming soon" for now) |
 | `contact.html` | Contact details (email, phone, WhatsApp) |
 | `privacy.html` | Privacy Policy |
