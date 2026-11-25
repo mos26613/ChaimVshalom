@@ -40,6 +40,10 @@ The maintainer is a computer science student who is new to web development.
 - **Test thoroughly** with `bash tests/run_all.sh` (see `tests/README.md`), and
   add a focused test for anything new (e.g. tooltips, fade-in, copy button).
   Check phone (~390px), very narrow phones (320px), tablets and computers.
+- **How much to test** (the maintainer's rule, Nov 25, 2026): for small
+  text-only edits, build the site, validate the HTML, and run only the test
+  for the affected page. Run the full `run_all.sh` for layout, style, menu or
+  shared-file changes (`_layouts`, `_includes`, `_data`, `css`, `js`).
 - **Show, don't just tell:** send screenshots (and short recordings for motion)
   of the result, and say what to check on the live site.
 - **Publishing takes a few minutes.** After a merge into `main`, GitHub's "pages
@@ -116,6 +120,7 @@ The maintainer is a computer science student who is new to web development.
 - Run `bash tests/run_all.sh` (builds the site with GitHub Pages' Jekyll,
   validates the HTML, and runs all browser checks); it must end with
   "ALL TESTS PASSED". Every check sets its exit code, so a failure or crash is
-  listed in the summary.
+  listed in the summary. For a small text-only edit, the lighter check under
+  "How much to test" is enough; say in the pull request which one was run.
 - In your reply, summarize what changed in plain language and what the
   maintainer should check on the live site.
