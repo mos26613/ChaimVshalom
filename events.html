@@ -7,10 +7,64 @@ description: "Upcoming events and trips at Chaim V'Shalom Women's Learning Cente
 
       <section class="section">
         <h2>Upcoming</h2>
-        <div class="card">
-          <h3>Chanukah Chagiga</h3>
-          <p>Part of our inaugural learning program.</p>
-          <p>Details coming soon – get ready to celebrate!</p>
+        <!-- An event with its flyer: the flyer on top on phones, beside the
+             details on larger screens. Tapping the flyer opens it full size. -->
+        <div class="card flyer-card" id="chanukah-chagigah">
+          <a class="flyer-link" href="images/chanukah-chagigah-flyer.webp" target="_blank" rel="noopener">
+            <img src="images/chanukah-chagigah-flyer.webp" width="1024" height="1536" loading="lazy"
+                 alt="Flyer for the Chanukah Chagigah, Tuesday, December 8th, 9:00 to 11:00 a.m. The details are written out on this page.">
+          </a>
+          <div class="flyer-text">
+            <h3>Chanukah Chagigah</h3>
+            <p><em>A Morning of Inspiration, Creativity and Connection</em></p>
+            <ul class="highlights">
+              <li><span class="highlight-icon" aria-hidden="true">🥐</span>Festive Breakfast</li>
+              <li><span class="highlight-icon" aria-hidden="true">💬</span>Q&amp;A Session with Mrs. Fayge Grossman and Mrs. Rivka Segal</li>
+              <li><span class="highlight-icon" aria-hidden="true">🎨</span>Creative Painting Party</li>
+            </ul>
+            <dl class="details">
+              <dt><span class="details-icon" aria-hidden="true">📅</span>When</dt>
+              <dd>Tuesday, December 8th, 2026</dd>
+              <dt><span class="details-icon" aria-hidden="true">🕘</span>Time</dt>
+              <dd>9:00&ndash;11:00 a.m.</dd>
+              <dt><span class="details-icon" aria-hidden="true">📍</span>Where</dt>
+              <dd>
+                Sorek 30/2 (white door on the left)<br>
+                <a href="https://maps.app.goo.gl/TCkJrz72iCcvFxEPA" target="_blank" rel="noopener">Google Maps</a>
+                &middot;
+                <a href="https://waze.com/ul?ll=31.7152846%2C34.9878998&amp;navigate=yes" target="_blank" rel="noopener">Waze</a>
+              </dd>
+              <dt><span class="details-icon" aria-hidden="true">🏷️</span>Price</dt>
+              <dd>FREE for members (registered for the full 8-session program)<br>80₪ for non-members</dd>
+            </dl>
+            <ul class="highlights">
+              <li><span class="highlight-icon" aria-hidden="true">✉️</span>Please submit your questions in advance to <a href="mailto:{{ site.data.contact.email }}">{{ site.data.contact.email }}</a></li>
+              <li><span class="highlight-icon" aria-hidden="true">♿</span>Wheelchair accessible</li>
+            </ul>
+            <p class="actions-label">To register:</p>
+            <p class="actions">
+              <a class="button button--soft" href="mailto:{{ site.data.contact.email }}?subject={{ "Chanukah Chagigah registration" | url_encode | replace: "+", "%20" }}"><span aria-hidden="true">✉️</span> Email us</a>
+              <a class="button button--soft" href="https://wa.me/{{ site.data.contact.whatsapp }}?text={{ "Hi, I'd like to register for the Chanukah Chagigah." | url_encode | replace: "+", "%20" }}" target="_blank" rel="noopener"><span aria-hidden="true">💬</span> WhatsApp us</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>New Release</h2>
+        <div class="card flyer-card" id="living-tehillim">
+          <a class="flyer-link" href="images/living-tehillim-flyer.webp" target="_blank" rel="noopener">
+            <img src="images/living-tehillim-flyer.webp" width="1002" height="1260" loading="lazy"
+                 alt="Flyer for Living Tehillim, the five-volume series by Rivka Segal, showing the five books side by side.">
+          </a>
+          <div class="flyer-text">
+            <h3>Living Tehillim &ndash; Volume 5</h3>
+            <p>By Mrs. Rivka Segal. The final volume in the <em>Living Tehillim</em> series, including Mizmor 119 and the Shirei Hamaalos.</p>
+            <p>Pre-order now for less than store prices, with an additional discount on the boxed set of all five volumes.</p>
+            <p class="actions">
+              <a class="button button--signup" href="https://forms.gle/JW86rpxwvfvWYJGw6" target="_blank" rel="noopener"><span aria-hidden="true">📚</span> Pre-order here</a>
+            </p>
+          </div>
         </div>
       </section>
 
